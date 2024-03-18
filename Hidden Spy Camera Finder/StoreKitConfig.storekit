@@ -1,0 +1,220 @@
+{
+  "identifier" : "C052B914",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6472044274",
+    "_developerTeamID" : "4LMH8QQN35",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 722350283.08913398,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21412282",
+      "localizations" : [
+
+      ],
+      "name" : "main_sub",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6472048634",
+          "introductoryOffer" : null,
+          "localizations" : [
+
+          ],
+          "productID" : "main_sub",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "main_sub",
+          "subscriptionGroupID" : "21412282",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    },
+    {
+      "id" : "21412283",
+      "localizations" : [
+
+      ],
+      "name" : "unlockerTwoNineNine",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "2.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6472048696",
+          "introductoryOffer" : null,
+          "localizations" : [
+
+          ],
+          "productID" : "unlockerTwoNineNine",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "unlockerTwoNineNine",
+          "subscriptionGroupID" : "21412283",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    },
+    {
+      "id" : "21412328",
+      "localizations" : [
+
+      ],
+      "name" : "unlockOne",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "3.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6472048734",
+          "introductoryOffer" : null,
+          "localizations" : [
+
+          ],
+          "productID" : "unlockOne",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "unlockOne",
+          "subscriptionGroupID" : "21412328",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    },
+    {
+      "id" : "21412303",
+      "localizations" : [
+
+      ],
+      "name" : "unlockThree",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6472048949",
+          "introductoryOffer" : null,
+          "localizations" : [
+
+          ],
+          "productID" : "unlockThree",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "unlockThree",
+          "subscriptionGroupID" : "21412303",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    },
+    {
+      "id" : "21412162",
+      "localizations" : [
+
+      ],
+      "name" : "unlockTwo",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6472049148",
+          "introductoryOffer" : null,
+          "localizations" : [
+
+          ],
+          "productID" : "unlockTwo",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "unlockTwo",
+          "subscriptionGroupID" : "21412162",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
