@@ -26,7 +26,7 @@ final class HTSP_TabItem_View: UIView {
     }()
     lazy var tabTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.inter(.InterRegular, size: 10)
+        label.font = UIFont.gilroy(.GilroySemibold, size: 10)
         label.textAlignment = .center
         label.textColor = UIColor.hex("898787")
         return label

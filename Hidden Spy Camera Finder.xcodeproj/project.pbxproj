@@ -94,6 +94,12 @@
 		68FE612B2B061DE300EF9DA4 /* PingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FE612A2B061DE300EF9DA4 /* PingOperation.m */; };
 		68FE612D2B061DED00EF9DA4 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FE612C2B061DEC00EF9DA4 /* SimplePing.m */; };
 		68FE61302B061DF400EF9DA4 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68FE612F2B061DF400EF9DA4 /* data.plist */; };
+		991952732BAB1B0C0078CFD4 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9919525A2BAB1B0B0078CFD4 /* Gilroy-Medium.ttf */; };
+		991952742BAB1B0C0078CFD4 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9919525A2BAB1B0B0078CFD4 /* Gilroy-Medium.ttf */; };
+		991952752BAB1B0C0078CFD4 /* Gilroy-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9919525B2BAB1B0B0078CFD4 /* Gilroy-Semibold.ttf */; };
+		991952762BAB1B0C0078CFD4 /* Gilroy-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9919525B2BAB1B0B0078CFD4 /* Gilroy-Semibold.ttf */; };
+		991952932BAB98D10078CFD4 /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952922BAB98D10078CFD4 /* TutorialModel.swift */; };
+		991952952BAB98FD0078CFD4 /* TutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952942BAB98FD0078CFD4 /* TutorialCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +220,10 @@
 		68FE612A2B061DE300EF9DA4 /* PingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingOperation.m; sourceTree = "<group>"; };
 		68FE612C2B061DEC00EF9DA4 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		68FE612F2B061DF400EF9DA4 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		9919525A2BAB1B0B0078CFD4 /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
+		9919525B2BAB1B0B0078CFD4 /* Gilroy-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Semibold.ttf"; sourceTree = "<group>"; };
+		991952922BAB98D10078CFD4 /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
+		991952942BAB98FD0078CFD4 /* TutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,6 +541,7 @@
 		68C426F72AF9433200C131D0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				991952542BAB1A0D0078CFD4 /* Gilroy */,
 				68C426F82AF9433C00C131D0 /* Inter */,
 			);
 			path = Fonts;
@@ -601,6 +612,7 @@
 				68E1A7952AFBD1C900CBB5A0 /* BluModel.swift */,
 				68617D202B03A9E000190EC0 /* AntiSpyDetailModel.swift */,
 				68617D2D2B03C71E00190EC0 /* LanModel.swift */,
+				991952922BAB98D10078CFD4 /* TutorialModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -667,6 +679,7 @@
 				6819CB652AFE83DA003C9C1B /* BTRadarPerephiralCell */,
 				689B0C822AFD0B2C0071634D /* ScanDetailTextCell */,
 				689B0C812AFD0B220071634D /* ScanDetailCell */,
+				991952962BAB99080078CFD4 /* TutorialCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -740,6 +753,23 @@
 				68FE612F2B061DF400EF9DA4 /* data.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		991952542BAB1A0D0078CFD4 /* Gilroy */ = {
+			isa = PBXGroup;
+			children = (
+				9919525A2BAB1B0B0078CFD4 /* Gilroy-Medium.ttf */,
+				9919525B2BAB1B0B0078CFD4 /* Gilroy-Semibold.ttf */,
+			);
+			path = Gilroy;
+			sourceTree = "<group>";
+		};
+		991952962BAB99080078CFD4 /* TutorialCell */ = {
+			isa = PBXGroup;
+			children = (
+				991952942BAB98FD0078CFD4 /* TutorialCell.swift */,
+			);
+			path = TutorialCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -883,6 +913,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991952742BAB1B0C0078CFD4 /* Gilroy-Medium.ttf in Resources */,
+				991952762BAB1B0C0078CFD4 /* Gilroy-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,11 +927,13 @@
 				68C427022AF9434500C131D0 /* Inter-SemiBold.ttf in Resources */,
 				68617D192B039F2700190EC0 /* AntiSpyMenuCell.xib in Resources */,
 				6819CB622AFE780F003C9C1B /* Radar.json in Resources */,
+				991952752BAB1B0C0078CFD4 /* Gilroy-Semibold.ttf in Resources */,
 				68FE61302B061DF400EF9DA4 /* data.plist in Resources */,
 				68C426D32AF930A400C131D0 /* Launc_hSASd_creen.storyboard in Resources */,
 				68C427072AF9434500C131D0 /* Inter-ExtraBold.ttf in Resources */,
 				68C426D02AF930A400C131D0 /* Assets.xcassets in Resources */,
 				68C427062AF9434500C131D0 /* Inter-Medium.ttf in Resources */,
+				991952732BAB1B0C0078CFD4 /* Gilroy-Medium.ttf in Resources */,
 				68C427042AF9434500C131D0 /* Inter-Thin.ttf in Resources */,
 				68D184E32B1F343800A28BAB /* mac-s.json in Resources */,
 				68C4270A2AF9434500C131D0 /* Inter-Regular.ttf in Resources */,
@@ -943,6 +977,7 @@
 				68FE61012B04FA2C00EF9DA4 /* CoreDataProvider.swift in Sources */,
 				68C427102AF94A9D00C131D0 /* AntiSpyViewController.swift in Sources */,
 				6819CB672AFE83EF003C9C1B /* BTRadarPerephiralCell.swift in Sources */,
+				991952952BAB98FD0078CFD4 /* TutorialCell.swift in Sources */,
 				68C426E32AF931F100C131D0 /* TabBarViewController_HSCF.swift in Sources */,
 				68C426E02AF931C600C131D0 /* InitialViewController.swift in Sources */,
 				68C4270D2AF944B400C131D0 /* UIFont+Custom.swift in Sources */,
@@ -958,6 +993,7 @@
 				68C427162AF94C4A00C131D0 /* TabController.swift in Sources */,
 				68C426C42AF930A300C131D0 /* AppDelegate.swift in Sources */,
 				68FE60FC2B04E5C800EF9DA4 /* HSCFAlertView.swift in Sources */,
+				991952932BAB98D10078CFD4 /* TutorialModel.swift in Sources */,
 				6849689E2B0CE39500764C80 /* HSCFNetworkMonitor.swift in Sources */,
 				68C427192AF94D1B00C131D0 /* HSCFSettingsViewController.swift in Sources */,
 				68FE60FF2B04EC6400EF9DA4 /* EmptyStateCell.swift in Sources */,

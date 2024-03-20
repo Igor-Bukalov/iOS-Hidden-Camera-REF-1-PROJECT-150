@@ -11,7 +11,7 @@ import TinyConstraints
 class ScanDetailLanDeviceCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.inter(.InterMedium, size: 16)
+        label.font = UIFont.gilroy(.GilroyMedium, size: 16)
         label.textColor = UIColor.blueLabel
         label.text = "Test"
         return label
@@ -19,7 +19,7 @@ class ScanDetailLanDeviceCell: UITableViewCell {
     
     lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.inter(.InterRegular, size: 12)
+        label.font = UIFont.gilroy(.GilroySemibold, size: 12)
         label.textColor = UIColor.blueLabel
         label.text = "Test"
         return label

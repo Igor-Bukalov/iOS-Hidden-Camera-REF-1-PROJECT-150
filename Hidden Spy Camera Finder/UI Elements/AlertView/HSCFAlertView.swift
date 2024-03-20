@@ -54,13 +54,13 @@ class HSCFAlertView: UIView {
                                   height: UIScreen.main.bounds.height)
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        titleLbl.font = UIFont.inter(.InterMedium, size: 18)
-        messageLbl.font = UIFont.inter(.InterRegular, size: 14)
+        titleLbl.font = UIFont.gilroy(.GilroyMedium, size: 18)
+        messageLbl.font = UIFont.gilroy(.GilroySemibold, size: 14)
         
-        rightActionButton.titleLabel?.font = UIFont.inter(.InterMedium, size: 16)
-        leftActionButton.titleLabel?.font = UIFont.inter(.InterMedium, size: 16)
+        rightActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        leftActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 16)
         
-        leftActionButton.layer.borderColor = UIColor.hex("D8EB04").cgColor
+        leftActionButton.layer.borderColor = UIColor.white.cgColor
         leftActionButton.layer.borderWidth = 1
     }
     

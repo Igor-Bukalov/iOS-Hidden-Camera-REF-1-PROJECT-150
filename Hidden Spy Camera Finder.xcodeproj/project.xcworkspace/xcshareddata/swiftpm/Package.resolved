@@ -1,4 +1,5 @@
 {
+  "originHash" : "ad1678d1324e1fd7b47bd0ed537ff9ebc62fb257ff060e951f05a60ad2ffce60",
   "pins" : [
     {
       "identity" : "ios_sdk",
@@ -46,5 +47,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

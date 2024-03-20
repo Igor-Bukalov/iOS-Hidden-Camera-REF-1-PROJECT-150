@@ -11,10 +11,10 @@ import TinyConstraints
 class AntiSpyButtonCell: UITableViewCell {
     private lazy var button: UIButton = {
         let b = UIButton()
-        b.backgroundColor = UIColor.hex("D8EB04")
-        b.titleLabel?.font = UIFont.inter(.InterMedium, size: 18)
+        b.backgroundColor = UIColor.hex("4680E4")
+        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
         b.setTitle("Scan the network", for: .normal)
-        b.setTitleColor(UIColor.hex("121212"), for: .normal)
+        b.setTitleColor(UIColor.hex("FFFFFF"), for: .normal)
         b.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
         return b
     }()
@@ -26,7 +26,6 @@ class AntiSpyButtonCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews_HSCF33()
         selectionStyle = .none
-        backgroundColor = .cellBackground
     }
     
     required init?(coder: NSCoder) {
@@ -41,6 +40,7 @@ class AntiSpyButtonCell: UITableViewCell {
     private func setupSubviews_HSCF33() {
         contentView.addSubview(button)
         button.edgesToSuperview()
-        button.height(43)
+        button.height(56)
+        button.layer.cornerRadius = 20
     }
 }

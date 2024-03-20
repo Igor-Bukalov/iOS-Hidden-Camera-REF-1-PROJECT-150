@@ -11,7 +11,7 @@ import TinyConstraints
 class HeaderCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.inter(.InterMedium, size: 18)
+        label.font = UIFont.gilroy(.GilroyMedium, size: 16)
         label.textColor = UIColor.blueLabel
         label.text = "Test"
         return label

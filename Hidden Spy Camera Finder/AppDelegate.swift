@@ -40,12 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func prepareAppearence() {
         let navigationBarAppearance = UINavigationBarAppearance()
-        let backButton = UIBarButtonItemAppearance()
-        backButton.normal.backgroundImage = UIImage()
         navigationBarAppearance.backgroundColor = UIColor.navigationBackground
-        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.blueLabel, .font: UIFont.inter(.InterMedium, size: 20)]
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.blueLabel, .font: UIFont.gilroy(.GilroySemibold, size: 20)]
         navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.blueLabel]
-        navigationBarAppearance.backButtonAppearance = backButton
         
         UINavigationBar.appearance().tintColor = .blueLabel
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance

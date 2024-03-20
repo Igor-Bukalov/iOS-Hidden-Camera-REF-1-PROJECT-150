@@ -10,96 +10,89 @@ import TinyConstraints
 import SwiftUI
 
 class HSCFTutorialViewController: HSCFBaseViewController {
+    typealias DataSource = UITableViewDiffableDataSource<AnyHashable, AnyHashable>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<AnyHashable, AnyHashable>
+    
     // MARK: - UIProperties
-    private lazy var containerView: UIView = {
-        let v = UIView()
-        v.backgroundColor = UIColor.cellBackground
-        v.layer.cornerRadius = 24
-        v.layer.borderWidth = 0.6
-        v.layer.borderColor = UIColor.blueLabel.cgColor
-        return v
+    private lazy var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .insetGrouped)
+        table.backgroundColor = .clear
+        table.sectionHeaderHeight = 10
+        table.sectionFooterHeight = 10
+        table.delegate = self
+        return table
     }()
     
-    private lazy var scrollView = UIScrollView()
-    private lazy var bookImageView = UIImageView(image: UIImage(named: "book"))
-    private lazy var titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.font = UIFont.inter(.InterMedium, size: 16)
-        lbl.numberOfLines = 0
-        lbl.textColor = .blueLabel
-        lbl.text = "Tactics for Shooting Against an Ambush"
-        lbl.textAlignment = .left
-        return lbl
-    }()
+    // MARK: - Properties
+    private var items: [TutorialModel] = []
     
-    private lazy var textLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.numberOfLines = 0
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.firstLineHeadIndent = 0 // No indent for the first line
-        paragraphStyle.headIndent = 16 // The indent for the remaining lines
-        paragraphStyle.lineSpacing = 3
-        
-        let attributes: [NSAttributedString.Key: Any] = [
-            .paragraphStyle: paragraphStyle,
-            .font: UIFont.inter(.InterRegular, size: 14),
-            .foregroundColor: UIColor.hex("8C939F")
-        ]
-        
-        let attributedString = NSAttributedString(
-            string: "1. Check whether covert cameras are installed in televisions, light fixtures, wall gaps, fire alarms, sockets, etc., as well as whether the bathroom glass is transparent.\n2. Dim the lighting in the room or turn off the power when the card is removed. Capturing a clear photo of the camera lens under normal room brightness is challenging; a power outage serves as a better safeguard. The camera's energy consumption is relatively high. Typically, the power source in a hotel room is connected to the network. The camera will naturally cease functioning when the entire room's power is switched off. Some hidden cameras may emit a small, predominantly red, bright light during operation. After turning off the entire room's power, neglected flashlights are easier to locate in the darkness.\n3. Close doors and windows and draw the curtains. The initial steps are aimed at preventing monitoring within the room; however, external factors cannot be ignored.\n4. Be vigilant to ensure you're not being followed by others. Do not open the door to strangers willingly (refrain from sales, door-to-door services at unknown times, etc.), and lock the internal door when you're sleeping.\n5. Choose a hotel with a good reputation. The likelihood of being monitored in a small, obscure hotel is significantly higher than in a regular hotel, as regular hotels undergo more stringent checks.",
-            attributes: attributes
-        )
-        lbl.attributedText = attributedString
-        
-        return lbl
-    }()
+    private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "TutorialCell", for: indexPath) as? TutorialCell,
+           let item = item as? TutorialModel {
+            cell.configure(with: item)
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSubviews_HSCF()
+        items = TutorialModel.item
+        setupTableView()
+        applySnapshot()
     }
     
-    private func setupSubviews_HSCF() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(containerView)
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let layer = CAShapeLayer()
+        let pathRef = CGMutablePath()
+        let cornerRadius: CGFloat = 24
+        let bounds = cell.bounds.insetBy(dx: 0.6, dy: 0.6)
         
-        scrollView.edgesToSuperview()
+        setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, cellY: 0)
         
-        containerView.topToSuperview(offset: 16, usingSafeArea: true)
-        containerView.leadingToSuperview(offset: 20)
-        containerView.trailingToSuperview(offset: 20)
-        containerView.bottomToSuperview(offset: -16)
+        pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
         
-        // Horizontal stack
-        let headerStackView = UIStackView(arrangedSubviews: [bookImageView, titleLabel])
-        headerStackView.axis = .horizontal
-        headerStackView.alignment = .center
-        headerStackView.spacing = 10
+        layer.path = pathRef
+        layer.fillColor = UIColor.clear.cgColor
+        layer.strokeColor = UIColor.blueLabel.cgColor
         
-        // Separator
-        let separatorView = UIView()
-        separatorView.backgroundColor = .hex("294167")
-        separatorView.layer.opacity = 0.05
-        separatorView.height(1)
+        let testView = UIView(frame: bounds)
+        testView.layer.insertSublayer(layer, at: 0)
+        testView.backgroundColor = .clear
         
-        // Vertical stack
-        let verticalStackView = UIStackView(arrangedSubviews: [headerStackView, separatorView, textLabel])
-        verticalStackView.axis = .vertical
-        verticalStackView.alignment = .fill
-        verticalStackView.spacing = 6
+        cell.backgroundView = testView
+    }
+    
+    private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.edgesToSuperview(usingSafeArea: false)
+        tableView.register(TutorialCell.self, forCellReuseIdentifier: "TutorialCell")
+        tableView.dataSource = dataSource
+    }
+    
+    private func applySnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(items)
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+extension HSCFTutorialViewController: UITableViewDelegate {
+    public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, cellY: CGFloat) {
+        let cornerRadius: CGFloat = 24
+        let shapeLayer = CAShapeLayer()
+        cell.layer.mask = nil
         
-        containerView.addSubview(verticalStackView)
-        
-        verticalStackView.topToSuperview(offset: 16)
-        verticalStackView.leftToSuperview(offset: 20)
-        verticalStackView.rightToSuperview(offset: -20)
-        verticalStackView.bottomToSuperview(offset: -16)
-        
-        bookImageView.height(40)
-        bookImageView.width(40)
+        let bezierPath = UIBezierPath(
+            roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
+            cornerRadius: cornerRadius
+        )
+        shapeLayer.path = bezierPath.cgPath
+        cell.layer.mask = shapeLayer
     }
 }
 

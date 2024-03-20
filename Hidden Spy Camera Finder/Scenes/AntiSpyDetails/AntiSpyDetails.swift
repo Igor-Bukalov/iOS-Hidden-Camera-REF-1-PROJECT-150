@@ -12,6 +12,7 @@ import SwiftUI
 class AntiSpyDetailsViewController: HSCFBaseViewController {
     enum SelectType {
         case all
+        case camera
         case obscura
     }
     
@@ -28,13 +29,52 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
         return table
     }()
     
+    private lazy var scanButton: UIButton = {
+        let b = UIButton()
+        b.backgroundColor = UIColor.hex("4680E4")
+        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
+        b.setTitle("Scan the network", for: .normal)
+        b.setTitleColor(UIColor.hex("FFFFFF"), for: .normal)
+        b.layer.cornerRadius = 20
+        b.height(56)
+        b.addTarget(self, action: #selector(scanNetworkAction), for: .touchUpInside)
+        return b
+    }()
+    
+    // MARK: - Properties
+    private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "AntiSpyDetailsCell", for: indexPath) as? AntiSpyDetailsCell,
+           let item = item as? AntiSpyDetailModel {
+            cell.imgView.image = item.image
+            cell.titleLabel.text = item.title
+            cell.subtitleLabel.text = item.subtitle
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+    public var obscuraCompletion: (() -> ())?
+    public var selectItemsType: SelectType = .all
+    
+    private var items: [AntiSpyDetailModel] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureItemsForSelectedType()
+        setupSubviews_S32HP()
+        configureTableView_S32HP()
+        prepareData_HSCF()
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, cellY: 0)
-        
-        let cornerRadius: CGFloat = 24
         let layer = CAShapeLayer()
         let pathRef = CGMutablePath()
+        let cornerRadius: CGFloat = 24
         let bounds = cell.bounds.insetBy(dx: 0.6, dy: 0.6)
+        
+        setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, cellY: 0)
         
         pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
         
@@ -49,50 +89,42 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
         cell.backgroundView = testView
     }
     
-    // MARK: - Properties
-    private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
-        if
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AntiSpyDetailsCell", for: indexPath) as? AntiSpyDetailsCell,
-            let item = item as? AntiSpyDetailModel {
-            cell.imgView.image = item.image
-            cell.titleLabel.text = item.title
-            cell.subtitleLabel.text = item.subtitle
-            cell.selectionStyle = .none
-            return cell
-        } else if let cell = tableView.dequeueReusableCell(withIdentifier: "AntiSpyButtonCell", for: indexPath) as? AntiSpyButtonCell, let item = item as? Int {
-            cell.actionCompletion = { [weak self] in
-                self?.obscuraCompletion?()
-                self?.navigationController?.popViewController(animated: false)
-            }
-            return cell
-        } else {
-            return UITableViewCell()
+    @objc func scanNetworkAction() {
+        obscuraCompletion?()
+        navigationController?.popViewController(animated: false)
+    }
+    
+    private func configureItemsForSelectedType() {
+        switch selectItemsType {
+        case .all:
+            items = AntiSpyDetailModel.items
+        case .camera:
+            items = AntiSpyDetailModel.cameraItem
+        case .obscura:
+            items = AntiSpyDetailModel.obscuraItem
         }
     }
     
-    public var obscuraCompletion: (() -> ())?
-    public var selectItemsType: SelectType = .all
-    
-    private var items: [AntiSpyDetailModel] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        items = selectItemsType == .all ? AntiSpyDetailModel.items : AntiSpyDetailModel.item
-        setupSubviews_S32HP()
-        configureTableView_S32HP()
-        prepareData_HSCF()
+    private func setupScanButton() {
+        view.addSubview(scanButton)
+        scanButton.bottomToSuperview(offset: -16, usingSafeArea: true)
+        scanButton.leftToSuperview(offset: 20)
+        scanButton.rightToSuperview(offset: -20)
     }
     
     private func setupSubviews_S32HP() {
         view.addSubview(tableView)
-        tableView.edgesToSuperview(usingSafeArea: true)
+        tableView.edgesToSuperview(usingSafeArea: false)
+        
+        if selectItemsType == .obscura {
+            setupScanButton()
+        }
     }
     
     private func configureTableView_S32HP() {
-        view.addSubview(tableView)
-        tableView.edgesToSuperview()
         tableView.register(AntiSpyDetailsCell.self, forCellReuseIdentifier: "AntiSpyDetailsCell")
-        tableView.register(AntiSpyButtonCell.self, forCellReuseIdentifier: "AntiSpyButtonCell")
+        tableView.dataSource = dataSource
+        tableView.reloadData()
     }
     
     private func prepareData_HSCF() {
@@ -105,27 +137,23 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
             snapshot.appendSections([item])
             snapshot.appendItems([item], toSection: item)
         }
-        if selectItemsType == .obscura {
-            snapshot.appendSections([selectItemsType])
-            snapshot.appendItems([1])
-        }
         return snapshot
     }
 }
 
 extension AntiSpyDetailsViewController: UITableViewDelegate {
-        public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, cellY: CGFloat) {
-            let cornerRadius: CGFloat = 24
-            let shapeLayer = CAShapeLayer()
-            cell.layer.mask = nil
-            
-            let bezierPath = UIBezierPath(
-                roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
-                cornerRadius: cornerRadius
-            )
-            shapeLayer.path = bezierPath.cgPath
-            cell.layer.mask = shapeLayer
-        }
+    public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, cellY: CGFloat) {
+        let cornerRadius: CGFloat = 24
+        let shapeLayer = CAShapeLayer()
+        cell.layer.mask = nil
+        
+        let bezierPath = UIBezierPath(
+            roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
+            cornerRadius: cornerRadius
+        )
+        shapeLayer.path = bezierPath.cgPath
+        cell.layer.mask = shapeLayer
+    }
 }
 
 struct AntiSpyDetailsViewController_Previews: PreviewProvider {

@@ -7,30 +7,23 @@
 
 import UIKit
 
-enum InterFont: String {
-    case InterBlack = "Inter-Black"
-    case InterBold = "Inter-Bold"
-    case InterExtraBold = "Inter-ExtraBold"
-    case InterExtraLight = "Inter-ExtraLight"
-    case InterLight = "Inter-Light"
-    case InterMedium = "Inter-Medium"
-    case InterRegular = "Inter-Regular"
-    case InterSemiBold = "Inter-SemiBold"
-    case InterThin = "Inter-Thin"
+enum GilroyFont: String {
+    case GilroyMedium = "Gilroy-Medium"
+    case GilroySemibold = "Gilroy-Semibold"
 }
 
 typealias HSCF_UIFONT_HS_OE = UIFont
 
 extension HSCF_UIFONT_HS_OE {
-    convenience init?(name: InterFont, size: CGFloat) {
+    convenience init?(name: GilroyFont, size: CGFloat) {
         self.init(name: name.rawValue, size: size)
     }
 }
 
 extension HSCF_UIFONT_HS_OE {
-    static let defaultFont = UIFont().withSize(17)
+    static let defaultFont = UIFont().withSize(16)
     
-    static func inter(_ inter: InterFont, size: CGFloat) -> UIFont {
-        return UIFont(name: inter, size: size) ?? defaultFont
+    static func gilroy(_ gilroy: GilroyFont, size: CGFloat) -> UIFont {
+        return UIFont(name: gilroy, size: size) ?? defaultFont
     }
 }

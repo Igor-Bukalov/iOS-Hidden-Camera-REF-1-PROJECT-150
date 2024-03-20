@@ -30,7 +30,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         let b = UIButton()
         b.backgroundColor = UIColor.buttonGreenBackground
         b.setTitleColor(.black, for: .normal)
-        b.titleLabel?.font = UIFont.inter(.InterMedium, size: 18)
+        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
         b.layer.cornerRadius = 12
         b.setTitle(ScanningState.startDetection.title, for: .normal)
         b.addTarget(self, action: #selector(scanningTapped), for: .touchUpInside)
@@ -41,7 +41,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         let b = UIButton()
         b.layer.borderColor = UIColor.buttonGreyBorder.cgColor
         b.layer.borderWidth = 1
-        b.titleLabel?.font = UIFont.inter(.InterMedium, size: 18)
+        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
         b.setTitleColor(UIColor.buttonGreyText, for: .normal)
         b.layer.cornerRadius = 12
         b.setTitle("Review", for: .normal)
@@ -51,7 +51,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var suspiciousDevicesFound: UILabel = {
         let l = UILabel()
-        l.font = UIFont.inter(.InterMedium, size: 16)
+        l.font = UIFont.gilroy(.GilroyMedium, size: 16)
         l.textColor = UIColor.blueLabel
         l.textAlignment = .center
         l.text = "Suspicious devices found: 0"
@@ -60,7 +60,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var wifiIPAddress: UILabel = {
         let l = UILabel()
-        l.font = UIFont.inter(.InterRegular, size: 14)
+        l.font = UIFont.gilroy(.GilroySemibold, size: 14)
         l.textColor = UIColor.blueLabel
         l.textAlignment = .center
         l.text = "Wi- Fi IP : \(HSCFDeviceInfo.shared.getWiFiAddress() ?? .na)"

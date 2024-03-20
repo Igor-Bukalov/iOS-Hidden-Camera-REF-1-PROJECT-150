@@ -41,14 +41,17 @@ class AntiSpyViewController: HSCFBaseViewController, UITableViewDelegate {
             switch item {
             case .menu:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "AntiSpyMenuCell", for: indexPath) as? AntiSpyMenuCell else { return UITableViewCell() }
-                cell.labels.forEach { $0.font = UIFont.inter(.InterRegular, size: 14) }
+                cell.labels.forEach { $0.font = UIFont.gilroy(.GilroyMedium, size: 14) }
                 cell.completion = { [weak self] action in
                     let vc = Controller_HSCF.antiSpyDetail.controller as! AntiSpyDetailsViewController
-                    if action == .wiredObscure {
+                    if action == .wirelessObscura {
                         vc.selectItemsType = .obscura
                         vc.obscuraCompletion = { [weak self] in
                             tabController?.processOpeningScanSceneAndScanning()
                         }
+                    }
+                    if action == .infraredCamera {
+                        vc.selectItemsType = .camera
                     }
                     self?.navigationController?.pushViewController(vc, animated: false)
                 }

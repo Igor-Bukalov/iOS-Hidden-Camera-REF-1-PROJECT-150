@@ -137,7 +137,7 @@ class HSCFSettingsViewController: HSCFBaseViewController {
             content.textProperties.color = UIColor.blueLabel
             content.text = item.rawValue
             let label = UILabel(frame: CGRect(x:0,y:0,width:100,height:20))
-            label.font = UIFont.inter(.InterRegular, size: 14)
+            label.font = UIFont.gilroy(.GilroyMedium, size: 14)
             label.textAlignment = .right
             label.textColor = UIColor.hex("4680E4")
             label.text = item.rightText
@@ -157,7 +157,7 @@ class HSCFSettingsViewController: HSCFBaseViewController {
             imgView.tintColor = .blueLabel
             cell.accessoryView = imgView
         }
-        content.textProperties.font = UIFont.inter(.InterMedium, size: 16)
+        content.textProperties.font = UIFont.gilroy(.GilroyMedium, size: 16)
         cell.contentConfiguration = content
         cell.backgroundColor = UIColor.cellBackground
         cell.layer.masksToBounds = true

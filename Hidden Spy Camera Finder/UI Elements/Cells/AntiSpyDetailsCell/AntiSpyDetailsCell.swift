@@ -14,7 +14,7 @@ class AntiSpyDetailsCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.inter(.InterMedium, size: 16)
+        label.font = UIFont.gilroy(.GilroyMedium, size: 16)
         label.textColor = UIColor.blueLabel
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -24,8 +24,8 @@ class AntiSpyDetailsCell: UITableViewCell {
     
     lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.inter(.InterRegular, size: 14)
-        label.textColor = UIColor.blueLabel
+        label.font = UIFont.gilroy(.GilroyMedium, size: 14)
+        label.textColor = UIColor.hex("8C939F")
         label.textAlignment = .left
         label.numberOfLines = 0
         label.text = "Test"
@@ -59,7 +59,7 @@ class AntiSpyDetailsCell: UITableViewCell {
         let separatorView = UIView()
         separatorView.backgroundColor = .hex("294167")
         separatorView.layer.opacity = 0.05
-        separatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separatorView.height(1)
         
         // Vertical stack
         let verticalStackView = UIStackView(arrangedSubviews: [headerStackView, separatorView, subtitleLabel])

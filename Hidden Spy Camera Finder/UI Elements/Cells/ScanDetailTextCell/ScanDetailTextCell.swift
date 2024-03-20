@@ -11,7 +11,7 @@ import TinyConstraints
 class ScanDetailTextCell: UITableViewCell {
     lazy var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.inter(.InterRegular, size: 14)
+        label.font = UIFont.gilroy(.GilroySemibold, size: 14)
         label.textColor = UIColor.blueLabel
         label.textAlignment = .center
         label.numberOfLines = 0

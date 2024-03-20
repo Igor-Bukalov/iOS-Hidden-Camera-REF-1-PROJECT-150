@@ -14,7 +14,13 @@ class HSCFBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.background
-        navigationItem.backButtonTitle = ""
+        
+        if navigationController?.viewControllers.count ?? 0 > 1 {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back-button")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonPressed))
+        } else {
+            self.navigationItem.leftBarButtonItem = nil
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(internerConntectionHandle), name: .connectivityStatus, object: nil)
     }
     
@@ -28,6 +34,10 @@ class HSCFBaseViewController: UIViewController {
             }
         }
         setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    @objc func backButtonPressed() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
@@ -78,10 +88,7 @@ extension UIViewController {
         )
     }()
     
-    /// Hides the iOS 14 navigation menu (shown on a long press on any back
-    /// button).
-    ///
-    /// More details at:
+    /// Hides the iOS 14 navigation menu (shown on a long press on any back button). More details at:
     /// https://sarunw.com/posts/what-should-you-know-about-navigation-history-stack-in-ios14/
     @objc func swizzledViewWillAppear(_ animated: Bool) {
         if #available(iOS 14.0, *) {

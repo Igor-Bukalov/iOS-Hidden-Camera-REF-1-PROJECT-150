@@ -22,17 +22,12 @@ class ScanDetailCell: UITableViewCell {
     }
     
     private func setup() {
-        titleTextLabel.font = UIFont.inter(.InterMedium, size: 16)
-        [subTitleTextLabel, subTitleValueLabel].forEach { $0.font = UIFont.inter(.InterRegular, size: 12) }
-        titleValueButton.titleLabel?.font = UIFont.inter(.InterRegular, size: 14)
+        titleTextLabel.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        [subTitleTextLabel, subTitleValueLabel].forEach { $0.font = UIFont.gilroy(.GilroySemibold, size: 12) }
+        titleValueButton.titleLabel?.font = UIFont.gilroy(.GilroySemibold, size: 14)
         
         [titleTextLabel, subTitleTextLabel, subTitleValueLabel].forEach { $0.textColor = UIColor.blueLabel }
         contentView.backgroundColor = UIColor.cellBackground
-        
-        contentView.layer.borderWidth = 0.5
-        contentView.layer.borderColor = UIColor.blueLabel.cgColor
-        contentView.layer.cornerRadius = 16
-        
         selectionStyle = .none
     }
     

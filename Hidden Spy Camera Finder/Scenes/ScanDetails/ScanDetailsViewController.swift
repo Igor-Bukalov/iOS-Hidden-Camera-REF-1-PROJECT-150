@@ -32,6 +32,62 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
         return table
     }()
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cornerRadius: CGFloat = 16
+        
+        let layer = CAShapeLayer()
+        let pathRef = CGMutablePath()
+        let bounds = cell.bounds.insetBy(dx: 0.5, dy: 0.1)
+        var addLine = false
+        
+        setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, needSetAlone: false, cellY: 0)
+        
+        if indexPath.row == 0 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
+        } else if indexPath.row == 0 {
+            pathRef.move(to: .init(x: bounds.minX, y: bounds.maxY))
+            pathRef.addArc(tangent1End: .init(x: bounds.minX, y: bounds.minY), tangent2End: .init(x: bounds.midX, y: bounds.minY), radius: cornerRadius)
+            pathRef.addArc(tangent1End: .init(x: bounds.maxX, y: bounds.minY), tangent2End: .init(x: bounds.maxX, y: bounds.midY), radius: cornerRadius)
+            pathRef.addLine(to: .init(x: bounds.maxX, y: bounds.maxY))
+            addLine = true
+        } else if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            pathRef.move(to: .init(x: bounds.minX, y: bounds.minY))
+            pathRef.addArc(tangent1End: .init(x: bounds.minX, y: bounds.maxY), tangent2End: .init(x: bounds.midX, y: bounds.maxY), radius: cornerRadius)
+            pathRef.addArc(tangent1End: .init(x: bounds.maxX, y: bounds.maxY), tangent2End: .init(x: bounds.maxX, y: bounds.midY), radius: cornerRadius)
+            pathRef.addLine(to: .init(x: bounds.maxX, y: bounds.minY))
+        } else {
+            let pathInnerRef = CGMutablePath()
+            pathInnerRef.move(to: .init(x: bounds.minX, y: bounds.minY))
+            pathInnerRef.addLine(to: .init(x: bounds.minX, y: bounds.maxY))
+            
+            pathInnerRef.move(to: .init(x: bounds.maxX, y: bounds.minY))
+            pathInnerRef.addLine(to: .init(x: bounds.maxX, y: bounds.maxY))
+            pathRef.addPath(pathInnerRef)
+            addLine = true
+        }
+        
+        layer.path = pathRef
+        layer.fillColor = UIColor.clear.cgColor
+        layer.strokeColor = UIColor.blueLabel.cgColor
+        
+        if (addLine == true) {
+            let lineLayer = CALayer()
+            let lineHeight = 1 / UIScreen.main.scale
+            lineLayer.frame = CGRect(x: bounds.minX + 15, y: bounds.size.height - lineHeight, width: bounds.size.width - 30, height: lineHeight)
+            lineLayer.backgroundColor = UIColor.clear.cgColor
+            lineLayer.borderColor = UIColor.hex("4680E4").cgColor
+            lineLayer.opacity = 0.7
+            lineLayer.borderWidth = 0.5
+            layer.addSublayer(lineLayer)
+        }
+        
+        let testView = UIView(frame: bounds)
+        testView.layer.insertSublayer(layer, at: 0)
+        testView.backgroundColor = .clear
+        
+        cell.backgroundView = testView
+    }
+    
     // MARK: - Properties
     private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
         if let item = item as? TextModel {
@@ -62,6 +118,9 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
                 UIPasteboard.general.string = item.title
                 HSCFAlertView.instance.showAlert_HSCF(showImage: true, title: "The copying was successful!")
             }
+            
+//            self!.setCornerRadiusForSectionCell(cell: scanCell, indexPath: indexPath, tableView: tableView, needSetAlone: false, cellY: 0)
+            
             return scanCell
         } else if let item = item as? ItemValue {
             switch item {
@@ -166,10 +225,6 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
         tableView.edgesToSuperview(usingSafeArea: true)
     }
     
-    private func setupDataSource() {
-        
-    }
-    
     private func updateWiFi_HSCF() {
         self.asd2_prepareData_HSCF()
     }
@@ -187,6 +242,71 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
         let subTitle: String
         let subTitleValue: String
     }
+}
+
+extension ScanDetailsViewController {
+        /// Set Cell Round
+        /// - Parameters:
+        ///   - cell: cell
+        ///   - indexPath: indexPath
+        ///   - tableView: tableView
+        /// - NEEDSETALONE: Do you need a separate setting of each Cell. The default is set as a unit of unit, if a section is only one Cell, all sets
+        public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, needSetAlone: Bool, cellY: CGFloat) {
+            // Rounded radius
+            let cornerRadius: CGFloat = 16
+            
+            // below to set the rounded operation (achieved by mask)
+            let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
+            let shapeLayer = CAShapeLayer()
+            cell.layer.mask = nil
+            
+            if needSetAlone {
+                let bezierPath = UIBezierPath(
+                    roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
+                    cornerRadius: cornerRadius
+                )
+                shapeLayer.path = bezierPath.cgPath
+                cell.layer.mask = shapeLayer
+            } else {
+                // When there is multi-line data in the current partition
+                if sectionCount > 1 {
+                    switch indexPath.row {
+                    // If it is the first line, on the left, the upper right corner is rounded
+                    case 0:
+                        var bounds = cell.bounds
+                        bounds.origin.y += 0  // This part of each set of first line is not displayed
+                        let bezierPath = UIBezierPath(
+                            roundedRect: bounds,
+                            byRoundingCorners: [.topLeft, .topRight],
+                            cornerRadii: CGSize(width: cornerRadius,height: cornerRadius)
+                        )
+                        shapeLayer.path = bezierPath.cgPath
+                        cell.layer.mask = shapeLayer
+                    // If it is the last row, the lower left, the lower right corner is rounded
+                    case sectionCount - 1:
+                        var bounds = cell.bounds
+                        bounds.size.height -= 0  // This part of each group is not displayed
+                        let bezierPath = UIBezierPath(
+                            roundedRect: bounds,
+                            byRoundingCorners: [.bottomLeft,.bottomRight],
+                            cornerRadii: CGSize(width: cornerRadius,height: cornerRadius)
+                        )
+                        shapeLayer.path = bezierPath.cgPath
+                        cell.layer.mask = shapeLayer
+                    default:
+                        break
+                    }
+                } else {
+                    // Four corners are rounded (same setting offset hidden, tail separation)
+                    let bezierPath = UIBezierPath(
+                        roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
+                        cornerRadius: cornerRadius
+                    )
+                    shapeLayer.path = bezierPath.cgPath
+                    cell.layer.mask = shapeLayer
+                }
+            }
+        }
 }
 
 struct ScanDetailsViewController_Previews: PreviewProvider {

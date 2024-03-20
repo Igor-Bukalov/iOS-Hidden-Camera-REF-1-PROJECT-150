@@ -29,7 +29,7 @@ class DeviceDetailDistanceViewController: HSCFBaseViewController {
     
     private lazy var distanceLabel: UILabel = {
        let lbl = UILabel()
-        lbl.font = UIFont.inter(.InterMedium, size: 16)
+        lbl.font = UIFont.gilroy(.GilroyMedium, size: 16)
         lbl.textColor = UIColor.greenLabel
         lbl.text = "Loading..."
         return lbl
@@ -44,7 +44,7 @@ class DeviceDetailDistanceViewController: HSCFBaseViewController {
     
     private lazy var alertLabel: UIView = {
        let lbl = UILabel()
-        lbl.font = UIFont.inter(.InterRegular, size: 16)
+        lbl.font = UIFont.gilroy(.GilroySemibold, size: 16)
         lbl.textAlignment = .center
         lbl.layer.cornerRadius = 12
         lbl.textColor = UIColor.hex("898787")

@@ -13,12 +13,13 @@ class AntiSpyMenuCell: UITableViewCell {
     var completion: ((AntiSpyViewController.Action_anti_spy) -> Void)?
     
     @IBAction func cameraObscuraTapped(_ sender: UIButton) {
-        completion?(.cameraObscura) }
+        completion?(.cameraObscura)
+    }
     @IBAction func infraredCameraTapped(_ sender: UIButton) {
         completion?(.infraredCamera)
     }
     @IBAction func wirelessObscura(_ sender: UIButton) {
-        completion?(.wiredObscure)
+        completion?(.wirelessObscura)
     }
     @IBAction func wiredObscuraTapped(_ sender: UIButton) {
         completion?(.wiredObscure)
