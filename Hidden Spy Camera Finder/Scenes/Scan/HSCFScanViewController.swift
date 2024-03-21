@@ -28,10 +28,10 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     // MARK: - UIProperties
     private lazy var detectionButton: UIButton = {
         let b = UIButton()
-        b.backgroundColor = UIColor.buttonGreenBackground
-        b.setTitleColor(.black, for: .normal)
+        b.backgroundColor = UIColor.buttonBlueBackground
+        b.setTitleColor(.white, for: .normal)
         b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
-        b.layer.cornerRadius = 12
+        b.layer.cornerRadius = 20
         b.setTitle(ScanningState.startDetection.title, for: .normal)
         b.addTarget(self, action: #selector(scanningTapped), for: .touchUpInside)
         return b
@@ -43,7 +43,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         b.layer.borderWidth = 1
         b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
         b.setTitleColor(UIColor.buttonGreyText, for: .normal)
-        b.layer.cornerRadius = 12
+        b.layer.cornerRadius = 20
         b.setTitle("Review", for: .normal)
         b.addTarget(self, action: #selector(reviewTapped), for: .touchUpInside)
         return b
@@ -51,7 +51,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var suspiciousDevicesFound: UILabel = {
         let l = UILabel()
-        l.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        l.font = UIFont.gilroy(.GilroyMedium, size: 18)
         l.textColor = UIColor.blueLabel
         l.textAlignment = .center
         l.text = "Suspicious devices found: 0"
@@ -60,10 +60,10 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var wifiIPAddress: UILabel = {
         let l = UILabel()
-        l.font = UIFont.gilroy(.GilroySemibold, size: 14)
+        l.font = UIFont.gilroy(.GilroyMedium, size: 16)
         l.textColor = UIColor.blueLabel
         l.textAlignment = .center
-        l.text = "Wi- Fi IP : \(HSCFDeviceInfo.shared.getWiFiAddress() ?? .na)"
+        l.text = "Wi-Fi IP: \(HSCFDeviceInfo.shared.getWiFiAddress() ?? .na)"
         return l
     }()
     
@@ -113,42 +113,38 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     private func prepareUI_S32HP() {
         prepareSubviews()
     }
-
+    
     private func prepareSubviews() {
         let stackView = UIView()
-        stackView.stack([reviewButton, detectionButton], axis: .horizontal, spacing: 20)
-        reviewButton.width(107)
+        stackView.stack([reviewButton, detectionButton], axis: .vertical, spacing: 12)
         view.addSubview(stackView)
-        stackView.bottomToSuperview(offset: -20, usingSafeArea: true)
+        
+        stackView.bottomToSuperview(offset: -16, usingSafeArea: true)
         stackView.leftToSuperview(offset: 20)
         stackView.rightToSuperview(offset: -20)
-        stackView.height(50)
+        
+        reviewButton.height(56)
+        detectionButton.height(56)
         
         let stackViewSecond = UIView()
-        let upView = UIView()
-        upView.backgroundColor = .tabbarBackground
-        upView.layer.cornerRadius = 12
-        stackViewSecond.stack([suspiciousDevicesFound, wifiIPAddress], axis: .vertical, spacing: 0)
-        upView.addSubview(stackViewSecond)
-        view.addSubview(upView)
-        stackViewSecond.topToSuperview(offset: 8)
-        stackViewSecond.horizontalToSuperview()
-        stackViewSecond.height(44)
-        upView.height(64)
-        upView.bottomToTop(of: stackView, offset: -24)
-        upView.leftToSuperview(offset: 20)
-        upView.rightToSuperview(offset: -20)
+        stackViewSecond.stack([suspiciousDevicesFound, wifiIPAddress], axis: .vertical, spacing: 8)
+        view.addSubview(stackViewSecond)
+        
+        stackViewSecond.topToSuperview(offset: 16, usingSafeArea: true)
+        stackViewSecond.centerXToSuperview()
+        stackViewSecond.height(48)
         
         view.addSubview(radarView)
-        radarView.topToSuperview(offset: 40, usingSafeArea: true)
-        radarView.leftToSuperview(offset: 33, usingSafeArea: true)
-        radarView.rightToSuperview(offset: -33, usingSafeArea: true)
+        
+        radarView.topToBottom(of: stackViewSecond, offset: 24)
+        radarView.leftToSuperview(offset: 20, usingSafeArea: true)
+        radarView.rightToSuperview(offset: -20, usingSafeArea: true)
         radarView.aspectRatio(1)
         
         radarView.addSubview(radarImageView)
         radarImageView.edgesToSuperview()
     }
-
+    
     private func animateRadar() {
         if animationView != nil {
             self.animationView.play()
@@ -224,8 +220,8 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     }
     
     private func isDisableReviewButton(_ isDisable: Bool) {
-        reviewButton.layer.borderColor = isDisable ? UIColor.buttonGreyBorder.cgColor : UIColor.buttonYellowBorder.cgColor
-        reviewButton.setTitleColor(isDisable ? UIColor.buttonGreyText : UIColor.buttonYellowText, for: .normal)
+        reviewButton.layer.borderColor = isDisable ? UIColor.buttonGreyBorder.cgColor : UIColor.buttonBlueBorder.cgColor
+        reviewButton.setTitleColor(isDisable ? UIColor.buttonGreyText : UIColor.buttonBlueText, for: .normal)
     }
     
     // MARK: - Actions
@@ -255,15 +251,15 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
             reviewButton.bounce(level: .low)
         }
     }
-
+    
     func lanScanHasUpdatedProgress(_ progress: CGFloat, address: String) {
         print("Progress: ", progress)
     }
-
+    
     func lanScanDidFindNewDevice(_ device: LanDevice2) {
         connectedDevices.append(device)
     }
-
+    
     func lanScanDidFinishScanning(_ lanDevices: [LanDevice2]) {
         connectedDevices = lanDevices
         self.results()

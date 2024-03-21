@@ -18,7 +18,7 @@ class HSCFBaseViewController: UIViewController {
         if navigationController?.viewControllers.count ?? 0 > 1 {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back-button")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonPressed))
         } else {
-            self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu-button")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(menuButtonPressed))
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(internerConntectionHandle), name: .connectivityStatus, object: nil)
@@ -35,6 +35,8 @@ class HSCFBaseViewController: UIViewController {
         }
         setNeedsStatusBarAppearanceUpdate()
     }
+    
+    @objc func menuButtonPressed() {}
     
     @objc func backButtonPressed() {
         navigationController?.popViewController(animated: true)

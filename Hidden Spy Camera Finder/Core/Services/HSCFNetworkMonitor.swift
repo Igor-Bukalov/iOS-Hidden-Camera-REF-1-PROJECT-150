@@ -26,18 +26,18 @@ extension NWInterface.InterfaceType: CaseIterable {
 
 final class HSCFNetworkMonitor {
     static let shared = HSCFNetworkMonitor()
-
+    
     private let queue = DispatchQueue(label: "NetworkConnectivityMonitor")
     private let monitor: NWPathMonitor
-
+    
     private(set) var isConnected = false
     private(set) var isExpensive = false
     private(set) var currentConnectionType: NWInterface.InterfaceType?
-
+    
     private init() {
         monitor = NWPathMonitor()
     }
-
+    
     func startMonitoring_HSCF() {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.isConnected = path.status != .unsatisfied
@@ -48,7 +48,7 @@ final class HSCFNetworkMonitor {
         }
         monitor.start(queue: queue)
     }
-
+    
     func stopMonitoring_HSCF() {
         monitor.cancel()
     }

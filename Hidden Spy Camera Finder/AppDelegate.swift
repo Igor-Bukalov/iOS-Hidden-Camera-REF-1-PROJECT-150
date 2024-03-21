@@ -15,7 +15,7 @@ import SwiftUI
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         HSCFNetworkMonitor.shared.startMonitoring_HSCF()
         
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func tabbarAppearenceSettings(_ itemAppearance: UITabBarItemAppearance) {
         itemAppearance.normal.iconColor = UIColor.tabbarItem
         itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tabbarItem]
-         
+        
         itemAppearance.selected.iconColor = UIColor.tabbarItemSelected
         itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tabbarItemSelected]
     }

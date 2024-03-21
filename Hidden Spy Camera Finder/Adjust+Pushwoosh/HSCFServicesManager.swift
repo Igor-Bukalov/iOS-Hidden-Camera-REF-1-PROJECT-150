@@ -25,7 +25,7 @@ class ThirdPartyServicesManager {
         let adjustConfig = ADJConfig(appToken: yourAppToken, environment: environment)
         
         adjustConfig?.logLevel = ADJLogLevelVerbose
-
+        
         Adjust.appDidLaunch(adjustConfig)
     }
     
@@ -46,28 +46,28 @@ class ThirdPartyServicesManager {
     func initializeInApps_HSCF() {}
     
     func makeATT_HSCF(completion: @escaping () -> Void) {
-            if #available(iOS 14, *) {
-                ATTrackingManager.requestTrackingAuthorization { status in
-                    switch status {
-                    case .authorized:
-                        print("Authorized")
-                        let idfa = ASIdentifierManager.shared().advertisingIdentifier
-                        print("Пользователь разрешил доступ. IDFA: ", idfa)
-                        let authorizationStatus = Adjust.appTrackingAuthorizationStatus()
-                        Adjust.updateConversionValue(Int(authorizationStatus))
-                        Adjust.checkForNewAttStatus()
-                        print(ASIdentifierManager.shared().advertisingIdentifier)
-                    case .denied:
-                        print("Denied")
-                    case .notDetermined:
-                        print("Not Determined")
-                    case .restricted:
-                        print("Restricted")
-                    @unknown default:
-                        print("Unknown")
-                    }
-                    completion()
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("Authorized")
+                    let idfa = ASIdentifierManager.shared().advertisingIdentifier
+                    print("Пользователь разрешил доступ. IDFA: ", idfa)
+                    let authorizationStatus = Adjust.appTrackingAuthorizationStatus()
+                    Adjust.updateConversionValue(Int(authorizationStatus))
+                    Adjust.checkForNewAttStatus()
+                    print(ASIdentifierManager.shared().advertisingIdentifier)
+                case .denied:
+                    print("Denied")
+                case .notDetermined:
+                    print("Not Determined")
+                case .restricted:
+                    print("Restricted")
+                @unknown default:
+                    print("Unknown")
                 }
+                completion()
+            }
         }
     }
 }

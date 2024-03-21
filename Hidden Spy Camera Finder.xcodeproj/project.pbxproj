@@ -28,8 +28,6 @@
 		68617CEA2B025A8500190EC0 /* HSCFTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CE92B025A8500190EC0 /* HSCFTutorialViewController.swift */; };
 		68617CEF2B02665100190EC0 /* AnimationSliderDevicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CEE2B02665100190EC0 /* AnimationSliderDevicesCell.swift */; };
 		68617CF22B0268F800190EC0 /* DeviceDetailDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CF12B0268F800190EC0 /* DeviceDetailDistance.swift */; };
-		68617D172B039EFA00190EC0 /* AntiSpyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D162B039EFA00190EC0 /* AntiSpyMenuCell.swift */; };
-		68617D192B039F2700190EC0 /* AntiSpyMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68617D182B039F2700190EC0 /* AntiSpyMenuCell.xib */; };
 		68617D1C2B03A51B00190EC0 /* AntiSpyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D1B2B03A51B00190EC0 /* AntiSpyDetails.swift */; };
 		68617D1F2B03A59700190EC0 /* AntiSpyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D1E2B03A59700190EC0 /* AntiSpyDetailsCell.swift */; };
 		68617D212B03A9E000190EC0 /* AntiSpyDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D202B03A9E000190EC0 /* AntiSpyDetailModel.swift */; };
@@ -51,15 +49,6 @@
 		68C426F02AF9341200C131D0 /* HSCFUIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426EF2AF9341200C131D0 /* HSCFUIColor+Hex.swift */; };
 		68C426F32AF9348500C131D0 /* HSCFBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426F22AF9348500C131D0 /* HSCFBaseViewController.swift */; };
 		68C426F62AF93BDE00C131D0 /* HSCFBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426F52AF93BDE00C131D0 /* HSCFBaseNavigationController.swift */; };
-		68C427022AF9434500C131D0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C426F92AF9434500C131D0 /* Inter-SemiBold.ttf */; };
-		68C427032AF9434500C131D0 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C426FA2AF9434500C131D0 /* Inter-Black.ttf */; };
-		68C427042AF9434500C131D0 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C426FB2AF9434500C131D0 /* Inter-Thin.ttf */; };
-		68C427052AF9434500C131D0 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C426FC2AF9434500C131D0 /* Inter-Bold.ttf */; };
-		68C427062AF9434500C131D0 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C426FD2AF9434500C131D0 /* Inter-Medium.ttf */; };
-		68C427072AF9434500C131D0 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C426FE2AF9434500C131D0 /* Inter-ExtraBold.ttf */; };
-		68C427082AF9434500C131D0 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C426FF2AF9434500C131D0 /* Inter-ExtraLight.ttf */; };
-		68C427092AF9434500C131D0 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C427002AF9434500C131D0 /* Inter-Light.ttf */; };
-		68C4270A2AF9434500C131D0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C427012AF9434500C131D0 /* Inter-Regular.ttf */; };
 		68C4270D2AF944B400C131D0 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4270C2AF944B400C131D0 /* UIFont+Custom.swift */; };
 		68C427102AF94A9D00C131D0 /* AntiSpyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4270F2AF94A9D00C131D0 /* AntiSpyViewController.swift */; };
 		68C427132AF94C0000C131D0 /* BTRadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C427122AF94C0000C131D0 /* BTRadarViewController.swift */; };
@@ -100,6 +89,7 @@
 		991952762BAB1B0C0078CFD4 /* Gilroy-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9919525B2BAB1B0B0078CFD4 /* Gilroy-Semibold.ttf */; };
 		991952932BAB98D10078CFD4 /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952922BAB98D10078CFD4 /* TutorialModel.swift */; };
 		991952952BAB98FD0078CFD4 /* TutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952942BAB98FD0078CFD4 /* TutorialCell.swift */; };
+		991EDC262BACA97C008AE665 /* MenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991EDC252BACA97C008AE665 /* MenuItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,8 +133,6 @@
 		68617CE92B025A8500190EC0 /* HSCFTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFTutorialViewController.swift; sourceTree = "<group>"; };
 		68617CEE2B02665100190EC0 /* AnimationSliderDevicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSliderDevicesCell.swift; sourceTree = "<group>"; };
 		68617CF12B0268F800190EC0 /* DeviceDetailDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailDistance.swift; sourceTree = "<group>"; };
-		68617D162B039EFA00190EC0 /* AntiSpyMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyMenuCell.swift; sourceTree = "<group>"; };
-		68617D182B039F2700190EC0 /* AntiSpyMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AntiSpyMenuCell.xib; sourceTree = "<group>"; };
 		68617D1B2B03A51B00190EC0 /* AntiSpyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetails.swift; sourceTree = "<group>"; };
 		68617D1E2B03A59700190EC0 /* AntiSpyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetailsCell.swift; sourceTree = "<group>"; };
 		68617D202B03A9E000190EC0 /* AntiSpyDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetailModel.swift; sourceTree = "<group>"; };
@@ -166,15 +154,6 @@
 		68C426EF2AF9341200C131D0 /* HSCFUIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HSCFUIColor+Hex.swift"; sourceTree = "<group>"; };
 		68C426F22AF9348500C131D0 /* HSCFBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFBaseViewController.swift; sourceTree = "<group>"; };
 		68C426F52AF93BDE00C131D0 /* HSCFBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFBaseNavigationController.swift; sourceTree = "<group>"; };
-		68C426F92AF9434500C131D0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
-		68C426FA2AF9434500C131D0 /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
-		68C426FB2AF9434500C131D0 /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
-		68C426FC2AF9434500C131D0 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
-		68C426FD2AF9434500C131D0 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
-		68C426FE2AF9434500C131D0 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
-		68C426FF2AF9434500C131D0 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
-		68C427002AF9434500C131D0 /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
-		68C427012AF9434500C131D0 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		68C4270C2AF944B400C131D0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
 		68C4270F2AF94A9D00C131D0 /* AntiSpyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyViewController.swift; sourceTree = "<group>"; };
 		68C427122AF94C0000C131D0 /* BTRadarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTRadarViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +203,7 @@
 		9919525B2BAB1B0B0078CFD4 /* Gilroy-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Semibold.ttf"; sourceTree = "<group>"; };
 		991952922BAB98D10078CFD4 /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
 		991952942BAB98FD0078CFD4 /* TutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCell.swift; sourceTree = "<group>"; };
+		991EDC252BACA97C008AE665 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,15 +329,6 @@
 				68617CF12B0268F800190EC0 /* DeviceDetailDistance.swift */,
 			);
 			path = DeviceDetailDistance;
-			sourceTree = "<group>";
-		};
-		68617D152B039EEB00190EC0 /* AntiSpyMenuCell */ = {
-			isa = PBXGroup;
-			children = (
-				68617D162B039EFA00190EC0 /* AntiSpyMenuCell.swift */,
-				68617D182B039F2700190EC0 /* AntiSpyMenuCell.xib */,
-			);
-			path = AntiSpyMenuCell;
 			sourceTree = "<group>";
 		};
 		68617D1A2B03A50600190EC0 /* AntiSpyDetails */ = {
@@ -542,25 +513,8 @@
 			isa = PBXGroup;
 			children = (
 				991952542BAB1A0D0078CFD4 /* Gilroy */,
-				68C426F82AF9433C00C131D0 /* Inter */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		68C426F82AF9433C00C131D0 /* Inter */ = {
-			isa = PBXGroup;
-			children = (
-				68C426FA2AF9434500C131D0 /* Inter-Black.ttf */,
-				68C426FC2AF9434500C131D0 /* Inter-Bold.ttf */,
-				68C426FE2AF9434500C131D0 /* Inter-ExtraBold.ttf */,
-				68C426FF2AF9434500C131D0 /* Inter-ExtraLight.ttf */,
-				68C427002AF9434500C131D0 /* Inter-Light.ttf */,
-				68C426FD2AF9434500C131D0 /* Inter-Medium.ttf */,
-				68C427012AF9434500C131D0 /* Inter-Regular.ttf */,
-				68C426F92AF9434500C131D0 /* Inter-SemiBold.ttf */,
-				68C426FB2AF9434500C131D0 /* Inter-Thin.ttf */,
-			);
-			path = Inter;
 			sourceTree = "<group>";
 		};
 		68C4270B2AF944A700C131D0 /* UIFont */ = {
@@ -674,12 +628,12 @@
 				68FE61132B05040000EF9DA4 /* ScanDetailLanDeviceCell */,
 				68FE60FD2B04EC5B00EF9DA4 /* EmptyStateCell */,
 				68617D1D2B03A59100190EC0 /* AntiSpyDetailsCell */,
-				68617D152B039EEB00190EC0 /* AntiSpyMenuCell */,
 				68617CED2B02660B00190EC0 /* AnimationSliderDevicesCell */,
 				6819CB652AFE83DA003C9C1B /* BTRadarPerephiralCell */,
 				689B0C822AFD0B2C0071634D /* ScanDetailTextCell */,
 				689B0C812AFD0B220071634D /* ScanDetailCell */,
 				991952962BAB99080078CFD4 /* TutorialCell */,
+				991EDC272BACA982008AE665 /* MenuItemCollectionViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -770,6 +724,14 @@
 				991952942BAB98FD0078CFD4 /* TutorialCell.swift */,
 			);
 			path = TutorialCell;
+			sourceTree = "<group>";
+		};
+		991EDC272BACA982008AE665 /* MenuItemCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				991EDC252BACA97C008AE665 /* MenuItemCollectionViewCell.swift */,
+			);
+			path = MenuItemCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -922,25 +884,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68C427092AF9434500C131D0 /* Inter-Light.ttf in Resources */,
-				68C427052AF9434500C131D0 /* Inter-Bold.ttf in Resources */,
-				68C427022AF9434500C131D0 /* Inter-SemiBold.ttf in Resources */,
-				68617D192B039F2700190EC0 /* AntiSpyMenuCell.xib in Resources */,
 				6819CB622AFE780F003C9C1B /* Radar.json in Resources */,
 				991952752BAB1B0C0078CFD4 /* Gilroy-Semibold.ttf in Resources */,
 				68FE61302B061DF400EF9DA4 /* data.plist in Resources */,
 				68C426D32AF930A400C131D0 /* Launc_hSASd_creen.storyboard in Resources */,
-				68C427072AF9434500C131D0 /* Inter-ExtraBold.ttf in Resources */,
 				68C426D02AF930A400C131D0 /* Assets.xcassets in Resources */,
-				68C427062AF9434500C131D0 /* Inter-Medium.ttf in Resources */,
 				991952732BAB1B0C0078CFD4 /* Gilroy-Medium.ttf in Resources */,
-				68C427042AF9434500C131D0 /* Inter-Thin.ttf in Resources */,
 				68D184E32B1F343800A28BAB /* mac-s.json in Resources */,
-				68C4270A2AF9434500C131D0 /* Inter-Regular.ttf in Resources */,
-				68C427082AF9434500C131D0 /* Inter-ExtraLight.ttf in Resources */,
 				68FE60FB2B04E5C800EF9DA4 /* HSCFAlertView.xib in Resources */,
 				68C45E332B17300400434A91 /* Devices.json in Resources */,
-				68C427032AF9434500C131D0 /* Inter-Black.ttf in Resources */,
 				68F7A7C92AFCF02000B349E6 /* ScanDetailCell.xib in Resources */,
 				68FE610A2B05009200EF9DA4 /* .gitkeep in Resources */,
 			);
@@ -972,7 +924,6 @@
 				68F7A7C52AFCEF7000B349E6 /* ScanDetailCell.swift in Sources */,
 				68617D1F2B03A59700190EC0 /* AntiSpyDetailsCell.swift in Sources */,
 				6849696C2B0E2C1000764C80 /* Configurations_HSCF.swift in Sources */,
-				68617D172B039EFA00190EC0 /* AntiSpyMenuCell.swift in Sources */,
 				68617D2E2B03C71E00190EC0 /* LanModel.swift in Sources */,
 				68FE61012B04FA2C00EF9DA4 /* CoreDataProvider.swift in Sources */,
 				68C427102AF94A9D00C131D0 /* AntiSpyViewController.swift in Sources */,
@@ -981,6 +932,7 @@
 				68C426E32AF931F100C131D0 /* TabBarViewController_HSCF.swift in Sources */,
 				68C426E02AF931C600C131D0 /* InitialViewController.swift in Sources */,
 				68C4270D2AF944B400C131D0 /* UIFont+Custom.swift in Sources */,
+				991EDC262BACA97C008AE665 /* MenuItemCollectionViewCell.swift in Sources */,
 				68FE611D2B06128C00EF9DA4 /* LanScan2.m in Sources */,
 				68FE610B2B05009200EF9DA4 /* IpHelper.c in Sources */,
 				68617CEA2B025A8500190EC0 /* HSCFTutorialViewController.swift in Sources */,

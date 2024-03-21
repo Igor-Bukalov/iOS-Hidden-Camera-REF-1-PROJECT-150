@@ -19,28 +19,37 @@ class ScanDetailLanDeviceCell: UITableViewCell {
     
     lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: 12)
+        label.font = UIFont.gilroy(.GilroyMedium, size: 12)
         label.textColor = UIColor.blueLabel
         label.text = "Test"
         return label
     }()
     
-    lazy var rightImageView: UIImageView = {
-       let img = UIImageView(image: UIImage(systemName: "exclamationmark.triangle.fill"))
-        img.tintColor = UIColor.hex("E73F3F")
+    lazy var leftImageView: UIImageView = {
+        let img = UIImageView(image: UIImage(named: "exclamation-mark"))
         return img
+    }()
+    
+    lazy var deleteButton: UIButton = {
+        let b = UIButton()
+        b.setImage(UIImage(named: "trash-can"), for: .normal)
+        b.addTarget(self, action: #selector(copyMAC), for: .touchUpInside)
+        return b
     }()
     
     lazy var containerView: UIView = {
         let v = UIView()
         v.backgroundColor = .cellBackground
-        v.layer.cornerRadius = 8
+        v.layer.cornerRadius = 20
+        v.layer.borderWidth = 0.6
+        v.layer.borderColor = UIColor.blueLabel.cgColor
         return v
     }()
     
-    func of_setup_st_ate_RIGHT_image(showCheckMark: Bool) {
-        rightImageView.image = showCheckMark ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "exclamationmark.triangle.fill")
-        rightImageView.tintColor = showCheckMark ? .green.withAlphaComponent(0.7) : UIColor.hex("E73F3F")
+    var actionTapped: (() -> Void)?
+    
+    @objc func copyMAC() {
+        actionTapped?()
     }
     
     // MARK: - Init
@@ -63,20 +72,27 @@ class ScanDetailLanDeviceCell: UITableViewCell {
         containerView.trailingToSuperview(offset: 20)
         containerView.bottomToSuperview(offset: -6)
         
-        let stack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-        stack.axis = .vertical
-        stack.spacing = 4
-        containerView.addSubview(stack)
+        let verticalStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        verticalStack.axis = .vertical
+        verticalStack.alignment = .fill
+        verticalStack.spacing = 4
         
-        stack.leadingToSuperview(offset: 12)
-        stack.topToSuperview(offset: 10)
-        stack.bottomToSuperview(offset: -10)
+        let horizontalStack = UIStackView(arrangedSubviews: [leftImageView, verticalStack])
+        horizontalStack.axis = .horizontal
+        horizontalStack.distribution = .fill
+        verticalStack.alignment = .leading
+        horizontalStack.spacing = 0
+        containerView.addSubview(horizontalStack)
         
-        containerView.addSubview(rightImageView)
+        horizontalStack.leadingToSuperview(offset: 12)
+        horizontalStack.topToSuperview(offset: 17)
+        horizontalStack.bottomToSuperview(offset: -17)
         
-        rightImageView.rightToSuperview(offset: -12)
-        rightImageView.centerYToSuperview()
-        rightImageView.height(24)
-        rightImageView.width(24)
+        containerView.addSubview(deleteButton)
+        
+        leftImageView.centerYToSuperview()
+        
+        deleteButton.rightToSuperview(offset: -12)
+        deleteButton.centerYToSuperview()
     }
 }

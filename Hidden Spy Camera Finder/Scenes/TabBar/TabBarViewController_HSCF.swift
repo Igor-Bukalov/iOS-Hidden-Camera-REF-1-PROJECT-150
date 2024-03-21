@@ -26,7 +26,7 @@ final class HTSP_TabItem_View: UIView {
     }()
     lazy var tabTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: 10)
+        label.font = UIFont.gilroy(.GilroySemibold, size: 12)
         label.textAlignment = .center
         label.textColor = UIColor.hex("898787")
         return label
@@ -155,7 +155,6 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
         tabbarMenuView.rightToSuperview()
         tabbarMenuView.height(64)
         
-        
         addChild(tab_m_tabbarController)
         containerView.addSubview(tab_m_tabbarController.view)
         tab_m_tabbarController.view.edgesToSuperview()
@@ -177,9 +176,9 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
         case .scan:
             tab_m_tabbarController.selectTab(controller: .scan)
         case .antiSpy:
-                tab_m_tabbarController.selectTab(controller: .antiSpy)
+            tab_m_tabbarController.selectTab(controller: .antiSpy)
         case .btRadar:
-                tab_m_tabbarController.selectTab(controller: .btRadar)
+            tab_m_tabbarController.selectTab(controller: .btRadar)
         case .settings:
             tab_m_tabbarController.selectTab(controller: .settings)
         }

@@ -16,7 +16,7 @@ struct SettingsItem: Hashable {
     let subtitle: String?
     
     var completion: (() -> Void)?
-
+    
     private let identifier = UUID()
     
     func hash(into hasher: inout Hasher) {

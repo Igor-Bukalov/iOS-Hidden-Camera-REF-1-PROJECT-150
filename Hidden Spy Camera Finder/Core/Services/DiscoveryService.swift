@@ -54,7 +54,7 @@ private extension DiscoveryService {
             default: break
             }
         }
-
+        
         return nil
     }
 }
@@ -88,7 +88,7 @@ extension DiscoveryService: NetServiceBrowserDelegate {
 
 // MARK: - NetServiceDelegate
 extension DiscoveryService: NetServiceDelegate {
-    func netServiceDidResolveAddress(_ sender: NetService) {        
+    func netServiceDidResolveAddress(_ sender: NetService) {
         sender.delegate = nil
         
         guard let addresses = sender.addresses else { return }
@@ -97,7 +97,7 @@ extension DiscoveryService: NetServiceDelegate {
             print("%@ resolved with 0 addresses, bailing ...", sender.name)
             return
         }
-
+        
         var IPv4Address: String?
         
         for addressData in addresses {
@@ -106,18 +106,18 @@ extension DiscoveryService: NetServiceDelegate {
                 continue
             }
         }
-
+        
         guard let address = IPv4Address else {
             print("\(sender.name): couldn't find resolved IPv4 addresses (\(addresses.count) total)")
             return
         }
-
+        
         var uuid = ""
-
+        
         if let recordData = sender.txtRecordData() {
             let record = String(decoding: recordData, as: UTF8.self)
             let uuidIdentifier = "deviceid="
-
+            
             if let uuidRange = record.range(of: uuidIdentifier) {
                 let uuidStartLocation = uuidRange.upperBound
                 let macAddressLength = 14
@@ -128,7 +128,7 @@ extension DiscoveryService: NetServiceDelegate {
                 uuid = sender.name
             }
         }
-
+        
         let device = NetworkDevice(name: sender.name, address: address, mac: uuid)
         print(device) //TODO: Send received device to devices manager
         serviceModels.append(device)

@@ -39,13 +39,13 @@ public class LanScannerService: NSObject, LANScanDelegate2 {
     public init(delegate: LanScannerDelegate2?) {
         self.delegate = delegate
     }
-
+    
     // MARK: - Methods
     public func stop() {
         stateType = .stop
         scanner?.stop_S32HP_lan()
     }
-
+    
     public func start() {
         netServiceDevices.removeAll()
         lanDevices.removeAll()
@@ -57,16 +57,16 @@ public class LanScannerService: NSObject, LANScanDelegate2 {
         scanner = LanScan2(delegate: self)
         scanner?.start_S32HP_lan()
     }
-
+    
     public func getCurrentWifiSSID() -> String? {
         nil // scanner?.getCurrentWifiSSID()
     }
-
+    
     public func lanScanHasUpdatedProgress(_ counter: Int, address: String!) {
         let progress = CGFloat(counter) / CGFloat(MAX_IP_RANGE)
         delegate?.lanScanHasUpdatedProgress(progress, address: address)
     }
-
+    
     public func lanScanDidFindNewDevice(_ device: [AnyHashable : Any]!) {
         guard let device = device as? [AnyHashable: String] else { return }
         let lanDevice: LanDevice2 = .init(name: device[DEVICE_NAME] ?? "",
@@ -76,7 +76,7 @@ public class LanScannerService: NSObject, LANScanDelegate2 {
         lanDevices.append(lanDevice)
         delegate?.lanScanDidFindNewDevice(lanDevice)
     }
-
+    
     public func lanScanDidFinishScanning() {
         delegate?.lanScanDidFinishScanning(merge())
     }

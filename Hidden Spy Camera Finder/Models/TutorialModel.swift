@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import TinyConstraints
 
 struct TutorialModel: Hashable {
     let image: UIImage?

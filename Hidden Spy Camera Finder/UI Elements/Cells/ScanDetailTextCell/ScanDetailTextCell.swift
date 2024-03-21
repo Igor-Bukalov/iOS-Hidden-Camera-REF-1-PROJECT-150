@@ -11,11 +11,11 @@ import TinyConstraints
 class ScanDetailTextCell: UITableViewCell {
     lazy var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: 14)
+        label.font = UIFont.gilroy(.GilroyMedium, size: 14)
         label.textColor = UIColor.blueLabel
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = "Copy the MAC address as you can get detailed information about the device"
+        label.text = "Copy the MAC address as you can\nget detailed information about the device"
         return label
     }()
     
@@ -32,10 +32,9 @@ class ScanDetailTextCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.edgesToSuperview()
         containerView.addSubview(label)
-        label.topToSuperview(offset: 10)
-        label.leftToSuperview(offset: 11)
-        label.rightToSuperview(offset: -11)
-        label.bottomToSuperview(offset: -10)
+        label.topToSuperview(offset: 14)
+        label.centerXToSuperview()
+        label.bottomToSuperview(offset: -14)
     }
     
     // MARK: - Init

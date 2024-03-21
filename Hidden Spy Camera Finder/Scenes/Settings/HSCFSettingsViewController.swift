@@ -283,68 +283,68 @@ extension HSCFSettingsViewController: CLLocationManagerDelegate {
 }
 
 extension HSCFSettingsViewController {
-        /// Set Cell Round
-        /// - Parameters:
-        ///   - cell: cell
-        ///   - indexPath: indexPath
-        ///   - tableView: tableView
-        /// - NEEDSETALONE: Do you need a separate setting of each Cell. The default is set as a unit of unit, if a section is only one Cell, all sets
-        public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, needSetAlone: Bool, cellY: CGFloat) {
-            // Rounded radius
-            let cornerRadius: CGFloat = 16
-            
-            // below to set the rounded operation (achieved by mask)
-            let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
-            let shapeLayer = CAShapeLayer()
-            cell.layer.mask = nil
-            
-            if needSetAlone {
+    /// Set Cell Round
+    /// - Parameters:
+    ///   - cell: cell
+    ///   - indexPath: indexPath
+    ///   - tableView: tableView
+    /// - NEEDSETALONE: Do you need a separate setting of each Cell. The default is set as a unit of unit, if a section is only one Cell, all sets
+    public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, needSetAlone: Bool, cellY: CGFloat) {
+        // Rounded radius
+        let cornerRadius: CGFloat = 16
+        
+        // below to set the rounded operation (achieved by mask)
+        let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
+        let shapeLayer = CAShapeLayer()
+        cell.layer.mask = nil
+        
+        if needSetAlone {
+            let bezierPath = UIBezierPath(
+                roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
+                cornerRadius: cornerRadius
+            )
+            shapeLayer.path = bezierPath.cgPath
+            cell.layer.mask = shapeLayer
+        } else {
+            // When there is multi-line data in the current partition
+            if sectionCount > 1 {
+                switch indexPath.row {
+                // If it is the first line, on the left, the upper right corner is rounded
+                case 0:
+                    var bounds = cell.bounds
+                    bounds.origin.y += 0  // This part of each set of first line is not displayed
+                    let bezierPath = UIBezierPath(
+                        roundedRect: bounds,
+                        byRoundingCorners: [.topLeft, .topRight],
+                        cornerRadii: CGSize(width: cornerRadius,height: cornerRadius)
+                    )
+                    shapeLayer.path = bezierPath.cgPath
+                    cell.layer.mask = shapeLayer
+                // If it is the last row, the lower left, the lower right corner is rounded
+                case sectionCount - 1:
+                    var bounds = cell.bounds
+                    bounds.size.height -= 0  // This part of each group is not displayed
+                    let bezierPath = UIBezierPath(
+                        roundedRect: bounds,
+                        byRoundingCorners: [.bottomLeft,.bottomRight],
+                        cornerRadii: CGSize(width: cornerRadius,height: cornerRadius)
+                    )
+                    shapeLayer.path = bezierPath.cgPath
+                    cell.layer.mask = shapeLayer
+                default:
+                    break
+                }
+            } else {
+                // Four corners are rounded (same setting offset hidden, tail separation)
                 let bezierPath = UIBezierPath(
                     roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
                     cornerRadius: cornerRadius
                 )
                 shapeLayer.path = bezierPath.cgPath
                 cell.layer.mask = shapeLayer
-            } else {
-                // When there is multi-line data in the current partition
-                if sectionCount > 1 {
-                    switch indexPath.row {
-                    // If it is the first line, on the left, the upper right corner is rounded
-                    case 0:
-                        var bounds = cell.bounds
-                        bounds.origin.y += 0  // This part of each set of first line is not displayed
-                        let bezierPath = UIBezierPath(
-                            roundedRect: bounds,
-                            byRoundingCorners: [.topLeft, .topRight],
-                            cornerRadii: CGSize(width: cornerRadius,height: cornerRadius)
-                        )
-                        shapeLayer.path = bezierPath.cgPath
-                        cell.layer.mask = shapeLayer
-                    // If it is the last row, the lower left, the lower right corner is rounded
-                    case sectionCount - 1:
-                        var bounds = cell.bounds
-                        bounds.size.height -= 0  // This part of each group is not displayed
-                        let bezierPath = UIBezierPath(
-                            roundedRect: bounds,
-                            byRoundingCorners: [.bottomLeft,.bottomRight],
-                            cornerRadii: CGSize(width: cornerRadius,height: cornerRadius)
-                        )
-                        shapeLayer.path = bezierPath.cgPath
-                        cell.layer.mask = shapeLayer
-                    default:
-                        break
-                    }
-                } else {
-                    // Four corners are rounded (same setting offset hidden, tail separation)
-                    let bezierPath = UIBezierPath(
-                        roundedRect: cell.bounds.insetBy(dx: 0.0, dy: cellY),
-                        cornerRadius: cornerRadius
-                    )
-                    shapeLayer.path = bezierPath.cgPath
-                    cell.layer.mask = shapeLayer
-                }
             }
         }
+    }
 }
 
 struct HSCFSettingsViewController_Previews: PreviewProvider {

@@ -40,7 +40,7 @@ class HSCFCoreDataManager: NSObject {
             }
         }
     }
-
+    
     func getNewEntityby(name: EntityNames) -> NSManagedObject? {
         let context = persistentContainer.viewContext
         guard let entity = NSEntityDescription.entity(forEntityName: name.rawValue, in: context) else { return nil }

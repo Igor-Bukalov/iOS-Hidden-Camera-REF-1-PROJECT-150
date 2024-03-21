@@ -36,5 +36,3 @@ struct MacJsonData: Decodable {
     var mac: String
     var brandName: String
 }
-
-

@@ -82,7 +82,7 @@ class HSCFAlertView: UIView {
         
         self.leftActionClosure = leftAction
         self.rightActionClosure = rightAction
-
+        
         self.leftActionButton.setTitle(leftActionTitle, for: .normal)
         self.rightActionButton.setTitle(rightActionTitle, for: .normal)
         

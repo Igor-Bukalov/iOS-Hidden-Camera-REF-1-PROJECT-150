@@ -12,8 +12,12 @@ import SwiftUI
 class AntiSpyDetailsViewController: HSCFBaseViewController {
     enum SelectType {
         case all
-        case camera
-        case obscura
+        case cameraObscura
+        case infraredCamera
+        case wirelessObscura
+        case wiredObscura
+        case sleepCamera
+        case other
     }
     
     typealias DataSource = UITableViewDiffableDataSource<AnyHashable, AnyHashable>
@@ -96,12 +100,10 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
     
     private func configureItemsForSelectedType() {
         switch selectItemsType {
-        case .all:
-            items = AntiSpyDetailModel.items
-        case .camera:
-            items = AntiSpyDetailModel.cameraItem
-        case .obscura:
-            items = AntiSpyDetailModel.obscuraItem
+        case .all: items = AntiSpyDetailModel.items
+        case .infraredCamera: items = AntiSpyDetailModel.cameraItem
+        case .wirelessObscura: items = AntiSpyDetailModel.obscuraItem
+        default: break
         }
     }
     
@@ -116,7 +118,7 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
         view.addSubview(tableView)
         tableView.edgesToSuperview(usingSafeArea: false)
         
-        if selectItemsType == .obscura {
+        if selectItemsType == .wirelessObscura {
             setupScanButton()
         }
     }

@@ -34,7 +34,7 @@ class BLUService: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate {
     func didUpdateState(completion: @escaping (_ state: CBManagerState) -> Void) {
         didUpdateState = completion
     }
-
+    
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         didDiscoverCompletion?(peripheral, RSSI)
 //        print("Discovered \(peripheral.name ?? "")")
