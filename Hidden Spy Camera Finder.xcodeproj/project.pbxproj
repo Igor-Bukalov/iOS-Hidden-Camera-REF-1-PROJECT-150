@@ -42,7 +42,7 @@
 		68C426D32AF930A400C131D0 /* Launc_hSASd_creen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C426D12AF930A400C131D0 /* Launc_hSASd_creen.storyboard */; };
 		68C426DC2AF9316300C131D0 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 68C426DB2AF9316300C131D0 /* TinyConstraints */; };
 		68C426E02AF931C600C131D0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426DF2AF931C600C131D0 /* InitialViewController.swift */; };
-		68C426E32AF931F100C131D0 /* TabBarViewController_HSCF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426E22AF931F100C131D0 /* TabBarViewController_HSCF.swift */; };
+		68C426E32AF931F100C131D0 /* MenuViewController_HSCF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426E22AF931F100C131D0 /* MenuViewController_HSCF.swift */; };
 		68C426E62AF9322900C131D0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 68C426E52AF9322900C131D0 /* Lottie */; };
 		68C426E92AF9334B00C131D0 /* HSCFScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426E82AF9334B00C131D0 /* HSCFScanViewController.swift */; };
 		68C426ED2AF933D100C131D0 /* HSCFColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426EC2AF933D100C131D0 /* HSCFColor.swift */; };
@@ -148,7 +148,7 @@
 		68C426D22AF930A400C131D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launc_hSASd_creen.storyboard; sourceTree = "<group>"; };
 		68C426D42AF930A400C131D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68C426DF2AF931C600C131D0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		68C426E22AF931F100C131D0 /* TabBarViewController_HSCF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController_HSCF.swift; sourceTree = "<group>"; };
+		68C426E22AF931F100C131D0 /* MenuViewController_HSCF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController_HSCF.swift; sourceTree = "<group>"; };
 		68C426E82AF9334B00C131D0 /* HSCFScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFScanViewController.swift; sourceTree = "<group>"; };
 		68C426EC2AF933D100C131D0 /* HSCFColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFColor.swift; sourceTree = "<group>"; };
 		68C426EF2AF9341200C131D0 /* HSCFUIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HSCFUIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -429,7 +429,7 @@
 				68C4270E2AF94A8D00C131D0 /* AntiSpy */,
 				68F7A7BE2AFCEB1D00B349E6 /* ScanDetails */,
 				68C426E72AF9334200C131D0 /* Scan */,
-				68C426E12AF931E500C131D0 /* TabBar */,
+				68C426E12AF931E500C131D0 /* Menu */,
 				68C426DE2AF931B800C131D0 /* Initial */,
 				68C426F12AF9347700C131D0 /* Base */,
 				68C426F42AF93BCC00C131D0 /* BaseNavigation */,
@@ -445,12 +445,12 @@
 			path = Initial;
 			sourceTree = "<group>";
 		};
-		68C426E12AF931E500C131D0 /* TabBar */ = {
+		68C426E12AF931E500C131D0 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				68C426E22AF931F100C131D0 /* TabBarViewController_HSCF.swift */,
+				68C426E22AF931F100C131D0 /* MenuViewController_HSCF.swift */,
 			);
-			path = TabBar;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		68C426E72AF9334200C131D0 /* Scan */ = {
@@ -929,7 +929,7 @@
 				68C427102AF94A9D00C131D0 /* AntiSpyViewController.swift in Sources */,
 				6819CB672AFE83EF003C9C1B /* BTRadarPerephiralCell.swift in Sources */,
 				991952952BAB98FD0078CFD4 /* TutorialCell.swift in Sources */,
-				68C426E32AF931F100C131D0 /* TabBarViewController_HSCF.swift in Sources */,
+				68C426E32AF931F100C131D0 /* MenuViewController_HSCF.swift in Sources */,
 				68C426E02AF931C600C131D0 /* InitialViewController.swift in Sources */,
 				68C4270D2AF944B400C131D0 /* UIFont+Custom.swift in Sources */,
 				991EDC262BACA97C008AE665 /* MenuItemCollectionViewCell.swift in Sources */,

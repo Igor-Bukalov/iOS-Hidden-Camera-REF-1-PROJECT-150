@@ -1,5 +1,5 @@
 //
-//  TabBarViewController.swift
+//  MenuViewController.swift
 //  Hidden Spy Camera Finder
 //
 //  Created by Evgeniy Bruchkovskiy on 06.11.2023.
@@ -10,25 +10,26 @@ import TinyConstraints
 import SwiftUI
 
 var tabbarView: UIView!
-var tabController: GSDA_ContainerForTabbarController_GSD?
+var tabController: GSDA_ContainerForMenuController_GSD?
 
-final class HTSP_TabItem_View: UIView {
+final class HTSP_MenuItem_View: UIView {
     lazy var buttonAction: UIButton = {
         let button = UIButton()
         button.setTitle(nil, for: .normal)
         button.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
         return button
     }()
-    lazy var tabImage: UIImageView = {
+    lazy var menuImage: UIImageView = {
         let imgView = UIImageView()
-        imgView.tintColor = UIColor.hex("898787")
+        imgView.tintColor = .yellow
+        imgView.layer.opacity = 0.7
         return imgView
     }()
-    lazy var tabTitle: UILabel = {
+    lazy var menuTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.gilroy(.GilroySemibold, size: 12)
         label.textAlignment = .center
-        label.textColor = UIColor.hex("898787")
+        label.textColor = UIColor.white.withAlphaComponent(0.7)
         return label
     }()
     lazy var shadowImageView: UIImageView = {
@@ -45,8 +46,8 @@ final class HTSP_TabItem_View: UIView {
         super.init(frame: .zero)
         self.controller = controller
         setupSubviews()
-        tabTitle.text = controller.tabbarTitle
-        tabImage.image = controller.icon
+        menuTitle.text = controller.tabbarTitle
+        menuImage.image = controller.icon
     }
     
     required init?(coder: NSCoder) {
@@ -54,34 +55,30 @@ final class HTSP_TabItem_View: UIView {
     }
     
     func isSelect(_ isSelect: Bool) {
-        tabImage.tintColor = isSelect ? UIColor.hex("D8EB04") : UIColor.hex("898787")
-        tabTitle.textColor = isSelect ? UIColor.hex("D8EB04") : UIColor.hex("898787")
+        menuImage.layer.opacity = isSelect ? 1.0 : 0.7
+        menuTitle.textColor = isSelect ? UIColor.blueLabel : UIColor.white.withAlphaComponent(0.7)
         shadowImageView.isHidden = !isSelect
     }
     
     private func setupSubviews() {
-        tabTitle.text = "asde"
+        menuTitle.text = "asde"
         
         addSubview(shadowImageView)
-        shadowImageView.height(50)
-        shadowImageView.width(50)
+        shadowImageView.width(80)
+        shadowImageView.height(80)
         
-        addSubview(tabImage)
-        tabImage.height(30)
-        tabImage.width(30)
+        let stackView = UIStackView(arrangedSubviews: [menuImage, menuTitle])
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        addSubview(stackView)
         
-        shadowImageView.centerY(to: tabImage)
-        shadowImageView.centerX(to: tabImage)
+        stackView.centerXToSuperview()
+        stackView.centerYToSuperview()
+
+        menuImage.aspectRatio(1)
         
-        tabImage.topToSuperview()
-        tabImage.centerXToSuperview()
-        
-        addSubview(tabTitle)
-        tabTitle.topToBottom(of: tabImage, offset: 4)
-        tabTitle.leftToSuperview()
-        tabTitle.rightToSuperview()
-        tabTitle.bottomToSuperview()
-        tabTitle.height(12)
+        shadowImageView.centerY(to: stackView)
+        shadowImageView.centerX(to: stackView)
         
         addSubview(buttonAction)
         buttonAction.edgesToSuperview()
@@ -93,8 +90,8 @@ final class HTSP_TabItem_View: UIView {
     }
 }
 
-final class GSDA_ContainerForTabbarController_GSD: UIViewController {
-    private lazy var tab_m_tabbarController = TabBarViewController()
+final class GSDA_ContainerForMenuController_GSD: UIViewController {
+    private lazy var menuController = MenuViewController()
     private let containerView = UIView()
     private let tabbarMenuContainer: UIView = {
         let view = UIView()
@@ -104,10 +101,10 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
     
     private var tabbarMenuView: UIView = UIView()
     
-    private var scan: HTSP_TabItem_View = HTSP_TabItem_View(controller: .scan)
-    private var antiSpy: HTSP_TabItem_View = HTSP_TabItem_View(controller: .antiSpy)
-    private var btRadar: HTSP_TabItem_View = HTSP_TabItem_View(controller: .btRadar)
-    private var settings: HTSP_TabItem_View = HTSP_TabItem_View(controller: .settings)
+    private var scan: HTSP_MenuItem_View = HTSP_MenuItem_View(controller: .scan)
+    private var antiSpy: HTSP_MenuItem_View = HTSP_MenuItem_View(controller: .antiSpy)
+    private var btRadar: HTSP_MenuItem_View = HTSP_MenuItem_View(controller: .btRadar)
+    private var settings: HTSP_MenuItem_View = HTSP_MenuItem_View(controller: .settings)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +119,7 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tab_m_tabbarController.tabBar.isHidden = true
+//        menuController.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -130,17 +127,29 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
         if !UserDefaults.termsOfServiceAlertIsShowed {
             HSCFAlertView.instance.showAlert_HSCF(title: "Terms of Service and Privacy Policy", message: "Welcome! We are dedicated to ensuring the privacy of your information. Our Terms of Service and Privacy Policy offer detailed information on data collection and usage. By clicking ‘Accept’ below, you affirm your consent to our Terms of Service and understanding of the Privacy Policy.", leftActionTitle: "Accept", rightActionTitle: nil) {
                 UserDefaults.termsOfServiceAlertIsShowed = true
-            } rightAction: { }
+            } rightAction: {
+                
+            }
         }
     }
     
     public func processOpeningScanSceneAndScanning() {
         DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.actionTapped(controller: .scan)
-            let vc: HSCFScanViewController? = self?.tab_m_tabbarController.getViewController(controller: .scan)
+            let vc: HSCFScanViewController? = self?.menuController.getViewController(controller: .scan)
             vc?.tryStartScan()
         }
     }
+    
+    private let backgroundMenuView: UIImageView = {
+        let view = UIImageView(image: UIImage(named: "menu-ellipse"))
+        return view
+    }()
+    
+    private let closeMenuButton: UIImageView = {
+        let view = UIImageView(image: UIImage(named: "close-menu-button"))
+        return view
+    }()
     
     private func setupSubviews() {
         let mainStackView = UIStackView(arrangedSubviews: [containerView, tabbarMenuContainer])
@@ -155,9 +164,9 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
         tabbarMenuView.rightToSuperview()
         tabbarMenuView.height(64)
         
-        addChild(tab_m_tabbarController)
-        containerView.addSubview(tab_m_tabbarController.view)
-        tab_m_tabbarController.view.edgesToSuperview()
+        addChild(menuController)
+        containerView.addSubview(menuController.view)
+        menuController.view.edgesToSuperview()
         
         let stackView = UIStackView(arrangedSubviews: [scan, antiSpy, btRadar, settings])
         stackView.axis = .horizontal
@@ -172,15 +181,16 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
     }
     
     private func actionTapped(controller: TabController) {
+        // MARK: Original code
         switch controller {
         case .scan:
-            tab_m_tabbarController.selectTab(controller: .scan)
+            menuController.selectTab(controller: .scan)
         case .antiSpy:
-            tab_m_tabbarController.selectTab(controller: .antiSpy)
+            menuController.selectTab(controller: .antiSpy)
         case .btRadar:
-            tab_m_tabbarController.selectTab(controller: .btRadar)
+            menuController.selectTab(controller: .btRadar)
         case .settings:
-            tab_m_tabbarController.selectTab(controller: .settings)
+            menuController.selectTab(controller: .settings)
         }
         
         scan.isSelect(controller == .scan)
@@ -190,11 +200,15 @@ final class GSDA_ContainerForTabbarController_GSD: UIViewController {
     }
 }
 
-class TabBarViewController: UITabBarController {
+class MenuViewController: UIViewController {
+    private var viewControllers: [UIViewController] = []
+    private var selectedViewController: UIViewController?
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = TabController.allCases.map { $0.controllerWithTabItem }
+        viewControllers = TabController.allCases.map { $0.controllerWithNavigation }
+        selectTab(controller: .scan)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -206,35 +220,51 @@ class TabBarViewController: UITabBarController {
     }
     
     public func selectTab(controller: TabController) {
-        selectedIndex = controller.rawValue
+        selectedViewController?.willMove(toParent: nil)
+        selectedViewController?.view.removeFromSuperview()
+        selectedViewController?.removeFromParent()
+        
+        let newController = viewControllers[controller.rawValue]
+        addChild(newController)
+        view.addSubview(newController.view)
+        newController.view.edgesToSuperview()
+        newController.didMove(toParent: self)
+        selectedViewController = newController
     }
     
     public func getViewController<T>(controller: TabController) -> T? {
-        func vc(nav: UIViewController) -> UIViewController {
-            (nav as! UINavigationController).viewControllers.first!
-        }
-        
-        switch controller {
-        case .scan:
-            let nav = viewControllers?.first(where: { vc(nav: $0) is HSCFScanViewController }) as? UINavigationController
-            return nav?.viewControllers.first as? T
-        case .antiSpy:
-            let nav = viewControllers?.first(where: { vc(nav: $0) is AntiSpyViewController }) as? UINavigationController
-            return nav?.viewControllers.first as? T
-        case .btRadar:
-            let nav = viewControllers?.first(where: { vc(nav: $0) is BTRadarViewController }) as? UINavigationController
-            return nav?.viewControllers.first as? T
-        case .settings:
-            let nav = viewControllers?.first(where: { vc(nav: $0) is HSCFSettingsViewController }) as? UINavigationController
-            return nav?.viewControllers.first as? T
-        }
+        let navController = viewControllers[controller.rawValue] as? UINavigationController
+        return navController?.viewControllers.first as? T
     }
 }
 
 struct GSDA_ContainerForTabbarController_GSD_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            GSDA_ContainerForTabbarController_GSD()
+            InitialViewController()
         }
     }
 }
+
+//// MARK: Menu View
+//let stackView = UIStackView(arrangedSubviews: [scan, antiSpy, btRadar, settings])
+//stackView.axis = .horizontal
+//stackView.spacing = 4
+//stackView.distribution = .fillEqually
+//
+//backgroundMenuView.addSubview(closeMenuButton)
+//closeMenuButton.centerXToSuperview()
+//closeMenuButton.bottomToSuperview(offset: -16)
+//closeMenuButton.height(32)
+//
+//backgroundMenuView.addSubview(stackView)
+//stackView.leftToSuperview(offset: 20)
+//stackView.rightToSuperview(offset: -20)
+//stackView.bottomToTop(of: closeMenuButton, offset: -55)
+//
+//view.addSubview(backgroundMenuView)
+//backgroundMenuView.topToSuperview(usingSafeArea: false)
+//backgroundMenuView.leftToSuperview()
+//backgroundMenuView.rightToSuperview()
+//
+//tabbarView = tabbarMenuContainer

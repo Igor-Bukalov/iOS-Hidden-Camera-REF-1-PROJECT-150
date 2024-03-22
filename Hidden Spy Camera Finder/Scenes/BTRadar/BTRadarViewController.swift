@@ -152,7 +152,7 @@ class BTRadarViewController: HSCFBaseViewController, UITableViewDelegate {
         dataSource.apply(makeSnapshot(items: [
             (Section_bt_radar.devices, [0]),
             (Section_bt_radar.peripheralItems, peripheralItems),
-            (Section_bt_radar.alert, ["Change your location to find more bluetooth devices"])
+            (Section_bt_radar.alert, ["Change your location to find\nmore bluetooth devices"])
         ]), animatingDifferences: false)
     }
     

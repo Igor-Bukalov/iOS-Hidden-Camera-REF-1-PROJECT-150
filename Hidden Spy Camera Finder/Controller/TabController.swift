@@ -41,12 +41,8 @@ enum TabController: Int, CaseIterable {
         }
     }
     
-    var controllerWithTabItem: UIViewController {
-        let nav = HSCFBaseNavigationController(rootViewController: controller)
-        nav.navigationItem.backButtonTitle = "..."
-        let icon = UITabBarItem(title: tabbarTitle, image: icon, tag: rawValue)
-        nav.tabBarItem = icon
-        return nav
+    var controllerWithNavigation: UIViewController {
+        HSCFBaseNavigationController(rootViewController: controller)
     }
     
     var controller: UIViewController {

@@ -15,17 +15,9 @@ class InitialViewController: HSCFBaseViewController {
     }
     
     private func showNextScene() {
-        let tabbarController = GSDA_ContainerForTabbarController_GSD()
+        let tabbarController = GSDA_ContainerForMenuController_GSD()
         tabbarController.modalPresentationStyle = .fullScreen
         tabbarController.modalTransitionStyle = .crossDissolve
         present(tabbarController, animated: true)
-    }
-}
-
-struct InitialViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            InitialViewController()
-        }
     }
 }
