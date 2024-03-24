@@ -49,7 +49,7 @@ class HSCFTutorialViewController: HSCFBaseViewController {
         let layer = CAShapeLayer()
         let pathRef = CGMutablePath()
         let cornerRadius: CGFloat = 24
-        let bounds = cell.bounds.insetBy(dx: 0.6, dy: 0.6)
+        let bounds = cell.bounds.insetBy(dx: 0.5, dy: 0.5)
         
         setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, cellY: 0)
         

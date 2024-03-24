@@ -52,25 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backIndicatorImage = UIImage()
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage()
         
-//        let tabbarAppearance = UITabBarAppearance()
-//        tabbarAppearance.backgroundColor = UIColor.tabbarBackground
-//        UITabBar.appearance().standardAppearance = tabbarAppearance
-//        UITabBar.appearance().scrollEdgeAppearance = tabbarAppearance
-        
-//        tabbarAppearenceSettings(tabbarAppearance.stackedLayoutAppearance)
-//        tabbarAppearenceSettings(tabbarAppearance.inlineLayoutAppearance)
-//        tabbarAppearenceSettings(tabbarAppearance.compactInlineLayoutAppearance)
-        
         UIViewController.classInit
     }
-    
-//    private func tabbarAppearenceSettings(_ itemAppearance: UITabBarItemAppearance) {
-//        itemAppearance.normal.iconColor = UIColor.tabbarItem
-//        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tabbarItem]
-//        
-//        itemAppearance.selected.iconColor = UIColor.tabbarItemSelected
-//        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tabbarItemSelected]
-//    }
 }
 
 typealias SO_APP_DEL_GAT_HSCF = AppDelegate

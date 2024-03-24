@@ -39,29 +39,29 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
         let cornerRadius: CGFloat = 16
         let layer = CAShapeLayer()
         let pathRef = CGMutablePath()
-        let bounds = cell.bounds.insetBy(dx: 0.5, dy: 0.1)
+        let bounds = cell.bounds.insetBy(dx: 0.5, dy: 0.5)
         
         setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, needSetAlone: false, cellY: 0)
         
         if indexPath.row == 0 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
             pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
         } else if indexPath.row == 0 {
-            pathRef.move(to: .init(x: bounds.minX, y: bounds.maxY))
+            pathRef.move(to: .init(x: bounds.minX, y: bounds.maxY+1))
             pathRef.addArc(tangent1End: .init(x: bounds.minX, y: bounds.minY), tangent2End: .init(x: bounds.midX, y: bounds.minY), radius: cornerRadius)
             pathRef.addArc(tangent1End: .init(x: bounds.maxX, y: bounds.minY), tangent2End: .init(x: bounds.maxX, y: bounds.midY), radius: cornerRadius)
-            pathRef.addLine(to: .init(x: bounds.maxX, y: bounds.maxY))
+            pathRef.addLine(to: .init(x: bounds.maxX, y: bounds.maxY+1))
         } else if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            pathRef.move(to: .init(x: bounds.minX, y: bounds.minY))
+            pathRef.move(to: .init(x: bounds.minX, y: bounds.minY-1))
             pathRef.addArc(tangent1End: .init(x: bounds.minX, y: bounds.maxY), tangent2End: .init(x: bounds.midX, y: bounds.maxY), radius: cornerRadius)
             pathRef.addArc(tangent1End: .init(x: bounds.maxX, y: bounds.maxY), tangent2End: .init(x: bounds.maxX, y: bounds.midY), radius: cornerRadius)
-            pathRef.addLine(to: .init(x: bounds.maxX, y: bounds.minY))
+            pathRef.addLine(to: .init(x: bounds.maxX, y: bounds.minY-1))
         } else {
             let pathInnerRef = CGMutablePath()
-            pathInnerRef.move(to: .init(x: bounds.minX, y: bounds.minY))
-            pathInnerRef.addLine(to: .init(x: bounds.minX, y: bounds.maxY))
+            pathInnerRef.move(to: .init(x: bounds.minX, y: bounds.minY-1))
+            pathInnerRef.addLine(to: .init(x: bounds.minX, y: bounds.maxY+1))
             
-            pathInnerRef.move(to: .init(x: bounds.maxX, y: bounds.minY))
-            pathInnerRef.addLine(to: .init(x: bounds.maxX, y: bounds.maxY))
+            pathInnerRef.move(to: .init(x: bounds.maxX, y: bounds.minY-1))
+            pathInnerRef.addLine(to: .init(x: bounds.maxX, y: bounds.maxY+1))
             pathRef.addPath(pathInnerRef)
         }
         

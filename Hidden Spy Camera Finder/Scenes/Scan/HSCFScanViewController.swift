@@ -63,7 +63,8 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         l.font = UIFont.gilroy(.GilroyMedium, size: 16)
         l.textColor = UIColor.blueLabel
         l.textAlignment = .center
-        l.text = "Wi-Fi IP: \(HSCFDeviceInfo.shared.getWiFiAddress() ?? .na)"
+//        l.text = "Wi-Fi IP: \(HSCFDeviceInfo.shared.getWiFiAddress() ?? .na)"
+        l.text = "Wi-Fi IP: \(HSCFDeviceInfo.shared.wifiRouterAddress() ?? .na)"
         return l
     }()
     
@@ -73,7 +74,12 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         return v
     }()
     
-    private lazy var radarImageView: UIImageView = UIImageView(image: UIImage(named: "radar"))
+    private lazy var radarImageView: UIImageView = UIImageView(image: UIImage(named: "scanning-loader"))
+    private lazy var radarProgressImageView: UIImageView = {
+        let img = UIImageView(image: UIImage(named: "scanning-loader-in-progress"))
+        img.layer.opacity = 0.0
+        return img
+    }()
     
     // MARK: - Properties
     private lazy var networkPermsissionService = LocalNetworkPermissionService()
@@ -143,22 +149,28 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         
         radarView.addSubview(radarImageView)
         radarImageView.edgesToSuperview()
+        
+        radarView.addSubview(radarProgressImageView)
+        radarProgressImageView.edgesToSuperview()
     }
     
     private func animateRadar() {
-        if animationView != nil {
-            self.animationView.play()
-        } else {
-            self.animationView?.removeFromSuperview()
-            self.animationView = .init(name: "Radar")
-            self.animationView.frame = self.radarView.bounds
-            self.animationView.contentMode = .scaleAspectFill
-            self.animationView.loopMode = .loop
-            self.animationView.animationSpeed = 0.5
-            self.animationView.layer.cornerRadius = self.radarView.frame.height / 2
-            self.radarView.addSubview(self.animationView)
-            self.animationView.play()
-        }
+//        if animationView != nil {
+//            self.animationView.play()
+//        } else {
+//            self.animationView?.removeFromSuperview()
+//            self.animationView = .init(name: "Radar")
+//            self.animationView.frame = self.radarView.bounds
+//            self.animationView.contentMode = .scaleAspectFill
+//            self.animationView.loopMode = .loop
+//            self.animationView.animationSpeed = 0.5
+//            self.animationView.layer.cornerRadius = self.radarView.frame.height / 2
+//            self.radarView.addSubview(self.animationView)
+//            self.animationView.play()
+//        }
+        
+        self.radarImageView.layer.opacity = 0.0
+        self.radarProgressImageView.layer.opacity = 1.0
     }
     
     private func stopAnimateRadar() {
@@ -196,12 +208,18 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     }
     
     private func stopScan() {
+        self.radarImageView.layer.opacity = 1.0
+        self.radarProgressImageView.layer.opacity = 0.0
+        
         self.animationView?.pause()
         scanner.stop()
         scanningState = .startDetection
     }
     
     private func results() {
+        self.radarImageView.layer.opacity = 1.0
+        self.radarProgressImageView.layer.opacity = 0.0
+        
         self.animationView?.pause()
         scanner.stop()
         scanningState = .results
@@ -311,7 +329,7 @@ func GetMACAddressFromIPv6(ip: String) -> String? {
 struct HSCFScanViewController_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            HSCFScanViewController()
+            InitialViewController()
         }
     }
 }

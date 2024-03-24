@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TabController: Int, CaseIterable {
+enum MenuController: Int, CaseIterable {
     case scan, antiSpy, btRadar, settings
     
     var titleScene: String {
@@ -19,7 +19,7 @@ enum TabController: Int, CaseIterable {
         }
     }
     
-    var tabbarTitle: String {
+    var menuTitle: String {
         switch self {
         case .scan: return "Scan"
         case .antiSpy: return "Anti-spy"
@@ -30,14 +30,19 @@ enum TabController: Int, CaseIterable {
     
     var icon: UIImage? {
         switch self {
-        case .scan:
-            return UIImage(named: "tab-scan")
-        case .antiSpy:
-            return UIImage(named: "tab-anti-spy")
-        case .btRadar:
-            return UIImage(named: "tab-bt-radar")
-        case .settings:
-            return UIImage(named: "tab-settings")
+        case .scan: UIImage(named: "tab-scan")
+        case .antiSpy: UIImage(named: "tab-anti-spy")
+        case .btRadar: UIImage(named: "tab-bt-radar")
+        case .settings: UIImage(named: "tab-settings")
+        }
+    }
+    
+    var selectedIcon: UIImage? {
+        switch self {
+        case .scan: UIImage(named: "tab-scan-selected")
+        case .antiSpy: UIImage(named: "tab-anti-spy-selected")
+        case .btRadar: UIImage(named: "tab-bt-radar-selected")
+        case .settings: UIImage(named: "tab-settings-selected")
         }
     }
     
@@ -48,14 +53,10 @@ enum TabController: Int, CaseIterable {
     var controller: UIViewController {
         var vc = UIViewController()
         switch self {
-        case .scan:
-            vc = HSCFScanViewController()
-        case .antiSpy:
-            vc = AntiSpyViewController()
-        case .btRadar:
-            vc = BTRadarViewController()
-        case .settings:
-            vc = HSCFSettingsViewController()
+        case .scan: vc = HSCFScanViewController()
+        case .antiSpy: vc = AntiSpyViewController()
+        case .btRadar: vc = BTRadarViewController()
+        case .settings: vc = HSCFSettingsViewController()
         }
         vc.title = titleScene
         return vc

@@ -9,8 +9,8 @@ import UIKit
 import TinyConstraints
 import SwiftUI
 
-var tabbarView: UIView!
-var tabController: GSDA_ContainerForMenuController_GSD?
+var menuView: UIView!
+var menuController: GSDA_ContainerForMenuController_GSD?
 
 final class HTSP_MenuItem_View: UIView {
     lazy var buttonAction: UIButton = {
@@ -21,7 +21,7 @@ final class HTSP_MenuItem_View: UIView {
     }()
     lazy var menuImage: UIImageView = {
         let imgView = UIImageView()
-        imgView.tintColor = .yellow
+        imgView.tintColor = UIColor.white.withAlphaComponent(0.7)
         imgView.layer.opacity = 0.7
         return imgView
     }()
@@ -40,14 +40,14 @@ final class HTSP_MenuItem_View: UIView {
     }()
     
     var actionCompletion: (() -> Void)?
-    var controller: TabController?
+    var controller: MenuController?
     
-    init(controller: TabController) {
+    init(controller: MenuController) {
         super.init(frame: .zero)
         self.controller = controller
         setupSubviews()
-        menuTitle.text = controller.tabbarTitle
         menuImage.image = controller.icon
+        menuTitle.text = controller.menuTitle
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +56,7 @@ final class HTSP_MenuItem_View: UIView {
     
     func isSelect(_ isSelect: Bool) {
         menuImage.layer.opacity = isSelect ? 1.0 : 0.7
+        menuImage.tintColor = isSelect ? UIColor.blueLabel : UIColor.white.withAlphaComponent(0.7)
         menuTitle.textColor = isSelect ? UIColor.blueLabel : UIColor.white.withAlphaComponent(0.7)
         shadowImageView.isHidden = !isSelect
     }
@@ -64,21 +65,18 @@ final class HTSP_MenuItem_View: UIView {
         menuTitle.text = "asde"
         
         addSubview(shadowImageView)
-        shadowImageView.width(80)
-        shadowImageView.height(80)
+        shadowImageView.edgesToSuperview()
+        shadowImageView.aspectRatio(1)
         
-        let stackView = UIStackView(arrangedSubviews: [menuImage, menuTitle])
-        stackView.axis = .vertical
-        stackView.spacing = 4
-        addSubview(stackView)
-        
-        stackView.centerXToSuperview()
-        stackView.centerYToSuperview()
-
+        addSubview(menuImage)
+        menuImage.topToSuperview(offset: 11)
+        menuImage.leftToSuperview(offset: 20)
+        menuImage.rightToSuperview(offset: -20)
         menuImage.aspectRatio(1)
         
-        shadowImageView.centerY(to: stackView)
-        shadowImageView.centerX(to: stackView)
+        addSubview(menuTitle)
+        menuTitle.topToBottom(of: menuImage, offset: 4)
+        menuTitle.centerXToSuperview()
         
         addSubview(buttonAction)
         buttonAction.edgesToSuperview()
@@ -91,11 +89,11 @@ final class HTSP_MenuItem_View: UIView {
 }
 
 final class GSDA_ContainerForMenuController_GSD: UIViewController {
-    private lazy var menuController = MenuViewController()
+    private lazy var menuViewController = MenuViewController()
     private let containerView = UIView()
-    private let tabbarMenuContainer: UIView = {
+    private let menuContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.tabbarBackground
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -108,18 +106,30 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabController = self
+        menuController = self
         setupSubviews()
-        scan.actionCompletion = { [weak self] in self?.actionTapped(controller: .scan) }
-        antiSpy.actionCompletion = { [weak self] in self?.actionTapped(controller: .antiSpy) }
-        btRadar.actionCompletion = { [weak self] in self?.actionTapped(controller: .btRadar) }
-        settings.actionCompletion = { [weak self] in self?.actionTapped(controller: .settings) }
+        scan.actionCompletion = { [weak self] in
+            self?.actionTapped(controller: .scan)
+            self?.menuTitle.text = "Scanning"
+        }
+        antiSpy.actionCompletion = { [weak self] in
+            self?.actionTapped(controller: .antiSpy)
+            self?.menuTitle.text = "Anti-spy"
+        }
+        btRadar.actionCompletion = { [weak self] in
+            self?.actionTapped(controller: .btRadar)
+            self?.menuTitle.text = "Bluetooth"
+        }
+        settings.actionCompletion = { [weak self] in
+            self?.actionTapped(controller: .settings)
+            self?.menuTitle.text = "Settings"
+        }
         scan.isSelect(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        menuController.tabBar.isHidden = true
+        menuView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,7 +146,7 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
     public func processOpeningScanSceneAndScanning() {
         DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.actionTapped(controller: .scan)
-            let vc: HSCFScanViewController? = self?.menuController.getViewController(controller: .scan)
+            let vc: HSCFScanViewController? = self?.menuViewController.getViewController(controller: .scan)
             vc?.tryStartScan()
         }
     }
@@ -146,51 +156,88 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
         return view
     }()
     
-    private let closeMenuButton: UIImageView = {
-        let view = UIImageView(image: UIImage(named: "close-menu-button"))
-        return view
+    lazy var menuTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.gilroy(.GilroySemibold, size: 20)
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        return label
     }()
     
-    private func setupSubviews() {
-        let mainStackView = UIStackView(arrangedSubviews: [containerView, tabbarMenuContainer])
-        mainStackView.axis = .vertical
-        view.addSubview(mainStackView)
-        mainStackView.edgesToSuperview()
-        
-        tabbarMenuContainer.addSubview(tabbarMenuView)
-        tabbarMenuView.topToSuperview()
-        tabbarMenuView.bottomToSuperview(usingSafeArea: true)
-        tabbarMenuView.leftToSuperview()
-        tabbarMenuView.rightToSuperview()
-        tabbarMenuView.height(64)
-        
-        addChild(menuController)
-        containerView.addSubview(menuController.view)
-        menuController.view.edgesToSuperview()
-        
-        let stackView = UIStackView(arrangedSubviews: [scan, antiSpy, btRadar, settings])
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        
-        tabbarMenuView.addSubview(stackView)
-        stackView.leftToSuperview()
-        stackView.rightToSuperview()
-        stackView.centerYToSuperview()
-        
-        tabbarView = tabbarMenuContainer
+    lazy var closeMenuButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(nil, for: .normal)
+        button.setImage(UIImage(named: "close-menu-button"), for: .normal)
+        button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc
+    func closeAction() {
+        UIView.animate(withDuration: 0.25, animations: {
+            menuView.transform = CGAffineTransform(translationX: 0, y: -menuView.frame.height)
+        }) { _ in
+            menuView.isHidden = true
+        }
     }
     
-    private func actionTapped(controller: TabController) {
+    private func setupSubviews() {
+        menuTitle.text = "Scanning"
+        
+        // Main app view
+        view.addSubview(containerView)
+        containerView.edgesToSuperview()
+        
+        // Ellipse background
+        menuContainer.addSubview(backgroundMenuView)
+        backgroundMenuView.edgesToSuperview()
+        
+        // Menu buttons container
+        menuContainer.addSubview(tabbarMenuView)
+        tabbarMenuView.edgesToSuperview()
+        
+        // Close button
+        menuContainer.addSubview(closeMenuButton)
+        closeMenuButton.bottomToSuperview(offset: -16)
+        closeMenuButton.centerXToSuperview()
+        
+        menuContainer.addSubview(menuTitle)
+        menuTitle.topToSuperview(offset: 12, usingSafeArea: true)
+        menuTitle.centerXToSuperview()
+        
+        // Background and buttons container
+        view.addSubview(menuContainer)
+        menuContainer.topToSuperview(offset: -10, usingSafeArea: false)
+        menuContainer.leftToSuperview()
+        menuContainer.rightToSuperview()
+        
+        addChild(menuViewController)
+        containerView.addSubview(menuViewController.view)
+        menuViewController.view.edgesToSuperview()
+        
+        let buttonsStackView = UIStackView(arrangedSubviews: [scan, antiSpy, btRadar, settings])
+        buttonsStackView.axis = .horizontal
+        buttonsStackView.distribution = .fillEqually
+        
+        tabbarMenuView.addSubview(buttonsStackView)
+        buttonsStackView.leftToSuperview(offset: 20)
+        buttonsStackView.rightToSuperview(offset: -20)
+        buttonsStackView.centerY(to: backgroundMenuView, offset: 10)
+        
+        menuView = menuContainer
+    }
+    
+    private func actionTapped(controller: MenuController) {
         // MARK: Original code
         switch controller {
         case .scan:
-            menuController.selectTab(controller: .scan)
+            menuViewController.selectTab(controller: .scan)
         case .antiSpy:
-            menuController.selectTab(controller: .antiSpy)
+            menuViewController.selectTab(controller: .antiSpy)
         case .btRadar:
-            menuController.selectTab(controller: .btRadar)
+            menuViewController.selectTab(controller: .btRadar)
         case .settings:
-            menuController.selectTab(controller: .settings)
+            menuViewController.selectTab(controller: .settings)
         }
         
         scan.isSelect(controller == .scan)
@@ -207,7 +254,7 @@ class MenuViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = TabController.allCases.map { $0.controllerWithNavigation }
+        viewControllers = MenuController.allCases.map { $0.controllerWithNavigation }
         selectTab(controller: .scan)
     }
     
@@ -219,7 +266,7 @@ class MenuViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    public func selectTab(controller: TabController) {
+    public func selectTab(controller: MenuController) {
         selectedViewController?.willMove(toParent: nil)
         selectedViewController?.view.removeFromSuperview()
         selectedViewController?.removeFromParent()
@@ -232,39 +279,16 @@ class MenuViewController: UIViewController {
         selectedViewController = newController
     }
     
-    public func getViewController<T>(controller: TabController) -> T? {
+    public func getViewController<T>(controller: MenuController) -> T? {
         let navController = viewControllers[controller.rawValue] as? UINavigationController
         return navController?.viewControllers.first as? T
     }
 }
 
-struct GSDA_ContainerForTabbarController_GSD_Previews: PreviewProvider {
+struct GSDA_ContainerForMenuController_GSD_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
             InitialViewController()
         }
     }
 }
-
-//// MARK: Menu View
-//let stackView = UIStackView(arrangedSubviews: [scan, antiSpy, btRadar, settings])
-//stackView.axis = .horizontal
-//stackView.spacing = 4
-//stackView.distribution = .fillEqually
-//
-//backgroundMenuView.addSubview(closeMenuButton)
-//closeMenuButton.centerXToSuperview()
-//closeMenuButton.bottomToSuperview(offset: -16)
-//closeMenuButton.height(32)
-//
-//backgroundMenuView.addSubview(stackView)
-//stackView.leftToSuperview(offset: 20)
-//stackView.rightToSuperview(offset: -20)
-//stackView.bottomToTop(of: closeMenuButton, offset: -55)
-//
-//view.addSubview(backgroundMenuView)
-//backgroundMenuView.topToSuperview(usingSafeArea: false)
-//backgroundMenuView.leftToSuperview()
-//backgroundMenuView.rightToSuperview()
-//
-//tabbarView = tabbarMenuContainer

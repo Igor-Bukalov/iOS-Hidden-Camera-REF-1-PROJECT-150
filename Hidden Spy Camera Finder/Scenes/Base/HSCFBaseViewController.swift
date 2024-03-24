@@ -26,17 +26,25 @@ class HSCFBaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if self is HSCFSettingsViewController || self is HSCFScanViewController || self is AntiSpyViewController || self is BTRadarViewController {
-            tabbarView?.isHidden = false
-        } else {
-            UIView.animate(withDuration: 0.3) {
-                tabbarView?.isHidden = true
-            }
-        }
+//        menuView?.isHidden = true
         setNeedsStatusBarAppearanceUpdate()
     }
     
-    @objc func menuButtonPressed() {}
+    @objc func menuButtonPressed() {
+        menuView.isHidden = false
+        menuView.transform = CGAffineTransform(translationX: 0, y: -menuView.frame.height)
+        
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0.9,
+            options: [.curveEaseInOut],
+            animations: {
+                menuView.transform = .identity
+            }, completion: nil
+        )
+    }
     
     @objc func backButtonPressed() {
         navigationController?.popViewController(animated: true)
@@ -118,7 +126,7 @@ class BackBarButtonItem: UIBarButtonItem {
 struct HSCFBaseViewController_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            HSCFBaseViewController()
+            InitialViewController()
         }
     }
 }

@@ -234,7 +234,7 @@ extension AntiSpyViewController: UICollectionViewDataSource, UICollectionViewDel
         case .wirelessObscura:
             detailViewController.selectItemsType = .wirelessObscura
             detailViewController.obscuraCompletion = {
-                tabController?.processOpeningScanSceneAndScanning()
+                menuController?.processOpeningScanSceneAndScanning()
             }
         case .wiredObscura:
             detailViewController.selectItemsType = .all

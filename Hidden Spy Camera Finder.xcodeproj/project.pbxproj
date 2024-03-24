@@ -52,7 +52,7 @@
 		68C4270D2AF944B400C131D0 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4270C2AF944B400C131D0 /* UIFont+Custom.swift */; };
 		68C427102AF94A9D00C131D0 /* AntiSpyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4270F2AF94A9D00C131D0 /* AntiSpyViewController.swift */; };
 		68C427132AF94C0000C131D0 /* BTRadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C427122AF94C0000C131D0 /* BTRadarViewController.swift */; };
-		68C427162AF94C4A00C131D0 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C427152AF94C4A00C131D0 /* TabController.swift */; };
+		68C427162AF94C4A00C131D0 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C427152AF94C4A00C131D0 /* MenuController.swift */; };
 		68C427192AF94D1B00C131D0 /* HSCFSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C427182AF94D1B00C131D0 /* HSCFSettingsViewController.swift */; };
 		68C4271C2AF9553A00C131D0 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4271B2AF9553A00C131D0 /* SettingsItem.swift */; };
 		68C45E332B17300400434A91 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = 68C45E322B17300400434A91 /* Devices.json */; };
@@ -157,7 +157,7 @@
 		68C4270C2AF944B400C131D0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
 		68C4270F2AF94A9D00C131D0 /* AntiSpyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyViewController.swift; sourceTree = "<group>"; };
 		68C427122AF94C0000C131D0 /* BTRadarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTRadarViewController.swift; sourceTree = "<group>"; };
-		68C427152AF94C4A00C131D0 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
+		68C427152AF94C4A00C131D0 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		68C427182AF94D1B00C131D0 /* HSCFSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFSettingsViewController.swift; sourceTree = "<group>"; };
 		68C4271B2AF9553A00C131D0 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		68C45E322B17300400434A91 /* Devices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Devices.json; sourceTree = "<group>"; };
@@ -545,7 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				68F7A7C12AFCEBB600B349E6 /* Controller_HSCF.swift */,
-				68C427152AF94C4A00C131D0 /* TabController.swift */,
+				68C427152AF94C4A00C131D0 /* MenuController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -942,7 +942,7 @@
 				68F7A7C22AFCEBB600B349E6 /* Controller_HSCF.swift in Sources */,
 				682E8E532AFA354B006F6D2D /* HSCFDeviceInfo.swift in Sources */,
 				68F7A7CB2AFD011400B349E6 /* UIView+Nib.swift in Sources */,
-				68C427162AF94C4A00C131D0 /* TabController.swift in Sources */,
+				68C427162AF94C4A00C131D0 /* MenuController.swift in Sources */,
 				68C426C42AF930A300C131D0 /* AppDelegate.swift in Sources */,
 				68FE60FC2B04E5C800EF9DA4 /* HSCFAlertView.swift in Sources */,
 				991952932BAB98D10078CFD4 /* TutorialModel.swift in Sources */,

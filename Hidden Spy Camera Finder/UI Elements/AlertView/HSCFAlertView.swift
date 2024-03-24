@@ -89,7 +89,6 @@ class HSCFAlertView: UIView {
         leftActionButton.isHidden = leftActionTitle == nil
         rightActionButton.isHidden = rightActionTitle == nil
         
-//        let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
         let keyWindow = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.filter { $0.isKeyWindow }.first
         
         keyWindow?.addSubview(parentView)
