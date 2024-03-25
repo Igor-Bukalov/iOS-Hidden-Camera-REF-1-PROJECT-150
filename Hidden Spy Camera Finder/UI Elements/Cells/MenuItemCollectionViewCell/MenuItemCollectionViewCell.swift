@@ -9,7 +9,14 @@ import UIKit
 import TinyConstraints
 
 class MenuItemCollectionViewCell: UICollectionViewCell {
-    let imageView = UIImageView()
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
+    lazy var imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.width(isiPad ? 67 : 40)
+        iv.aspectRatio(1)
+        return iv
+    }()
     let label = UILabel()
     
     override init(frame: CGRect) {
@@ -26,14 +33,13 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(label)
         
-        imageView.height(40)
         imageView.centerXToSuperview()
-        imageView.topToSuperview(offset: 16)
+        imageView.topToSuperview(offset: isiPad ? 26 : 16)
         
         label.centerXToSuperview()
-        label.bottomToSuperview(offset: -16)
+        label.bottomToSuperview(offset: isiPad ? -26 : -16)
         
-        label.font = UIFont.gilroy(.GilroyMedium, size: 14)
+        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14)
         label.textAlignment = .center
     }
     

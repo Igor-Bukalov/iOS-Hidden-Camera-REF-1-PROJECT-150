@@ -78,6 +78,8 @@ class AntiSpyViewController: HSCFBaseViewController, UITableViewDelegate {
     }()
     
     // MARK: - Properties
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
         guard let strongSelf = self else { return UITableViewCell() }
         
@@ -129,7 +131,7 @@ class AntiSpyViewController: HSCFBaseViewController, UITableViewDelegate {
         tableView.register(ScanDetailLanDeviceCell.self, forCellReuseIdentifier: "ScanDetailLanDeviceCell")
         tableView.register(HeaderCell.self, forCellReuseIdentifier: "HeaderCell")
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 138))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: isiPad ? 230 : 138))
         headerView.addSubview(menuCollectionView)
         menuCollectionView.edgesToSuperview()
         tableView.tableHeaderView = headerView
@@ -191,15 +193,27 @@ class AntiSpyViewController: HSCFBaseViewController, UITableViewDelegate {
 
 extension AntiSpyViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 135, height: 98)
+        if isiPad {
+            return CGSize(width: 227, height: 165)
+        } else {
+            return CGSize(width: 135, height: 98)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return section == 0 ? UIEdgeInsets(top: 15, left: 20, bottom: 25, right: 20) : UIEdgeInsets.zero
+        if section == 0 {
+            if isiPad {
+                return UIEdgeInsets(top: 25, left: 34, bottom: 40, right: 34)
+            } else {
+                return UIEdgeInsets(top: 15, left: 20, bottom: 25, right: 20)
+            }
+        } else {
+            return UIEdgeInsets.zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return isiPad ? 26 : 16
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -213,8 +227,8 @@ extension AntiSpyViewController: UICollectionViewDataSource, UICollectionViewDel
         
         let menuItem = MenuItem(rawValue: indexPath.item)
         cell.configure(with: menuItem?.displayName ?? "", image: UIImage(named: menuItem?.displayImage ?? ""))
-        cell.layer.cornerRadius = 24
-        cell.layer.borderWidth = 0.6
+        cell.layer.cornerRadius = isiPad ? 40 : 24
+        cell.layer.borderWidth = isiPad ? 1.0 : 0.6
         cell.layer.borderColor = UIColor.blueLabel.cgColor
         cell.backgroundColor = UIColor.cellBackground
         

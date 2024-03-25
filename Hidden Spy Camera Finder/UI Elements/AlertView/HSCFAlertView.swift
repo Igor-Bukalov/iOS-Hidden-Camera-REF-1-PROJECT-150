@@ -28,6 +28,8 @@ class HSCFAlertView: UIView {
     private var leftActionClosure: (() -> Void)?
     private var rightActionClosure: (() -> Void)?
     
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     // MARK: - Init
     init() {
         super.init(frame: .zero)
@@ -44,21 +46,27 @@ class HSCFAlertView: UIView {
     }
     
     private func commonInit_HSCF() {
+        let screenWidth = UIScreen.main.bounds.width
+        let alertWidth = isiPad ? screenWidth * 0.5 : screenWidth * 0.8
+        
         rightActionButton.addTarget(self, action: #selector(rightAction_HSCF), for: .touchUpInside)
         leftActionButton.addTarget(self, action: #selector(leftAction_HSCF), for: .touchUpInside)
         
-        alertView.layer.cornerRadius = 12
-        parentView.frame = CGRect(x: 0,
-                                  y: 0,
-                                  width: UIScreen.main.bounds.width,
-                                  height: UIScreen.main.bounds.height)
+        alertView.layer.cornerRadius = isiPad ? 20 : 12
+        
+        parentView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: UIScreen.main.bounds.width,
+            height: UIScreen.main.bounds.height
+        )
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        titleLbl.font = UIFont.gilroy(.GilroyMedium, size: 18)
-        messageLbl.font = UIFont.gilroy(.GilroySemibold, size: 14)
+        titleLbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 18)
+        messageLbl.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 20 : 14)
         
-        rightActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 16)
-        leftActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        rightActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
+        leftActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
         
         leftActionButton.layer.borderColor = UIColor.white.cgColor
         leftActionButton.layer.borderWidth = 1
@@ -101,11 +109,7 @@ class HSCFAlertView: UIView {
     }
     
     private func dismiss_HSCF() {
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.parentView.alpha = 0
-//        }) { _ in
-            self.parentView.removeFromSuperview()
-//        }
+        self.parentView.removeFromSuperview()
     }
     
     // MARK: - Actions

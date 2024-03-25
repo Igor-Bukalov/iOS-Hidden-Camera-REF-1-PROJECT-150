@@ -39,9 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func prepareAppearence() {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = UIColor.navigationBackground
-        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.blueLabel, .font: UIFont.gilroy(.GilroySemibold, size: 20)]
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.blueLabel, .font: UIFont.gilroy(.GilroySemibold, size: isiPad ? 33 : 20)]
         navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.blueLabel]
         
         UINavigationBar.appearance().tintColor = .blueLabel

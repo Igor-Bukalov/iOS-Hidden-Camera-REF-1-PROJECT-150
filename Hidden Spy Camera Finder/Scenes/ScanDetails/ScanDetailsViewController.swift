@@ -33,13 +33,17 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
         return table
     }()
     
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return isiPad ? 95 : 56
+//    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell is ScanDetailTextCell || cell is EmptyStateCell { return }
         
-        let cornerRadius: CGFloat = 16
+        let cornerRadius: CGFloat = isiPad ? 26 : 16
         let layer = CAShapeLayer()
         let pathRef = CGMutablePath()
-        let bounds = cell.bounds.insetBy(dx: 0.5, dy: 0.5)
+        let bounds = cell.bounds.insetBy(dx: isiPad ? 1.0 : 0.6, dy: isiPad ? 1.0 : 0.6)
         
         setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, needSetAlone: false, cellY: 0)
         
@@ -77,6 +81,8 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
     }
     
     // MARK: - Properties
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
         if let item = item as? TextModel {
             guard let scanCell = tableView.dequeueReusableCell(withIdentifier: "ScanDetailCell1", for: indexPath) as? ScanDetailCell1 else { return UITableViewCell() }
@@ -112,7 +118,7 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
             switch item {
             case .emptyCell:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyStateCell", for: indexPath) as? EmptyStateCell else { return UITableViewCell() }
-                cell.titleLabel.text = "No other devices are found on the current network"
+                cell.titleLabel.text = "No other devices are found\non the current network"
                 return cell
             case .alert:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanDetailTextCell", for: indexPath) as? ScanDetailTextCell else { return UITableViewCell() }
@@ -241,7 +247,7 @@ extension ScanDetailsViewController: UITableViewDelegate {
     /// - NEEDSETALONE: Do you need a separate setting of each Cell. The default is set as a unit of unit, if a section is only one Cell, all sets
     public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, needSetAlone: Bool, cellY: CGFloat) {
         // Rounded radius
-        let cornerRadius: CGFloat = 16
+        let cornerRadius: CGFloat = isiPad ? 26 : 16
         
         // below to set the rounded operation (achieved by mask)
         let sectionCount = tableView.numberOfRows(inSection: indexPath.section)

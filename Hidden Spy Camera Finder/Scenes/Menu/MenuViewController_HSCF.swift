@@ -16,18 +16,22 @@ final class HTSP_MenuItem_View: UIView {
     lazy var buttonAction: UIButton = {
         let button = UIButton()
         button.setTitle(nil, for: .normal)
+        button.width(isiPad ? 134 : 80)
+        button.aspectRatio(1)
         button.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
         return button
     }()
     lazy var menuImage: UIImageView = {
         let imgView = UIImageView()
+        imgView.width(isiPad ? 67 : 40)
+        imgView.aspectRatio(1)
         imgView.tintColor = UIColor.white.withAlphaComponent(0.7)
         imgView.layer.opacity = 0.7
         return imgView
     }()
     lazy var menuTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: 12)
+        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 20 : 12)
         label.textAlignment = .center
         label.textColor = UIColor.white.withAlphaComponent(0.7)
         return label
@@ -35,10 +39,13 @@ final class HTSP_MenuItem_View: UIView {
     lazy var shadowImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "tab-shadow")
+        imgView.width(isiPad ? 134 : 80)
+        imgView.aspectRatio(1)
         imgView.isHidden = true
         return imgView
     }()
     
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     var actionCompletion: (() -> Void)?
     var controller: MenuController?
     
@@ -65,17 +72,14 @@ final class HTSP_MenuItem_View: UIView {
         menuTitle.text = "asde"
         
         addSubview(shadowImageView)
-        shadowImageView.edgesToSuperview()
-        shadowImageView.aspectRatio(1)
+        shadowImageView.centerInSuperview()
         
         addSubview(menuImage)
-        menuImage.topToSuperview(offset: 11)
-        menuImage.leftToSuperview(offset: 20)
-        menuImage.rightToSuperview(offset: -20)
-        menuImage.aspectRatio(1)
+        menuImage.centerXToSuperview()
+        menuImage.centerYToSuperview(offset: isiPad ? -10 : -5)
         
         addSubview(menuTitle)
-        menuTitle.topToBottom(of: menuImage, offset: 4)
+        menuTitle.topToBottom(of: menuImage, offset: isiPad ? 8 : 4)
         menuTitle.centerXToSuperview()
         
         addSubview(buttonAction)
@@ -91,9 +95,10 @@ final class HTSP_MenuItem_View: UIView {
 final class GSDA_ContainerForMenuController_GSD: UIViewController {
     private lazy var menuViewController = MenuViewController()
     private let containerView = UIView()
-    private let menuContainer: UIView = {
+    private lazy var menuContainer: UIView = {
         let view = UIView()
         view.isUserInteractionEnabled = true
+        view.height(isiPad ? 460 : 274)
         return view
     }()
     
@@ -103,6 +108,8 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
     private var antiSpy: HTSP_MenuItem_View = HTSP_MenuItem_View(controller: .antiSpy)
     private var btRadar: HTSP_MenuItem_View = HTSP_MenuItem_View(controller: .btRadar)
     private var settings: HTSP_MenuItem_View = HTSP_MenuItem_View(controller: .settings)
+    
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,14 +158,14 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
         }
     }
     
-    private let backgroundMenuView: UIImageView = {
+    lazy var backgroundMenuView: UIImageView = {
         let view = UIImageView(image: UIImage(named: "menu-ellipse"))
         return view
     }()
     
     lazy var menuTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: 20)
+        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 33 : 20)
         label.textAlignment = .center
         label.textColor = UIColor.white
         return label
@@ -168,6 +175,11 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
         let button = UIButton()
         button.setTitle(nil, for: .normal)
         button.setImage(UIImage(named: "close-menu-button"), for: .normal)
+        button.width(isiPad ? 53 : 32)
+        button.height(isiPad ? 53 : 32)
+        button.imageView?.width(isiPad ? 53 : 32)
+        button.imageView?.height(isiPad ? 53 : 32)
+        button.tintColor = UIColor.white
         button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         return button
     }()
@@ -198,11 +210,11 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
         
         // Close button
         menuContainer.addSubview(closeMenuButton)
-        closeMenuButton.bottomToSuperview(offset: -16)
+        closeMenuButton.bottomToSuperview(offset: isiPad ? -26 : -16)
         closeMenuButton.centerXToSuperview()
         
         menuContainer.addSubview(menuTitle)
-        menuTitle.topToSuperview(offset: 12, usingSafeArea: true)
+        menuTitle.topToSuperview(offset: isiPad ? 28 : 12, usingSafeArea: true)
         menuTitle.centerXToSuperview()
         
         // Background and buttons container
@@ -220,8 +232,8 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
         buttonsStackView.distribution = .fillEqually
         
         tabbarMenuView.addSubview(buttonsStackView)
-        buttonsStackView.leftToSuperview(offset: 20)
-        buttonsStackView.rightToSuperview(offset: -20)
+        buttonsStackView.width(isiPad ? 536 : 320)
+        buttonsStackView.centerXToSuperview()
         buttonsStackView.centerY(to: backgroundMenuView, offset: 10)
         
         menuView = menuContainer

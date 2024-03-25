@@ -48,6 +48,7 @@ class HSCFSettingsViewController: HSCFBaseViewController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section_settings, AnyHashable>
     
     // MARK: - Properties
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     private static let cellIdentifier = "settings.cell.identifier"
     private var locationManager: HSCFLocation_HS_Mnrg?
     
@@ -65,15 +66,15 @@ class HSCFSettingsViewController: HSCFBaseViewController {
     }()
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return isiPad ? 95 : 56
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cornerRadius: CGFloat = 16
+        let cornerRadius: CGFloat = isiPad ? 26 : 16
         
         let layer = CAShapeLayer()
         let pathRef = CGMutablePath()
-        let bounds = cell.bounds.insetBy(dx: 0.5, dy: 0.5)
+        let bounds = cell.bounds.insetBy(dx: isiPad ? 1.0 : 0.6, dy: isiPad ? 1.0 : 0.6)
         var addLine = false
         
         setCornerRadiusForSectionCell(cell: cell, indexPath: indexPath, tableView: tableView, needSetAlone: false, cellY: 0)
@@ -113,7 +114,7 @@ class HSCFSettingsViewController: HSCFBaseViewController {
             lineLayer.backgroundColor = UIColor.clear.cgColor
             lineLayer.borderColor = UIColor.hex("4680E4").cgColor
             lineLayer.opacity = 0.7
-            lineLayer.borderWidth = 0.5
+            lineLayer.borderWidth = 0.6
             layer.addSublayer(lineLayer)
         }
         
@@ -136,8 +137,8 @@ class HSCFSettingsViewController: HSCFBaseViewController {
         } else if let item = item as? HSCFSettingsViewController.Section_settings.WifiInfo {
             content.textProperties.color = UIColor.blueLabel
             content.text = item.rawValue
-            let label = UILabel(frame: CGRect(x:0,y:0,width:100,height:20))
-            label.font = UIFont.gilroy(.GilroyMedium, size: 14)
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self?.isiPad ?? false ? 150 : 100, height: 20))
+            label.font = UIFont.gilroy(.GilroyMedium, size: self?.isiPad ?? false ? 23 : 14)
             label.textAlignment = .right
             label.textColor = UIColor.hex("4680E4")
             label.text = item.rightText
@@ -157,7 +158,7 @@ class HSCFSettingsViewController: HSCFBaseViewController {
             imgView.tintColor = .blueLabel
             cell.accessoryView = imgView
         }
-        content.textProperties.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        content.textProperties.font = UIFont.gilroy(.GilroyMedium, size: self?.isiPad ?? false ? 26 : 16)
         cell.contentConfiguration = content
         cell.backgroundColor = UIColor.cellBackground
         cell.layer.masksToBounds = true
@@ -291,7 +292,7 @@ extension HSCFSettingsViewController {
     /// - NEEDSETALONE: Do you need a separate setting of each Cell. The default is set as a unit of unit, if a section is only one Cell, all sets
     public func setCornerRadiusForSectionCell(cell: UITableViewCell, indexPath: IndexPath, tableView: UITableView, needSetAlone: Bool, cellY: CGFloat) {
         // Rounded radius
-        let cornerRadius: CGFloat = 16
+        let cornerRadius: CGFloat = isiPad ? 26 : 16
         
         // below to set the rounded operation (achieved by mask)
         let sectionCount = tableView.numberOfRows(inSection: indexPath.section)

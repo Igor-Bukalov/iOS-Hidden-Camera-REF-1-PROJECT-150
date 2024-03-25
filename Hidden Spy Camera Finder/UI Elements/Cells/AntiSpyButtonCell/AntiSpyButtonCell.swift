@@ -8,39 +8,39 @@
 import UIKit
 import TinyConstraints
 
-class AntiSpyButtonCell: UITableViewCell {
-    private lazy var button: UIButton = {
-        let b = UIButton()
-        b.backgroundColor = UIColor.hex("4680E4")
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
-        b.setTitle("Scan the network", for: .normal)
-        b.setTitleColor(UIColor.hex("FFFFFF"), for: .normal)
-        b.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
-        return b
-    }()
-    
-    public var actionCompletion: (() -> ())?
-    
-    // MARK: - Init
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupSubviews_HSCF33()
-        selectionStyle = .none
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc
-    func actionTapped() {
-        actionCompletion?()
-    }
-    
-    private func setupSubviews_HSCF33() {
-        contentView.addSubview(button)
-        button.edgesToSuperview()
-        button.height(56)
-        button.layer.cornerRadius = 20
-    }
-}
+//class AntiSpyButtonCell: UITableViewCell {
+//    private lazy var button: UIButton = {
+//        let b = UIButton()
+//        b.backgroundColor = UIColor.hex("4680E4")
+//        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
+//        b.setTitle("Scan the network", for: .normal)
+//        b.setTitleColor(UIColor.hex("FFFFFF"), for: .normal)
+//        b.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
+//        return b
+//    }()
+//    
+//    public var actionCompletion: (() -> ())?
+//    
+//    // MARK: - Init
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        setupSubviews_HSCF33()
+//        selectionStyle = .none
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    @objc
+//    func actionTapped() {
+//        actionCompletion?()
+//    }
+//    
+//    private func setupSubviews_HSCF33() {
+//        contentView.addSubview(button)
+//        button.edgesToSuperview()
+//        button.height(56)
+//        button.layer.cornerRadius = 20
+//    }
+//}

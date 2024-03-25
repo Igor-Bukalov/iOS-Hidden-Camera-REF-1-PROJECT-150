@@ -30,8 +30,8 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         let b = UIButton()
         b.backgroundColor = UIColor.buttonBlueBackground
         b.setTitleColor(.white, for: .normal)
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
-        b.layer.cornerRadius = 20
+        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 30 : 18)
+        b.layer.cornerRadius = isiPad ? 33 : 20
         b.setTitle(ScanningState.startDetection.title, for: .normal)
         b.addTarget(self, action: #selector(scanningTapped), for: .touchUpInside)
         return b
@@ -41,9 +41,9 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         let b = UIButton()
         b.layer.borderColor = UIColor.buttonGreyBorder.cgColor
         b.layer.borderWidth = 1
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 18)
+        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 30 : 18)
         b.setTitleColor(UIColor.buttonGreyText, for: .normal)
-        b.layer.cornerRadius = 20
+        b.layer.cornerRadius = isiPad ? 33 : 20
         b.setTitle("Review", for: .normal)
         b.addTarget(self, action: #selector(reviewTapped), for: .touchUpInside)
         return b
@@ -51,7 +51,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var suspiciousDevicesFound: UILabel = {
         let l = UILabel()
-        l.font = UIFont.gilroy(.GilroyMedium, size: 18)
+        l.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 30 : 18)
         l.textColor = UIColor.blueLabel
         l.textAlignment = .center
         l.text = "Suspicious devices found: 0"
@@ -60,7 +60,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var wifiIPAddress: UILabel = {
         let l = UILabel()
-        l.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        l.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
         l.textColor = UIColor.blueLabel
         l.textAlignment = .center
 //        l.text = "Wi-Fi IP: \(HSCFDeviceInfo.shared.getWiFiAddress() ?? .na)"
@@ -82,6 +82,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     }()
     
     // MARK: - Properties
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     private lazy var networkPermsissionService = LocalNetworkPermissionService()
     private lazy var scanner = LanScannerService(delegate: self)
     private var connectedDevices = [LanDevice2]() {
@@ -122,30 +123,45 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private func prepareSubviews() {
         let stackView = UIView()
-        stackView.stack([reviewButton, detectionButton], axis: .vertical, spacing: 12)
+        stackView.stack([reviewButton, detectionButton], axis: .vertical, spacing: isiPad ? 20 : 12)
         view.addSubview(stackView)
         
-        stackView.bottomToSuperview(offset: -16, usingSafeArea: true)
-        stackView.leftToSuperview(offset: 20)
-        stackView.rightToSuperview(offset: -20)
-        
-        reviewButton.height(56)
-        detectionButton.height(56)
+        if isiPad {
+            stackView.centerXToSuperview()
+            stackView.bottomToSuperview(offset: -26, usingSafeArea: true)
+            reviewButton.width(560)
+            detectionButton.width(560)
+            reviewButton.height(95)
+            detectionButton.height(95)
+        } else {
+            stackView.leftToSuperview(offset: 20)
+            stackView.rightToSuperview(offset: -20)
+            stackView.bottomToSuperview(offset: -16, usingSafeArea: true)
+            reviewButton.height(56)
+            detectionButton.height(56)
+        }
         
         let stackViewSecond = UIView()
-        stackViewSecond.stack([suspiciousDevicesFound, wifiIPAddress], axis: .vertical, spacing: 8)
+        stackViewSecond.stack([suspiciousDevicesFound, wifiIPAddress], axis: .vertical, spacing: isiPad ? 13 : 8)
         view.addSubview(stackViewSecond)
         
-        stackViewSecond.topToSuperview(offset: 16, usingSafeArea: true)
+        stackViewSecond.topToSuperview(offset: isiPad ? 26 : 16, usingSafeArea: true)
         stackViewSecond.centerXToSuperview()
-        stackViewSecond.height(48)
+        stackViewSecond.height(isiPad ? 81 : 48)
         
         view.addSubview(radarView)
         
-        radarView.topToBottom(of: stackViewSecond, offset: 24)
-        radarView.leftToSuperview(offset: 20, usingSafeArea: true)
-        radarView.rightToSuperview(offset: -20, usingSafeArea: true)
-        radarView.aspectRatio(1)
+        if isiPad {
+            radarView.topToBottom(of: stackViewSecond, offset: 40)
+            radarView.centerXToSuperview()
+            radarView.width(560)
+            radarView.aspectRatio(1)
+        } else {
+            radarView.topToBottom(of: stackViewSecond, offset: 24)
+            radarView.leftToSuperview(offset: 20, usingSafeArea: true)
+            radarView.rightToSuperview(offset: -20, usingSafeArea: true)
+            radarView.aspectRatio(1)
+        }
         
         radarView.addSubview(radarImageView)
         radarImageView.edgesToSuperview()

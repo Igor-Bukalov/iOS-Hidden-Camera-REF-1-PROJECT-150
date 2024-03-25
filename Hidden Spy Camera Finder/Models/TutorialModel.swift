@@ -19,6 +19,8 @@ struct TutorialModel: Hashable {
     )]
     
     static func createAttributedSubtitle() -> NSAttributedString {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.headIndent = 16
@@ -26,7 +28,7 @@ struct TutorialModel: Hashable {
         
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,
-            .font: UIFont.gilroy(.GilroyMedium, size: 14),
+            .font: UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14),
             .foregroundColor: UIColor.hex("8C939F")
         ]
         

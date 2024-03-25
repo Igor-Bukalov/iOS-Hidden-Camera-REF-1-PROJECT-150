@@ -9,9 +9,11 @@ import UIKit
 import TinyConstraints
 
 class HeaderCell: UITableViewCell {
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
         label.textColor = UIColor.blueLabel
         label.text = "Test"
         return label
@@ -32,9 +34,9 @@ class HeaderCell: UITableViewCell {
     
     private func setupSubviews_HSCF() {
         contentView.addSubview(titleLabel)
-        titleLabel.topToSuperview(offset: 10)
-        titleLabel.leadingToSuperview(offset: 20)
-        titleLabel.trailingToSuperview(offset: 20)
-        titleLabel.bottomToSuperview(offset: -10)
+        titleLabel.topToSuperview()
+        titleLabel.leadingToSuperview(offset: isiPad ? 34 : 20)
+        titleLabel.trailingToSuperview(offset: isiPad ? -34 : -20)
+        titleLabel.bottomToSuperview()
     }
 }

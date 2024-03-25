@@ -10,6 +10,7 @@ import SwiftUI
 
 class HSCFBaseViewController: UIViewController {
     private var alert: UIAlertController?
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     
     override func viewDidLoad() {
         super.viewDidLoad()

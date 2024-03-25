@@ -37,10 +37,12 @@ class ScanDetailCell: UITableViewCell {
 }
 
 class ScanDetailCell1: UITableViewCell {
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     // MARK: - UIProperties
     lazy var titleTextLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        lbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
         lbl.textColor = UIColor.blueLabel
         lbl.numberOfLines = 1
         lbl.text = "Test"
@@ -49,7 +51,7 @@ class ScanDetailCell1: UITableViewCell {
     
     lazy var titleValueButton: UIButton = {
         let b = UIButton(type: .system)
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: 14)
+        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14)
         b.setTitle("Copy MAC", for: .normal)
         b.setTitleColor(UIColor.hex("4680E4"), for: .normal)
         b.addTarget(self, action: #selector(copyMAC), for: .touchUpInside)
@@ -58,7 +60,7 @@ class ScanDetailCell1: UITableViewCell {
     
     lazy var subtitleTextLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: 12)
+        lbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 20 : 12)
         lbl.textColor = UIColor.blueLabel
         lbl.numberOfLines = 1
         lbl.text = "Test"
@@ -67,7 +69,7 @@ class ScanDetailCell1: UITableViewCell {
     
     lazy var subtitleValueLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: 12)
+        lbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 20 : 12)
         lbl.textColor = UIColor.blueLabel
         lbl.numberOfLines = 1
         lbl.text = "Test"
@@ -96,23 +98,23 @@ class ScanDetailCell1: UITableViewCell {
         let leftVerticalStack = UIStackView(arrangedSubviews: [titleTextLabel, subtitleTextLabel])
         leftVerticalStack.axis = .vertical
         leftVerticalStack.alignment = .leading
-        leftVerticalStack.spacing = 4
+        leftVerticalStack.spacing = isiPad ? 6 : 4
         
         let rightVerticalStack = UIStackView(arrangedSubviews: [titleValueButton, subtitleValueLabel])
         rightVerticalStack.axis = .vertical
         rightVerticalStack.alignment = .trailing
-        rightVerticalStack.spacing = 4
+        rightVerticalStack.spacing = isiPad ? 6 : 4
         
         contentView.addSubview(leftVerticalStack)
         
-        leftVerticalStack.topToSuperview(offset: 10)
-        leftVerticalStack.leftToSuperview(offset: 12)
-        leftVerticalStack.bottomToSuperview(offset: -10)
+        leftVerticalStack.topToSuperview(offset: isiPad ? 26 : 10)
+        leftVerticalStack.leftToSuperview(offset: isiPad ? 20 : 12)
+        leftVerticalStack.bottomToSuperview(offset: isiPad ? -26 : -10)
         
         contentView.addSubview(rightVerticalStack)
         
-        rightVerticalStack.topToSuperview(offset: 10)
-        rightVerticalStack.rightToSuperview(offset: -12)
-        rightVerticalStack.bottomToSuperview(offset: -10)
+        rightVerticalStack.topToSuperview(offset: isiPad ? 26 : 10)
+        rightVerticalStack.rightToSuperview(offset: isiPad ? -20 : -12)
+        rightVerticalStack.bottomToSuperview(offset: isiPad ? -26 : -10)
     }
 }

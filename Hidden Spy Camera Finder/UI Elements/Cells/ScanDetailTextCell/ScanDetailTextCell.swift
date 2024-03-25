@@ -9,9 +9,11 @@ import UIKit
 import TinyConstraints
 
 class ScanDetailTextCell: UITableViewCell {
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     lazy var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: 14)
+        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14)
         label.textColor = UIColor.blueLabel
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -22,19 +24,32 @@ class ScanDetailTextCell: UITableViewCell {
     private lazy var containerView: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.clear
-        v.layer.borderWidth = 1
+        v.layer.borderWidth = isiPad ? 1.5 : 1
         v.layer.borderColor = UIColor.blueLabel.cgColor
-        v.layer.cornerRadius = 20
+        v.layer.cornerRadius = isiPad ? 33 : 20
         return v
     }()
     
     private func setupSubviews_HSCF() {
         contentView.addSubview(containerView)
-        containerView.edgesToSuperview()
-        containerView.addSubview(label)
-        label.topToSuperview(offset: 14)
-        label.centerXToSuperview()
-        label.bottomToSuperview(offset: -14)
+        if isiPad {
+            containerView.width(560)
+            containerView.topToSuperview()
+            containerView.bottomToSuperview()
+            containerView.centerXToSuperview()
+            
+            containerView.addSubview(label)
+            label.topToSuperview(offset: 16)
+            label.centerXToSuperview()
+            label.bottomToSuperview(offset: -16)
+        } else {
+            containerView.edgesToSuperview()
+            
+            containerView.addSubview(label)
+            label.topToSuperview(offset: 14)
+            label.centerXToSuperview()
+            label.bottomToSuperview(offset: -14)
+        }
     }
     
     // MARK: - Init

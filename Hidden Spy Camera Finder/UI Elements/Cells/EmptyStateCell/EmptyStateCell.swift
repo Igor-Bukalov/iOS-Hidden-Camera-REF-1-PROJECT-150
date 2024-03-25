@@ -9,12 +9,14 @@ import UIKit
 import TinyConstraints
 
 class EmptyStateCell: UITableViewCell {
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     // MARK: - UIProperties
     lazy var imgView = UIImageView(image: UIImage.init(named: "empty-state-icon"))
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
         label.textColor = UIColor.blueLabel
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -36,15 +38,15 @@ class EmptyStateCell: UITableViewCell {
     
     private func setupSubviews_HSCF() {
         contentView.addSubview(imgView)
-        imgView.height(80)
-        imgView.width(80)
-        imgView.topToSuperview(offset: 90)
+        imgView.height(isiPad ? 134 : 80)
+        imgView.width(isiPad ? 134 : 80)
         imgView.centerXToSuperview()
+        imgView.topToSuperview(offset: isiPad ? 180 : 90)
         
         contentView.addSubview(titleLabel)
-        titleLabel.topToBottom(of: imgView, offset: 10)
-        titleLabel.leadingToSuperview(offset: 71)
-        titleLabel.trailingToSuperview(offset: 71)
-        titleLabel.bottomToSuperview(offset: -90)
+        titleLabel.topToBottom(of: imgView, offset: isiPad ? 20 : 12)
+        titleLabel.leadingToSuperview()
+        titleLabel.trailingToSuperview()
+        titleLabel.bottomToSuperview()
     }
 }
