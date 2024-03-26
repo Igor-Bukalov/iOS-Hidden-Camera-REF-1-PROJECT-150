@@ -31,11 +31,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ThirdPartyServicesManager.shared.initializeAdjust_HSCF()
         ThirdPartyServicesManager.shared.initializeInApps_HSCF()
         ThirdPartyServicesManager.shared.initializePushwooshHSCF(delegate: self) {}
+        
         prepareAppearence()
-        let initial = InitialViewController()
-        self.window?.rootViewController = initial
+        
+        let loadingController = LoadingViewController()
+        loadingController.onLoadingComplete = { [weak self] in
+            self?.showMenuController()
+        }
+        self.window?.rootViewController = loadingController
         self.window?.makeKeyAndVisible()
+        
         return true
+    }
+    
+    func showMenuController() {
+        DispatchQueue.main.async {
+            let mainController = GSDA_ContainerForMenuController_GSD()
+            self.window?.rootViewController = mainController
+        }
     }
     
     private func prepareAppearence() {
@@ -91,7 +104,7 @@ extension SO_APP_DEL_GAT_HSCF : PWMessagingDelegate, UITableViewDelegate {
 struct AppDelegate_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            InitialViewController()
+            GSDA_ContainerForMenuController_GSD()
         }
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 import TinyConstraints
 import CoreLocation
-import Lottie
 import SwiftUI
 
 class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelegate {
@@ -32,10 +31,6 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
         table.delegate = self
         return table
     }()
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return isiPad ? 95 : 56
-//    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell is ScanDetailTextCell || cell is EmptyStateCell { return }
@@ -85,7 +80,7 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
     
     private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
         if let item = item as? TextModel {
-            guard let scanCell = tableView.dequeueReusableCell(withIdentifier: "ScanDetailCell1", for: indexPath) as? ScanDetailCell1 else { return UITableViewCell() }
+            guard let scanCell = tableView.dequeueReusableCell(withIdentifier: "ScanDetailCell", for: indexPath) as? ScanDetailCell else { return UITableViewCell() }
             scanCell.titleTextLabel.text = item.subTitleValue
             scanCell.titleValueButton.setTitle(item.titleValue, for: .normal)
             scanCell.subtitleTextLabel.text = item.subTitle
@@ -154,9 +149,7 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
     
     // MARK: - Logic
     private func configureTableView_HSCF() {
-        view.addSubview(tableView)
-        tableView.edgesToSuperview()
-        tableView.register(ScanDetailCell1.self, forCellReuseIdentifier: "ScanDetailCell1")
+        tableView.register(ScanDetailCell.self, forCellReuseIdentifier: "ScanDetailCell")
         tableView.register(ScanDetailTextCell.self, forCellReuseIdentifier: "ScanDetailTextCell")
         tableView.register(EmptyStateCell.self, forCellReuseIdentifier: "EmptyStateCell")
     }
@@ -216,7 +209,14 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
     
     private func setupSubviews_S32HP() {
         view.addSubview(tableView)
-        tableView.edgesToSuperview(usingSafeArea: true)
+        if isiPad {
+            tableView.topToSuperview(usingSafeArea: true)
+            tableView.bottomToSuperview(usingSafeArea: true)
+            tableView.centerXToSuperview(usingSafeArea: true)
+            tableView.width(560)
+        } else {
+            tableView.edgesToSuperview(usingSafeArea: true)
+        }
     }
     
     private func updateWiFi_HSCF() {

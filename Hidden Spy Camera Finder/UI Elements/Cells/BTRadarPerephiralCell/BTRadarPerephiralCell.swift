@@ -9,9 +9,11 @@ import UIKit
 import TinyConstraints
 
 class BTRadarPerephiralCell: UITableViewCell {
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: 16)
+        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
         label.textColor = UIColor.blueLabel
         label.text = "Test"
         return label
@@ -19,7 +21,7 @@ class BTRadarPerephiralCell: UITableViewCell {
     
     lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: 12)
+        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 20 : 12)
         label.textColor = UIColor.blueLabel
         label.text = "Test"
         return label
@@ -27,8 +29,8 @@ class BTRadarPerephiralCell: UITableViewCell {
     
     lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: 12)
-        label.textColor = UIColor.blueLabel
+        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 23 : 14)
+        label.textColor = UIColor.hex("4680E4")
         label.textAlignment = .right
         label.text = "Test"
         return label
@@ -49,13 +51,13 @@ class BTRadarPerephiralCell: UITableViewCell {
     private func setupSubviews_HSCF() {
         let stack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stack.axis = .vertical
-        stack.spacing = 4
+        stack.spacing = isiPad ? 6 : 4
         contentView.addSubview(stack)
         contentView.addSubview(valueLabel)
-        stack.leadingToSuperview(offset: 12)
-        stack.topToSuperview(offset: 10)
-        stack.bottomToSuperview(offset: -10)
-        valueLabel.trailingToSuperview(offset: 12)
+        stack.leadingToSuperview(offset: isiPad ? 20 : 12)
+        stack.topToSuperview(offset: isiPad ? 15 : 10)
+        stack.bottomToSuperview(offset: isiPad ? -15 : -10)
+        valueLabel.trailingToSuperview(offset: isiPad ? 20 : 12)
         valueLabel.verticalToSuperview()
     }
 }

@@ -11,13 +11,7 @@ import SwiftUI
 
 class AntiSpyDetailsViewController: HSCFBaseViewController {
     enum SelectType {
-        case all
-        case cameraObscura
-        case infraredCamera
-        case wirelessObscura
-        case wiredObscura
-        case sleepCamera
-        case other
+        case all, cameraObscura, infraredCamera, wirelessObscura, wiredObscura, sleepCamera, other
     }
     
     typealias DataSource = UITableViewDiffableDataSource<AnyHashable, AnyHashable>
@@ -124,7 +118,14 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
     
     private func setupSubviews_S32HP() {
         view.addSubview(tableView)
-        tableView.edgesToSuperview(usingSafeArea: false)
+        if isiPad {
+            tableView.topToSuperview(usingSafeArea: true)
+            tableView.bottomToSuperview(usingSafeArea: true)
+            tableView.centerXToSuperview(usingSafeArea: true)
+            tableView.width(560)
+        } else {
+            tableView.edgesToSuperview(usingSafeArea: true)
+        }
         
         if selectItemsType == .wirelessObscura {
             setupScanButton()
@@ -169,7 +170,7 @@ extension AntiSpyDetailsViewController: UITableViewDelegate {
 struct AntiSpyDetailsViewController_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            InitialViewController()
+            GSDA_ContainerForMenuController_GSD()
         }
     }
 }

@@ -345,7 +345,7 @@ func GetMACAddressFromIPv6(ip: String) -> String? {
 struct HSCFScanViewController_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            InitialViewController()
+            GSDA_ContainerForMenuController_GSD()
         }
     }
 }

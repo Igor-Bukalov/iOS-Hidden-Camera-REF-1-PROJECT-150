@@ -184,8 +184,16 @@ class HSCFSettingsViewController: HSCFBaseViewController {
     // MARK: - Logic
     private func configureTableView_HSCF() {
         view.addSubview(tableView)
+        if isiPad {
+            tableView.topToSuperview(usingSafeArea: true)
+            tableView.bottomToSuperview(usingSafeArea: true)
+            tableView.centerXToSuperview(usingSafeArea: true)
+            tableView.width(560)
+        } else {
+            tableView.edgesToSuperview(usingSafeArea: true)
+        }
+        
         tableView.separatorStyle = .none
-        tableView.edgesToSuperview()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: HSCFSettingsViewController.cellIdentifier)
     }
     

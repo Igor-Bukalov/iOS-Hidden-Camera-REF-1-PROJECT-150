@@ -24,6 +24,18 @@ class HSCFAlertView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var actionButtonsStackView: UIStackView!
     
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var alertViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var insideViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var insideViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var insideViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var insideViewBottomConstraint: NSLayoutConstraint!
+    
     // MARK: - Properties
     private var leftActionClosure: (() -> Void)?
     private var rightActionClosure: (() -> Void)?
@@ -46,20 +58,30 @@ class HSCFAlertView: UIView {
     }
     
     private func commonInit_HSCF() {
-        let screenWidth = UIScreen.main.bounds.width
-        let alertWidth = isiPad ? screenWidth * 0.5 : screenWidth * 0.8
+        let padding: CGFloat = isiPad ? 220 : 60
+        leadingConstraint.constant = padding
+        trailingConstraint.constant = padding
+        
+        let buttonHeight: CGFloat = isiPad ? 67 : 40
+        let topAndBottom: CGFloat = isiPad ? 40 : 24
+        let leadingAndTrailing: CGFloat = isiPad ? 28 : 17
+        
+        buttonHeightConstraint.constant = buttonHeight
+        
+        insideViewTopConstraint.constant = topAndBottom
+        insideViewBottomConstraint.constant = topAndBottom
+        insideViewLeadingConstraint.constant = leadingAndTrailing
+        insideViewTrailingConstraint.constant = leadingAndTrailing
         
         rightActionButton.addTarget(self, action: #selector(rightAction_HSCF), for: .touchUpInside)
         leftActionButton.addTarget(self, action: #selector(leftAction_HSCF), for: .touchUpInside)
         
-        alertView.layer.cornerRadius = isiPad ? 20 : 12
+        let buttonCornerRadius: CGFloat = isiPad ? 20 : 12
+        alertView.layer.cornerRadius = buttonCornerRadius
+        leftActionButton.layer.cornerRadius = buttonCornerRadius
+        rightActionButton.layer.cornerRadius = buttonCornerRadius
         
-        parentView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: UIScreen.main.bounds.width,
-            height: UIScreen.main.bounds.height
-        )
+        parentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         titleLbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 18)

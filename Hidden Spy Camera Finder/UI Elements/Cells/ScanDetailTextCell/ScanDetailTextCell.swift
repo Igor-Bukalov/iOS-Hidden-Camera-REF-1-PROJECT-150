@@ -33,10 +33,7 @@ class ScanDetailTextCell: UITableViewCell {
     private func setupSubviews_HSCF() {
         contentView.addSubview(containerView)
         if isiPad {
-            containerView.width(560)
-            containerView.topToSuperview()
-            containerView.bottomToSuperview()
-            containerView.centerXToSuperview()
+            containerView.edgesToSuperview()
             
             containerView.addSubview(label)
             label.topToSuperview(offset: 16)

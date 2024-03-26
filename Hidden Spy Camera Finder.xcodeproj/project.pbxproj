@@ -26,7 +26,6 @@
 		684969892B0E2FA200764C80 /* Noti_asd_ficationSe_asdrvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684969882B0E2FA200764C80 /* Noti_asd_ficationSe_asdrvice.swift */; };
 		6849698D2B0E2FA200764C80 /* NotificationServiceJKMGmedia.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 684969862B0E2FA200764C80 /* NotificationServiceJKMGmedia.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		68617CEA2B025A8500190EC0 /* HSCFTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CE92B025A8500190EC0 /* HSCFTutorialViewController.swift */; };
-		68617CEF2B02665100190EC0 /* AnimationSliderDevicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CEE2B02665100190EC0 /* AnimationSliderDevicesCell.swift */; };
 		68617CF22B0268F800190EC0 /* DeviceDetailDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CF12B0268F800190EC0 /* DeviceDetailDistance.swift */; };
 		68617D1C2B03A51B00190EC0 /* AntiSpyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D1B2B03A51B00190EC0 /* AntiSpyDetails.swift */; };
 		68617D1F2B03A59700190EC0 /* AntiSpyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D1E2B03A59700190EC0 /* AntiSpyDetailsCell.swift */; };
@@ -68,7 +67,6 @@
 		68F7A7C02AFCEB5500B349E6 /* ScanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7BF2AFCEB5500B349E6 /* ScanDetailsViewController.swift */; };
 		68F7A7C22AFCEBB600B349E6 /* Controller_HSCF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7C12AFCEBB600B349E6 /* Controller_HSCF.swift */; };
 		68F7A7C52AFCEF7000B349E6 /* ScanDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7C42AFCEF7000B349E6 /* ScanDetailCell.swift */; };
-		68F7A7C92AFCF02000B349E6 /* ScanDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F7A7C82AFCF02000B349E6 /* ScanDetailCell.xib */; };
 		68F7A7CB2AFD011400B349E6 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7CA2AFD011400B349E6 /* UIView+Nib.swift */; };
 		68FE60FB2B04E5C800EF9DA4 /* HSCFAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68FE60F92B04E5C800EF9DA4 /* HSCFAlertView.xib */; };
 		68FE60FC2B04E5C800EF9DA4 /* HSCFAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FE60FA2B04E5C800EF9DA4 /* HSCFAlertView.swift */; };
@@ -90,6 +88,8 @@
 		991952932BAB98D10078CFD4 /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952922BAB98D10078CFD4 /* TutorialModel.swift */; };
 		991952952BAB98FD0078CFD4 /* TutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952942BAB98FD0078CFD4 /* TutorialCell.swift */; };
 		991EDC262BACA97C008AE665 /* MenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991EDC252BACA97C008AE665 /* MenuItemCollectionViewCell.swift */; };
+		995355382BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995355372BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift */; };
+		9953553A2BB30AA500DB77A6 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995355392BB30AA500DB77A6 /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,7 +131,6 @@
 		6849698A2B0E2FA200764C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		684969922B0E2FB100764C80 /* NotificationServiceJKMGmedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationServiceJKMGmedia.entitlements; sourceTree = "<group>"; };
 		68617CE92B025A8500190EC0 /* HSCFTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFTutorialViewController.swift; sourceTree = "<group>"; };
-		68617CEE2B02665100190EC0 /* AnimationSliderDevicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSliderDevicesCell.swift; sourceTree = "<group>"; };
 		68617CF12B0268F800190EC0 /* DeviceDetailDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailDistance.swift; sourceTree = "<group>"; };
 		68617D1B2B03A51B00190EC0 /* AntiSpyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetails.swift; sourceTree = "<group>"; };
 		68617D1E2B03A59700190EC0 /* AntiSpyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetailsCell.swift; sourceTree = "<group>"; };
@@ -174,7 +173,6 @@
 		68F7A7BF2AFCEB5500B349E6 /* ScanDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDetailsViewController.swift; sourceTree = "<group>"; };
 		68F7A7C12AFCEBB600B349E6 /* Controller_HSCF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller_HSCF.swift; sourceTree = "<group>"; };
 		68F7A7C42AFCEF7000B349E6 /* ScanDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDetailCell.swift; sourceTree = "<group>"; };
-		68F7A7C82AFCF02000B349E6 /* ScanDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanDetailCell.xib; sourceTree = "<group>"; };
 		68F7A7CA2AFD011400B349E6 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		68FE60F92B04E5C800EF9DA4 /* HSCFAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HSCFAlertView.xib; sourceTree = "<group>"; };
 		68FE60FA2B04E5C800EF9DA4 /* HSCFAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSCFAlertView.swift; sourceTree = "<group>"; };
@@ -204,6 +202,8 @@
 		991952922BAB98D10078CFD4 /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
 		991952942BAB98FD0078CFD4 /* TutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCell.swift; sourceTree = "<group>"; };
 		991EDC252BACA97C008AE665 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		995355372BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDevicesSliderCell.swift; sourceTree = "<group>"; };
+		995355392BB30AA500DB77A6 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,7 +318,7 @@
 		68617CED2B02660B00190EC0 /* AnimationSliderDevicesCell */ = {
 			isa = PBXGroup;
 			children = (
-				68617CEE2B02665100190EC0 /* AnimationSliderDevicesCell.swift */,
+				995355372BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift */,
 			);
 			path = AnimationSliderDevicesCell;
 			sourceTree = "<group>";
@@ -359,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				68F7A7C42AFCEF7000B349E6 /* ScanDetailCell.swift */,
-				68F7A7C82AFCF02000B349E6 /* ScanDetailCell.xib */,
 			);
 			path = ScanDetailCell;
 			sourceTree = "<group>";
@@ -421,6 +420,7 @@
 		68C426DD2AF931B400C131D0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9953553B2BB30AAF00DB77A6 /* LoadingViewController */,
 				68617D1A2B03A50600190EC0 /* AntiSpyDetails */,
 				68617CF02B0268EA00190EC0 /* DeviceDetailDistance */,
 				68617CE82B025A7B00190EC0 /* Tutorial */,
@@ -734,6 +734,14 @@
 			path = MenuItemCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		9953553B2BB30AAF00DB77A6 /* LoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				995355392BB30AA500DB77A6 /* LoadingViewController.swift */,
+			);
+			path = LoadingViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -893,7 +901,6 @@
 				68D184E32B1F343800A28BAB /* mac-s.json in Resources */,
 				68FE60FB2B04E5C800EF9DA4 /* HSCFAlertView.xib in Resources */,
 				68C45E332B17300400434A91 /* Devices.json in Resources */,
-				68F7A7C92AFCF02000B349E6 /* ScanDetailCell.xib in Resources */,
 				68FE610A2B05009200EF9DA4 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -915,11 +922,11 @@
 			files = (
 				689B0C842AFD0B520071634D /* ScanDetailTextCell.swift in Sources */,
 				68617D1C2B03A51B00190EC0 /* AntiSpyDetails.swift in Sources */,
+				995355382BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift in Sources */,
 				68F7A7BA2AFCE6CE00B349E6 /* Alert+BLu.swift in Sources */,
 				68C427132AF94C0000C131D0 /* BTRadarViewController.swift in Sources */,
 				68FE611B2B05117F00EF9DA4 /* HeaderCell.swift in Sources */,
 				68C426F02AF9341200C131D0 /* HSCFUIColor+Hex.swift in Sources */,
-				68617CEF2B02665100190EC0 /* AnimationSliderDevicesCell.swift in Sources */,
 				68617CF22B0268F800190EC0 /* DeviceDetailDistance.swift in Sources */,
 				68F7A7C52AFCEF7000B349E6 /* ScanDetailCell.swift in Sources */,
 				68617D1F2B03A59700190EC0 /* AntiSpyDetailsCell.swift in Sources */,
@@ -960,6 +967,7 @@
 				68617D2C2B03B92000190EC0 /* LocalNetworkPermissionService.swift in Sources */,
 				68C426CE2AF930A300C131D0 /* Hidden_Spy_Camera_Finder.xcdatamodeld in Sources */,
 				68C426ED2AF933D100C131D0 /* HSCFColor.swift in Sources */,
+				9953553A2BB30AA500DB77A6 /* LoadingViewController.swift in Sources */,
 				68617D242B03ACB800190EC0 /* HSCFUIVIewController+ext.swift in Sources */,
 				68C4271C2AF9553A00C131D0 /* SettingsItem.swift in Sources */,
 				68D3EDBA2B2B5F0100442F17 /* AntiSpyButtonCell.swift in Sources */,

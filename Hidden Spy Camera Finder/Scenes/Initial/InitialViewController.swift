@@ -8,16 +8,16 @@
 import UIKit
 import SwiftUI
 
-class InitialViewController: HSCFBaseViewController {
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showNextScene()
-    }
-    
-    private func showNextScene() {
-        let menuController = GSDA_ContainerForMenuController_GSD()
-        menuController.modalPresentationStyle = .fullScreen
-        menuController.modalTransitionStyle = .crossDissolve
-        present(menuController, animated: true)
-    }
-}
+//class InitialViewController: HSCFBaseViewController {
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        showNextScene()
+//    }
+//    
+//    private func showNextScene() {
+//        let menuController = GSDA_ContainerForMenuController_GSD()
+//        menuController.modalPresentationStyle = .fullScreen
+//        menuController.modalTransitionStyle = .crossDissolve
+//        present(menuController, animated: true)
+//    }
+//}

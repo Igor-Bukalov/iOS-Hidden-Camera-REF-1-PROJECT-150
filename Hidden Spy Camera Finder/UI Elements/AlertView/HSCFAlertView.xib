@@ -12,12 +12,20 @@
             <connections>
                 <outlet property="actionButtonsStackView" destination="0UW-R8-wV8" id="ifd-FJ-3C3"/>
                 <outlet property="alertView" destination="715-6n-JpH" id="tsZ-Od-sGy"/>
+                <outlet property="alertViewHeightConstraint" destination="1zy-sR-DVa" id="oI0-EZ-hgb"/>
+                <outlet property="buttonHeightConstraint" destination="Uc3-Je-0YK" id="wno-aS-tmB"/>
                 <outlet property="imageView" destination="ezE-rI-On9" id="9gM-bh-sgg"/>
+                <outlet property="insideViewBottomConstraint" destination="BjW-aR-XFc" id="9n2-aL-CA7"/>
+                <outlet property="insideViewLeadingConstraint" destination="FGz-Ig-A09" id="MxR-oS-EST"/>
+                <outlet property="insideViewTopConstraint" destination="IBF-me-Z8N" id="1TV-7m-YRy"/>
+                <outlet property="insideViewTrailingConstraint" destination="sbW-Qe-lLz" id="d3J-cd-uQt"/>
+                <outlet property="leadingConstraint" destination="xiN-9I-HTi" id="SOv-CS-OTf"/>
                 <outlet property="leftActionButton" destination="Rxj-45-yxO" id="RQX-a7-FGZ"/>
                 <outlet property="messageLbl" destination="HSF-1V-CHJ" id="COb-Er-ff0"/>
                 <outlet property="parentView" destination="iN0-l3-epB" id="fem-3O-VIy"/>
                 <outlet property="rightActionButton" destination="ELA-LW-dKk" id="Q2j-fp-oTD"/>
                 <outlet property="titleLbl" destination="qQn-ZA-pHb" id="fnW-sV-AYj"/>
+                <outlet property="trailingConstraint" destination="Axf-Um-7KI" id="Bgy-qY-139"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

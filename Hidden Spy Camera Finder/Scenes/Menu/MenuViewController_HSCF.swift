@@ -300,7 +300,7 @@ class MenuViewController: UIViewController {
 struct GSDA_ContainerForMenuController_GSD_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            InitialViewController()
+            GSDA_ContainerForMenuController_GSD()
         }
     }
 }

@@ -127,7 +127,7 @@ class BackBarButtonItem: UIBarButtonItem {
 struct HSCFBaseViewController_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            InitialViewController()
+            GSDA_ContainerForMenuController_GSD()
         }
     }
 }

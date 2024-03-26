@@ -29,6 +29,8 @@ class BTRadarViewController: HSCFBaseViewController, UITableViewDelegate {
     }()
     
     // MARK: - Properties
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     private lazy var dataSource: DataSource = DataSource(tableView: tableView) { [weak self] tableView, indexPath, item in
         if let item = item as? String {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScanDetailTextCell", for: indexPath) as? ScanDetailTextCell else { return UITableViewCell() }
@@ -41,7 +43,7 @@ class BTRadarViewController: HSCFBaseViewController, UITableViewDelegate {
             cell.valueLabel.text = "\(item.rssi) m"
             return cell
         } else if let item = item as? Int {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AnimationSliderDevicesCell", for: indexPath) as? AnimationSliderDevicesCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AnimationDevicesSliderCell", for: indexPath) as? AnimationDevicesSliderCell else { return UITableViewCell() }
             return cell
         } else {
             return UITableViewCell()
@@ -137,15 +139,20 @@ class BTRadarViewController: HSCFBaseViewController, UITableViewDelegate {
     
     private func setupSubviews_S32HP() {
         view.addSubview(tableView)
-        tableView.edgesToSuperview(usingSafeArea: true)
+        if isiPad {
+            tableView.topToSuperview(usingSafeArea: true)
+            tableView.bottomToSuperview(usingSafeArea: true)
+            tableView.centerXToSuperview(usingSafeArea: true)
+            tableView.width(560)
+        } else {
+            tableView.edgesToSuperview(usingSafeArea: true)
+        }
     }
     
     private func configureTableView_HSCF() {
-        view.addSubview(tableView)
-        tableView.edgesToSuperview()
         tableView.register(BTRadarPerephiralCell.self, forCellReuseIdentifier: "BTRadarPerephiralCell")
         tableView.register(ScanDetailTextCell.self, forCellReuseIdentifier: "ScanDetailTextCell")
-        tableView.register(AnimationSliderDevicesCell.self, forCellReuseIdentifier: "AnimationSliderDevicesCell")
+        tableView.register(AnimationDevicesSliderCell.self, forCellReuseIdentifier: "AnimationDevicesSliderCell")
     }
     
     private func prepareData_HSCF() {
