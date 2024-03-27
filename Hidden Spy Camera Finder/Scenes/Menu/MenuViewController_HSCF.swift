@@ -31,7 +31,7 @@ final class HTSP_MenuItem_View: UIView {
     }()
     lazy var menuTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 20 : 12)
+        label.font = UIFont.gilroy(.semibold, size: isiPad ? 20 : 12)
         label.textAlignment = .center
         label.textColor = UIColor.white.withAlphaComponent(0.7)
         return label
@@ -63,8 +63,8 @@ final class HTSP_MenuItem_View: UIView {
     
     func isSelect(_ isSelect: Bool) {
         menuImage.layer.opacity = isSelect ? 1.0 : 0.7
-        menuImage.tintColor = isSelect ? UIColor.blueLabel : UIColor.white.withAlphaComponent(0.7)
-        menuTitle.textColor = isSelect ? UIColor.blueLabel : UIColor.white.withAlphaComponent(0.7)
+        menuImage.tintColor = isSelect ? UIColor.customDarkBlue : UIColor.white.withAlphaComponent(0.7)
+        menuTitle.textColor = isSelect ? UIColor.customDarkBlue : UIColor.white.withAlphaComponent(0.7)
         shadowImageView.isHidden = !isSelect
     }
     
@@ -141,9 +141,9 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !UserDefaults.termsOfServiceAlertIsShowed {
+        if !UserDefaults.hasShownTermsOfServiceAlert {
             HSCFAlertView.instance.showAlert_HSCF(title: "Terms of Service and Privacy Policy", message: "Welcome! We are dedicated to ensuring the privacy of your information. Our Terms of Service and Privacy Policy offer detailed information on data collection and usage. By clicking ‘Accept’ below, you affirm your consent to our Terms of Service and understanding of the Privacy Policy.", leftActionTitle: "Accept", rightActionTitle: nil) {
-                UserDefaults.termsOfServiceAlertIsShowed = true
+                UserDefaults.hasShownTermsOfServiceAlert = true
             } rightAction: {
                 
             }
@@ -165,7 +165,7 @@ final class GSDA_ContainerForMenuController_GSD: UIViewController {
     
     lazy var menuTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 33 : 20)
+        label.font = UIFont.gilroy(.semibold, size: isiPad ? 33 : 20)
         label.textAlignment = .center
         label.textColor = UIColor.white
         return label

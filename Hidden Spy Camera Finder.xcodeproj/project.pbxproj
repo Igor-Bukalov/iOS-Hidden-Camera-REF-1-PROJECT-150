@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6819CB622AFE780F003C9C1B /* Radar.json in Resources */ = {isa = PBXBuildFile; fileRef = 6819CB612AFE780F003C9C1B /* Radar.json */; };
 		6819CB672AFE83EF003C9C1B /* BTRadarPerephiralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6819CB662AFE83EF003C9C1B /* BTRadarPerephiralCell.swift */; };
 		682E8E532AFA354B006F6D2D /* HSCFDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E8E522AFA354B006F6D2D /* HSCFDeviceInfo.swift */; };
-		682E8E562AFA3865006F6D2D /* String+NA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E8E552AFA3865006F6D2D /* String+NA.swift */; };
+		682E8E562AFA3865006F6D2D /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E8E552AFA3865006F6D2D /* String+Ext.swift */; };
 		682E8E6D2AFA9FE2006F6D2D /* NetworkInfo_HSCF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E8E6C2AFA9FE2006F6D2D /* NetworkInfo_HSCF.swift */; };
 		682E8E6F2AFAA02C006F6D2D /* HSCFNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E8E6E2AFAA02C006F6D2D /* HSCFNetwork.swift */; };
 		684968992B0CE1A100764C80 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 684968982B0CE1A100764C80 /* Reachability */; };
@@ -23,14 +22,13 @@
 		684969792B0E2CAA00764C80 /* Trademob in Frameworks */ = {isa = PBXBuildFile; productRef = 684969782B0E2CAA00764C80 /* Trademob */; };
 		6849697B2B0E2CAA00764C80 /* WebBridge in Frameworks */ = {isa = PBXBuildFile; productRef = 6849697A2B0E2CAA00764C80 /* WebBridge */; };
 		6849697E2B0E2E4400764C80 /* Pushwoosh in Frameworks */ = {isa = PBXBuildFile; productRef = 6849697D2B0E2E4400764C80 /* Pushwoosh */; };
-		684969892B0E2FA200764C80 /* Noti_asd_ficationSe_asdrvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684969882B0E2FA200764C80 /* Noti_asd_ficationSe_asdrvice.swift */; };
+		684969892B0E2FA200764C80 /* NotificationService+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684969882B0E2FA200764C80 /* NotificationService+Ext.swift */; };
 		6849698D2B0E2FA200764C80 /* NotificationServiceJKMGmedia.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 684969862B0E2FA200764C80 /* NotificationServiceJKMGmedia.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		68617CEA2B025A8500190EC0 /* HSCFTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CE92B025A8500190EC0 /* HSCFTutorialViewController.swift */; };
 		68617CF22B0268F800190EC0 /* DeviceDetailDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617CF12B0268F800190EC0 /* DeviceDetailDistance.swift */; };
 		68617D1C2B03A51B00190EC0 /* AntiSpyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D1B2B03A51B00190EC0 /* AntiSpyDetails.swift */; };
 		68617D1F2B03A59700190EC0 /* AntiSpyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D1E2B03A59700190EC0 /* AntiSpyDetailsCell.swift */; };
 		68617D212B03A9E000190EC0 /* AntiSpyDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D202B03A9E000190EC0 /* AntiSpyDetailModel.swift */; };
-		68617D242B03ACB800190EC0 /* HSCFUIVIewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D232B03ACB800190EC0 /* HSCFUIVIewController+ext.swift */; };
 		68617D2C2B03B92000190EC0 /* LocalNetworkPermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D2B2B03B92000190EC0 /* LocalNetworkPermissionService.swift */; };
 		68617D2E2B03C71E00190EC0 /* LanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68617D2D2B03C71E00190EC0 /* LanModel.swift */; };
 		689B0C842AFD0B520071634D /* ScanDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B0C832AFD0B520071634D /* ScanDetailTextCell.swift */; };
@@ -42,13 +40,11 @@
 		68C426DC2AF9316300C131D0 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 68C426DB2AF9316300C131D0 /* TinyConstraints */; };
 		68C426E02AF931C600C131D0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426DF2AF931C600C131D0 /* InitialViewController.swift */; };
 		68C426E32AF931F100C131D0 /* MenuViewController_HSCF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426E22AF931F100C131D0 /* MenuViewController_HSCF.swift */; };
-		68C426E62AF9322900C131D0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 68C426E52AF9322900C131D0 /* Lottie */; };
 		68C426E92AF9334B00C131D0 /* HSCFScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426E82AF9334B00C131D0 /* HSCFScanViewController.swift */; };
-		68C426ED2AF933D100C131D0 /* HSCFColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426EC2AF933D100C131D0 /* HSCFColor.swift */; };
-		68C426F02AF9341200C131D0 /* HSCFUIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426EF2AF9341200C131D0 /* HSCFUIColor+Hex.swift */; };
+		68C426F02AF9341200C131D0 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426EF2AF9341200C131D0 /* UIColor+Ext.swift */; };
 		68C426F32AF9348500C131D0 /* HSCFBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426F22AF9348500C131D0 /* HSCFBaseViewController.swift */; };
 		68C426F62AF93BDE00C131D0 /* HSCFBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C426F52AF93BDE00C131D0 /* HSCFBaseNavigationController.swift */; };
-		68C4270D2AF944B400C131D0 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4270C2AF944B400C131D0 /* UIFont+Custom.swift */; };
+		68C4270D2AF944B400C131D0 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4270C2AF944B400C131D0 /* UIFont+Ext.swift */; };
 		68C427102AF94A9D00C131D0 /* AntiSpyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4270F2AF94A9D00C131D0 /* AntiSpyViewController.swift */; };
 		68C427132AF94C0000C131D0 /* BTRadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C427122AF94C0000C131D0 /* BTRadarViewController.swift */; };
 		68C427162AF94C4A00C131D0 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C427152AF94C4A00C131D0 /* MenuController.swift */; };
@@ -57,17 +53,16 @@
 		68C45E332B17300400434A91 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = 68C45E322B17300400434A91 /* Devices.json */; };
 		68D184E32B1F343800A28BAB /* mac-s.json in Resources */ = {isa = PBXBuildFile; fileRef = 68D184E22B1F343800A28BAB /* mac-s.json */; };
 		68D3EDBA2B2B5F0100442F17 /* AntiSpyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D3EDB92B2B5F0100442F17 /* AntiSpyButtonCell.swift */; };
-		68DE0C4B2B3C734B005C4464 /* UserwetwerweDefaultsHSEF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE0C4A2B3C734B005C4464 /* UserwetwerweDefaultsHSEF.swift */; };
+		68DE0C4B2B3C734B005C4464 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE0C4A2B3C734B005C4464 /* UserDefaults+Ext.swift */; };
 		68E1A7902AFBAEC000CBB5A0 /* HSCFLocation_HS_Mnrg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1A78F2AFBAEC000CBB5A0 /* HSCFLocation_HS_Mnrg.swift */; };
 		68E1A7942AFBCCFF00CBB5A0 /* BLUService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1A7932AFBCCFF00CBB5A0 /* BLUService.swift */; };
 		68E1A7962AFBD1C900CBB5A0 /* BluModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1A7952AFBD1C900CBB5A0 /* BluModel.swift */; };
-		68F7A7B72AFCE39F00B349E6 /* UIView+Bounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7B62AFCE39F00B349E6 /* UIView+Bounce.swift */; };
-		68F7A7BA2AFCE6CE00B349E6 /* Alert+BLu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7B92AFCE6CE00B349E6 /* Alert+BLu.swift */; };
+		68F7A7B72AFCE39F00B349E6 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7B62AFCE39F00B349E6 /* UIView+Ext.swift */; };
+		68F7A7BA2AFCE6CE00B349E6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7B92AFCE6CE00B349E6 /* UIViewController+Ext.swift */; };
 		68F7A7BD2AFCE71A00B349E6 /* CBManagerState+AlertTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7BC2AFCE71A00B349E6 /* CBManagerState+AlertTitles.swift */; };
 		68F7A7C02AFCEB5500B349E6 /* ScanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7BF2AFCEB5500B349E6 /* ScanDetailsViewController.swift */; };
-		68F7A7C22AFCEBB600B349E6 /* Controller_HSCF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7C12AFCEBB600B349E6 /* Controller_HSCF.swift */; };
+		68F7A7C22AFCEBB600B349E6 /* WrappedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7C12AFCEBB600B349E6 /* WrappedController.swift */; };
 		68F7A7C52AFCEF7000B349E6 /* ScanDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7C42AFCEF7000B349E6 /* ScanDetailCell.swift */; };
-		68F7A7CB2AFD011400B349E6 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F7A7CA2AFD011400B349E6 /* UIView+Nib.swift */; };
 		68FE60FB2B04E5C800EF9DA4 /* HSCFAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68FE60F92B04E5C800EF9DA4 /* HSCFAlertView.xib */; };
 		68FE60FC2B04E5C800EF9DA4 /* HSCFAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FE60FA2B04E5C800EF9DA4 /* HSCFAlertView.swift */; };
 		68FE60FF2B04EC6400EF9DA4 /* EmptyStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FE60FE2B04EC6400EF9DA4 /* EmptyStateCell.swift */; };
@@ -88,6 +83,8 @@
 		991952932BAB98D10078CFD4 /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952922BAB98D10078CFD4 /* TutorialModel.swift */; };
 		991952952BAB98FD0078CFD4 /* TutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991952942BAB98FD0078CFD4 /* TutorialCell.swift */; };
 		991EDC262BACA97C008AE665 /* MenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991EDC252BACA97C008AE665 /* MenuItemCollectionViewCell.swift */; };
+		9924ABF32BB448260043EFEF /* radar-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 9924ABF22BB448260043EFEF /* radar-animation.json */; };
+		9924ABF62BB44C4B0043EFEF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 9924ABF52BB44C4B0043EFEF /* Lottie */; };
 		995355382BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995355372BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift */; };
 		9953553A2BB30AA500DB77A6 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995355392BB30AA500DB77A6 /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -117,17 +114,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6819CB612AFE780F003C9C1B /* Radar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Radar.json; sourceTree = "<group>"; };
 		6819CB662AFE83EF003C9C1B /* BTRadarPerephiralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTRadarPerephiralCell.swift; sourceTree = "<group>"; };
 		682E8E522AFA354B006F6D2D /* HSCFDeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFDeviceInfo.swift; sourceTree = "<group>"; };
-		682E8E552AFA3865006F6D2D /* String+NA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NA.swift"; sourceTree = "<group>"; };
+		682E8E552AFA3865006F6D2D /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		682E8E6C2AFA9FE2006F6D2D /* NetworkInfo_HSCF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo_HSCF.swift; sourceTree = "<group>"; };
 		682E8E6E2AFAA02C006F6D2D /* HSCFNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFNetwork.swift; sourceTree = "<group>"; };
 		6849689D2B0CE39500764C80 /* HSCFNetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSCFNetworkMonitor.swift; sourceTree = "<group>"; };
 		684968A22B0E2C0F00764C80 /* HSCFServicesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSCFServicesManager.swift; sourceTree = "<group>"; };
 		684969252B0E2C1000764C80 /* Configurations_HSCF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations_HSCF.swift; sourceTree = "<group>"; };
 		684969862B0E2FA200764C80 /* NotificationServiceJKMGmedia.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceJKMGmedia.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		684969882B0E2FA200764C80 /* Noti_asd_ficationSe_asdrvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noti_asd_ficationSe_asdrvice.swift; sourceTree = "<group>"; };
+		684969882B0E2FA200764C80 /* NotificationService+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationService+Ext.swift"; sourceTree = "<group>"; };
 		6849698A2B0E2FA200764C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		684969922B0E2FB100764C80 /* NotificationServiceJKMGmedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationServiceJKMGmedia.entitlements; sourceTree = "<group>"; };
 		68617CE92B025A8500190EC0 /* HSCFTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFTutorialViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +131,6 @@
 		68617D1B2B03A51B00190EC0 /* AntiSpyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetails.swift; sourceTree = "<group>"; };
 		68617D1E2B03A59700190EC0 /* AntiSpyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetailsCell.swift; sourceTree = "<group>"; };
 		68617D202B03A9E000190EC0 /* AntiSpyDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyDetailModel.swift; sourceTree = "<group>"; };
-		68617D232B03ACB800190EC0 /* HSCFUIVIewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HSCFUIVIewController+ext.swift"; sourceTree = "<group>"; };
 		68617D2B2B03B92000190EC0 /* LocalNetworkPermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkPermissionService.swift; sourceTree = "<group>"; };
 		68617D2D2B03C71E00190EC0 /* LanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanModel.swift; sourceTree = "<group>"; };
 		689B0C832AFD0B520071634D /* ScanDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDetailTextCell.swift; sourceTree = "<group>"; };
@@ -149,11 +144,10 @@
 		68C426DF2AF931C600C131D0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		68C426E22AF931F100C131D0 /* MenuViewController_HSCF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController_HSCF.swift; sourceTree = "<group>"; };
 		68C426E82AF9334B00C131D0 /* HSCFScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFScanViewController.swift; sourceTree = "<group>"; };
-		68C426EC2AF933D100C131D0 /* HSCFColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFColor.swift; sourceTree = "<group>"; };
-		68C426EF2AF9341200C131D0 /* HSCFUIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HSCFUIColor+Hex.swift"; sourceTree = "<group>"; };
+		68C426EF2AF9341200C131D0 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		68C426F22AF9348500C131D0 /* HSCFBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFBaseViewController.swift; sourceTree = "<group>"; };
 		68C426F52AF93BDE00C131D0 /* HSCFBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFBaseNavigationController.swift; sourceTree = "<group>"; };
-		68C4270C2AF944B400C131D0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
+		68C4270C2AF944B400C131D0 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		68C4270F2AF94A9D00C131D0 /* AntiSpyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyViewController.swift; sourceTree = "<group>"; };
 		68C427122AF94C0000C131D0 /* BTRadarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTRadarViewController.swift; sourceTree = "<group>"; };
 		68C427152AF94C4A00C131D0 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
@@ -162,18 +156,17 @@
 		68C45E322B17300400434A91 /* Devices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Devices.json; sourceTree = "<group>"; };
 		68D184E22B1F343800A28BAB /* mac-s.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mac-s.json"; sourceTree = "<group>"; };
 		68D3EDB92B2B5F0100442F17 /* AntiSpyButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntiSpyButtonCell.swift; sourceTree = "<group>"; };
-		68DE0C4A2B3C734B005C4464 /* UserwetwerweDefaultsHSEF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserwetwerweDefaultsHSEF.swift; sourceTree = "<group>"; };
+		68DE0C4A2B3C734B005C4464 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		68E1A78F2AFBAEC000CBB5A0 /* HSCFLocation_HS_Mnrg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSCFLocation_HS_Mnrg.swift; sourceTree = "<group>"; };
 		68E1A7912AFBB12E00CBB5A0 /* Hidden Spy Camera Finder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Hidden Spy Camera Finder.entitlements"; sourceTree = "<group>"; };
 		68E1A7932AFBCCFF00CBB5A0 /* BLUService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLUService.swift; sourceTree = "<group>"; };
 		68E1A7952AFBD1C900CBB5A0 /* BluModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluModel.swift; sourceTree = "<group>"; };
-		68F7A7B62AFCE39F00B349E6 /* UIView+Bounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Bounce.swift"; sourceTree = "<group>"; };
-		68F7A7B92AFCE6CE00B349E6 /* Alert+BLu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+BLu.swift"; sourceTree = "<group>"; };
+		68F7A7B62AFCE39F00B349E6 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		68F7A7B92AFCE6CE00B349E6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		68F7A7BC2AFCE71A00B349E6 /* CBManagerState+AlertTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBManagerState+AlertTitles.swift"; sourceTree = "<group>"; };
 		68F7A7BF2AFCEB5500B349E6 /* ScanDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDetailsViewController.swift; sourceTree = "<group>"; };
-		68F7A7C12AFCEBB600B349E6 /* Controller_HSCF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller_HSCF.swift; sourceTree = "<group>"; };
+		68F7A7C12AFCEBB600B349E6 /* WrappedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedController.swift; sourceTree = "<group>"; };
 		68F7A7C42AFCEF7000B349E6 /* ScanDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDetailCell.swift; sourceTree = "<group>"; };
-		68F7A7CA2AFD011400B349E6 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		68FE60F92B04E5C800EF9DA4 /* HSCFAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HSCFAlertView.xib; sourceTree = "<group>"; };
 		68FE60FA2B04E5C800EF9DA4 /* HSCFAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSCFAlertView.swift; sourceTree = "<group>"; };
 		68FE60FE2B04EC6400EF9DA4 /* EmptyStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCell.swift; sourceTree = "<group>"; };
@@ -202,6 +195,7 @@
 		991952922BAB98D10078CFD4 /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
 		991952942BAB98FD0078CFD4 /* TutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCell.swift; sourceTree = "<group>"; };
 		991EDC252BACA97C008AE665 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		9924ABF22BB448260043EFEF /* radar-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "radar-animation.json"; sourceTree = "<group>"; };
 		995355372BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDevicesSliderCell.swift; sourceTree = "<group>"; };
 		995355392BB30AA500DB77A6 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,13 +214,13 @@
 			files = (
 				684969752B0E2CAA00764C80 /* Criteo in Frameworks */,
 				684969792B0E2CAA00764C80 /* Trademob in Frameworks */,
+				9924ABF62BB44C4B0043EFEF /* Lottie in Frameworks */,
 				68C426DC2AF9316300C131D0 /* TinyConstraints in Frameworks */,
 				684969772B0E2CAA00764C80 /* Sociomantic in Frameworks */,
 				6849697B2B0E2CAA00764C80 /* WebBridge in Frameworks */,
 				6849697E2B0E2E4400764C80 /* Pushwoosh in Frameworks */,
 				684969732B0E2CAA00764C80 /* Adjust in Frameworks */,
 				684968992B0CE1A100764C80 /* Reachability in Frameworks */,
-				68C426E62AF9322900C131D0 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +263,7 @@
 		682E8E542AFA3859006F6D2D /* String */ = {
 			isa = PBXGroup;
 			children = (
-				682E8E552AFA3865006F6D2D /* String+NA.swift */,
+				682E8E552AFA3865006F6D2D /* String+Ext.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -290,18 +284,11 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
-		6849697F2B0E2F4600764C80 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		684969872B0E2FA200764C80 /* NotificationServiceJKMGmedia */ = {
 			isa = PBXGroup;
 			children = (
 				684969922B0E2FB100764C80 /* NotificationServiceJKMGmedia.entitlements */,
-				684969882B0E2FA200764C80 /* Noti_asd_ficationSe_asdrvice.swift */,
+				684969882B0E2FA200764C80 /* NotificationService+Ext.swift */,
 				6849698A2B0E2FA200764C80 /* Info.plist */,
 			);
 			path = NotificationServiceJKMGmedia;
@@ -347,14 +334,6 @@
 			path = AntiSpyDetailsCell;
 			sourceTree = "<group>";
 		};
-		68617D222B03ACAD00190EC0 /* UIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				68617D232B03ACB800190EC0 /* HSCFUIVIewController+ext.swift */,
-			);
-			path = UIViewController;
-			sourceTree = "<group>";
-		};
 		689B0C812AFD0B220071634D /* ScanDetailCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,7 +356,6 @@
 				68C426C22AF930A300C131D0 /* Hidden Spy Camera Finder */,
 				684969872B0E2FA200764C80 /* NotificationServiceJKMGmedia */,
 				68C426C12AF930A300C131D0 /* Products */,
-				6849697F2B0E2F4600764C80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -407,7 +385,7 @@
 				68C426F72AF9433200C131D0 /* Fonts */,
 				68FE61022B05009200EF9DA4 /* Classes */,
 				68C426CF2AF930A400C131D0 /* Assets.xcassets */,
-				6819CB612AFE780F003C9C1B /* Radar.json */,
+				9924ABF22BB448260043EFEF /* radar-animation.json */,
 				68D184E22B1F343800A28BAB /* mac-s.json */,
 				68C45E322B17300400434A91 /* Devices.json */,
 				68C426D12AF930A400C131D0 /* Launc_hSASd_creen.storyboard */,
@@ -465,30 +443,20 @@
 			isa = PBXGroup;
 			children = (
 				682E8E512AFA353F006F6D2D /* Services */,
-				68C426EB2AF933CA00C131D0 /* Colors */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		68C426EB2AF933CA00C131D0 /* Colors */ = {
-			isa = PBXGroup;
-			children = (
-				68C426EC2AF933D100C131D0 /* HSCFColor.swift */,
-			);
-			path = Colors;
 			sourceTree = "<group>";
 		};
 		68C426EE2AF9340100C131D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				68DE0C492B3C7340005C4464 /* UserDefaults */,
-				68617D222B03ACAD00190EC0 /* UIViewController */,
 				68F7A7BB2AFCE71000B349E6 /* CBManagerState */,
-				68F7A7B82AFCE6C100B349E6 /* Alert */,
+				68F7A7B82AFCE6C100B349E6 /* UIViewController */,
 				68F7A7B52AFCE38D00B349E6 /* UIView */,
 				682E8E542AFA3859006F6D2D /* String */,
 				68C4270B2AF944A700C131D0 /* UIFont */,
-				68C426EF2AF9341200C131D0 /* HSCFUIColor+Hex.swift */,
+				99CBB0B32BB4C520007B5EA7 /* UIColor */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -520,7 +488,7 @@
 		68C4270B2AF944A700C131D0 /* UIFont */ = {
 			isa = PBXGroup;
 			children = (
-				68C4270C2AF944B400C131D0 /* UIFont+Custom.swift */,
+				68C4270C2AF944B400C131D0 /* UIFont+Ext.swift */,
 			);
 			path = UIFont;
 			sourceTree = "<group>";
@@ -544,7 +512,7 @@
 		68C427142AF94C4300C131D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				68F7A7C12AFCEBB600B349E6 /* Controller_HSCF.swift */,
+				68F7A7C12AFCEBB600B349E6 /* WrappedController.swift */,
 				68C427152AF94C4A00C131D0 /* MenuController.swift */,
 			);
 			path = Controller;
@@ -582,7 +550,7 @@
 		68DE0C492B3C7340005C4464 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				68DE0C4A2B3C734B005C4464 /* UserwetwerweDefaultsHSEF.swift */,
+				68DE0C4A2B3C734B005C4464 /* UserDefaults+Ext.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -590,18 +558,17 @@
 		68F7A7B52AFCE38D00B349E6 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				68F7A7B62AFCE39F00B349E6 /* UIView+Bounce.swift */,
-				68F7A7CA2AFD011400B349E6 /* UIView+Nib.swift */,
+				68F7A7B62AFCE39F00B349E6 /* UIView+Ext.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
 		};
-		68F7A7B82AFCE6C100B349E6 /* Alert */ = {
+		68F7A7B82AFCE6C100B349E6 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
-				68F7A7B92AFCE6CE00B349E6 /* Alert+BLu.swift */,
+				68F7A7B92AFCE6CE00B349E6 /* UIViewController+Ext.swift */,
 			);
-			path = Alert;
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		68F7A7BB2AFCE71000B349E6 /* CBManagerState */ = {
@@ -742,6 +709,14 @@
 			path = LoadingViewController;
 			sourceTree = "<group>";
 		};
+		99CBB0B32BB4C520007B5EA7 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				68C426EF2AF9341200C131D0 /* UIColor+Ext.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -779,7 +754,6 @@
 			name = "Hidden Spy Camera Finder";
 			packageProductDependencies = (
 				68C426DB2AF9316300C131D0 /* TinyConstraints */,
-				68C426E52AF9322900C131D0 /* Lottie */,
 				684968982B0CE1A100764C80 /* Reachability */,
 				684969722B0E2CAA00764C80 /* Adjust */,
 				684969742B0E2CAA00764C80 /* Criteo */,
@@ -787,6 +761,7 @@
 				684969782B0E2CAA00764C80 /* Trademob */,
 				6849697A2B0E2CAA00764C80 /* WebBridge */,
 				6849697D2B0E2E4400764C80 /* Pushwoosh */,
+				9924ABF52BB44C4B0043EFEF /* Lottie */,
 			);
 			productName = "Hidden Spy Camera Finder";
 			productReference = 68C426C02AF930A300C131D0 /* Hidden Spy Camera Finder.app */;
@@ -863,10 +838,10 @@
 			mainGroup = 68C426B72AF930A300C131D0;
 			packageReferences = (
 				68C426DA2AF9316300C131D0 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
-				68C426E42AF9322900C131D0 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				684968972B0CE1A100764C80 /* XCRemoteSwiftPackageReference "Reachability" */,
 				684969712B0E2CAA00764C80 /* XCRemoteSwiftPackageReference "ios_sdk" */,
 				6849697C2B0E2E4400764C80 /* XCRemoteSwiftPackageReference "Pushwoosh-XCFramework" */,
+				9924ABF42BB44C4B0043EFEF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 68C426C12AF930A300C131D0 /* Products */;
 			projectDirPath = "";
@@ -892,7 +867,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6819CB622AFE780F003C9C1B /* Radar.json in Resources */,
+				9924ABF32BB448260043EFEF /* radar-animation.json in Resources */,
 				991952752BAB1B0C0078CFD4 /* Gilroy-Semibold.ttf in Resources */,
 				68FE61302B061DF400EF9DA4 /* data.plist in Resources */,
 				68C426D32AF930A400C131D0 /* Launc_hSASd_creen.storyboard in Resources */,
@@ -912,7 +887,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				684969892B0E2FA200764C80 /* Noti_asd_ficationSe_asdrvice.swift in Sources */,
+				684969892B0E2FA200764C80 /* NotificationService+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,10 +898,10 @@
 				689B0C842AFD0B520071634D /* ScanDetailTextCell.swift in Sources */,
 				68617D1C2B03A51B00190EC0 /* AntiSpyDetails.swift in Sources */,
 				995355382BB2EC5C00DB77A6 /* AnimationDevicesSliderCell.swift in Sources */,
-				68F7A7BA2AFCE6CE00B349E6 /* Alert+BLu.swift in Sources */,
+				68F7A7BA2AFCE6CE00B349E6 /* UIViewController+Ext.swift in Sources */,
 				68C427132AF94C0000C131D0 /* BTRadarViewController.swift in Sources */,
 				68FE611B2B05117F00EF9DA4 /* HeaderCell.swift in Sources */,
-				68C426F02AF9341200C131D0 /* HSCFUIColor+Hex.swift in Sources */,
+				68C426F02AF9341200C131D0 /* UIColor+Ext.swift in Sources */,
 				68617CF22B0268F800190EC0 /* DeviceDetailDistance.swift in Sources */,
 				68F7A7C52AFCEF7000B349E6 /* ScanDetailCell.swift in Sources */,
 				68617D1F2B03A59700190EC0 /* AntiSpyDetailsCell.swift in Sources */,
@@ -938,17 +913,16 @@
 				991952952BAB98FD0078CFD4 /* TutorialCell.swift in Sources */,
 				68C426E32AF931F100C131D0 /* MenuViewController_HSCF.swift in Sources */,
 				68C426E02AF931C600C131D0 /* InitialViewController.swift in Sources */,
-				68C4270D2AF944B400C131D0 /* UIFont+Custom.swift in Sources */,
+				68C4270D2AF944B400C131D0 /* UIFont+Ext.swift in Sources */,
 				991EDC262BACA97C008AE665 /* MenuItemCollectionViewCell.swift in Sources */,
 				68FE611D2B06128C00EF9DA4 /* LanScan2.m in Sources */,
 				68FE610B2B05009200EF9DA4 /* IpHelper.c in Sources */,
 				68617CEA2B025A8500190EC0 /* HSCFTutorialViewController.swift in Sources */,
-				68F7A7B72AFCE39F00B349E6 /* UIView+Bounce.swift in Sources */,
+				68F7A7B72AFCE39F00B349E6 /* UIView+Ext.swift in Sources */,
 				68FE612D2B061DED00EF9DA4 /* SimplePing.m in Sources */,
 				68C426E92AF9334B00C131D0 /* HSCFScanViewController.swift in Sources */,
-				68F7A7C22AFCEBB600B349E6 /* Controller_HSCF.swift in Sources */,
+				68F7A7C22AFCEBB600B349E6 /* WrappedController.swift in Sources */,
 				682E8E532AFA354B006F6D2D /* HSCFDeviceInfo.swift in Sources */,
-				68F7A7CB2AFD011400B349E6 /* UIView+Nib.swift in Sources */,
 				68C427162AF94C4A00C131D0 /* MenuController.swift in Sources */,
 				68C426C42AF930A300C131D0 /* AppDelegate.swift in Sources */,
 				68FE60FC2B04E5C800EF9DA4 /* HSCFAlertView.swift in Sources */,
@@ -962,13 +936,11 @@
 				68AE0E872B4D35BB005DAC60 /* DiscoveryService.swift in Sources */,
 				682E8E6F2AFAA02C006F6D2D /* HSCFNetwork.swift in Sources */,
 				68F7A7BD2AFCE71A00B349E6 /* CBManagerState+AlertTitles.swift in Sources */,
-				68DE0C4B2B3C734B005C4464 /* UserwetwerweDefaultsHSEF.swift in Sources */,
+				68DE0C4B2B3C734B005C4464 /* UserDefaults+Ext.swift in Sources */,
 				68C426F32AF9348500C131D0 /* HSCFBaseViewController.swift in Sources */,
 				68617D2C2B03B92000190EC0 /* LocalNetworkPermissionService.swift in Sources */,
 				68C426CE2AF930A300C131D0 /* Hidden_Spy_Camera_Finder.xcdatamodeld in Sources */,
-				68C426ED2AF933D100C131D0 /* HSCFColor.swift in Sources */,
 				9953553A2BB30AA500DB77A6 /* LoadingViewController.swift in Sources */,
-				68617D242B03ACB800190EC0 /* HSCFUIVIewController+ext.swift in Sources */,
 				68C4271C2AF9553A00C131D0 /* SettingsItem.swift in Sources */,
 				68D3EDBA2B2B5F0100442F17 /* AntiSpyButtonCell.swift in Sources */,
 				684969262B0E2C1000764C80 /* HSCFServicesManager.swift in Sources */,
@@ -976,7 +948,7 @@
 				68E1A7902AFBAEC000CBB5A0 /* HSCFLocation_HS_Mnrg.swift in Sources */,
 				682E8E6D2AFA9FE2006F6D2D /* NetworkInfo_HSCF.swift in Sources */,
 				68E1A7942AFBCCFF00CBB5A0 /* BLUService.swift in Sources */,
-				682E8E562AFA3865006F6D2D /* String+NA.swift in Sources */,
+				682E8E562AFA3865006F6D2D /* String+Ext.swift in Sources */,
 				68FE61152B05041600EF9DA4 /* ScanDetailLanDeviceCell.swift in Sources */,
 				68617D212B03A9E000190EC0 /* AntiSpyDetailModel.swift in Sources */,
 				68FE612B2B061DE300EF9DA4 /* PingOperation.m in Sources */,
@@ -1011,7 +983,7 @@
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceJKMGmedia/NotificationServiceJKMGmedia.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WSL2HKX9YP;
+				DEVELOPMENT_TEAM = 89SPL377XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceJKMGmedia/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceJKMGmedia;
@@ -1023,7 +995,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.softinter.development.NotificationServiceJKMGmedia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newbundle.webgeek.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1038,7 +1010,7 @@
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceJKMGmedia/NotificationServiceJKMGmedia.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WSL2HKX9YP;
+				DEVELOPMENT_TEAM = 89SPL377XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceJKMGmedia/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceJKMGmedia;
@@ -1050,7 +1022,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.softinter.development.NotificationServiceJKMGmedia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newbundle.webgeek.NotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1190,9 +1162,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 89SPL377XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Hidden Spy Camera Finder/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "WebGeek app";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This program is difficult to detect devices on your network and connect to them.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow access to your location to connect IoT devices";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to your location to connect IoT devices";
@@ -1208,7 +1181,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.softinter.development;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newbundle.webgeek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1232,9 +1205,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 89SPL377XV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Hidden Spy Camera Finder/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "WebGeek app";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This program is difficult to detect devices on your network and connect to them.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow access to your location to connect IoT devices";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to your location to connect IoT devices";
@@ -1250,7 +1224,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.softinter.development;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newbundle.webgeek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1329,12 +1303,12 @@
 				version = 4.0.2;
 			};
 		};
-		68C426E42AF9322900C131D0 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+		9924ABF42BB44C4B0043EFEF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
-				kind = exactVersion;
-				version = 4.3.3;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1380,9 +1354,9 @@
 			package = 68C426DA2AF9316300C131D0 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
 			productName = TinyConstraints;
 		};
-		68C426E52AF9322900C131D0 /* Lottie */ = {
+		9924ABF52BB44C4B0043EFEF /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 68C426E42AF9322900C131D0 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			package = 9924ABF42BB44C4B0043EFEF /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

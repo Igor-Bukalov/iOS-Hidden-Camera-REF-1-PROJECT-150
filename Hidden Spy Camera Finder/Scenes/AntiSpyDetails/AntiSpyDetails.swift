@@ -29,10 +29,10 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
     
     private lazy var scanButton: UIButton = {
         let b = UIButton()
-        b.backgroundColor = UIColor.hex("4680E4")
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 30 : 18)
+        b.backgroundColor = UIColor.customLightBlue
+        b.titleLabel?.font = UIFont.gilroy(.medium, size: isiPad ? 30 : 18)
         b.setTitle("Scan the network", for: .normal)
-        b.setTitleColor(UIColor.hex("FFFFFF"), for: .normal)
+        b.setTitleColor(UIColor.white, for: .normal)
         b.layer.cornerRadius = isiPad ? 33 : 20
         b.addTarget(self, action: #selector(scanNetworkAction), for: .touchUpInside)
         return b
@@ -79,7 +79,7 @@ class AntiSpyDetailsViewController: HSCFBaseViewController {
         
         layer.path = pathRef
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.blueLabel.cgColor
+        layer.strokeColor = UIColor.customDarkBlue.cgColor
         
         let testView = UIView(frame: bounds)
         testView.layer.insertSublayer(layer, at: 0)

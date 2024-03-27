@@ -28,9 +28,9 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     // MARK: - UIProperties
     private lazy var detectionButton: UIButton = {
         let b = UIButton()
-        b.backgroundColor = UIColor.buttonBlueBackground
+        b.backgroundColor = UIColor.customLightBlue
         b.setTitleColor(.white, for: .normal)
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 30 : 18)
+        b.titleLabel?.font = UIFont.gilroy(.medium, size: isiPad ? 30 : 18)
         b.layer.cornerRadius = isiPad ? 33 : 20
         b.setTitle(ScanningState.startDetection.title, for: .normal)
         b.addTarget(self, action: #selector(scanningTapped), for: .touchUpInside)
@@ -39,10 +39,10 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var reviewButton: UIButton = {
         let b = UIButton()
-        b.layer.borderColor = UIColor.buttonGreyBorder.cgColor
+        b.layer.borderColor = UIColor.customGray.cgColor
         b.layer.borderWidth = 1
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 30 : 18)
-        b.setTitleColor(UIColor.buttonGreyText, for: .normal)
+        b.titleLabel?.font = UIFont.gilroy(.medium, size: isiPad ? 30 : 18)
+        b.setTitleColor(UIColor.customGray, for: .normal)
         b.layer.cornerRadius = isiPad ? 33 : 20
         b.setTitle("Review", for: .normal)
         b.addTarget(self, action: #selector(reviewTapped), for: .touchUpInside)
@@ -51,8 +51,8 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var suspiciousDevicesFound: UILabel = {
         let l = UILabel()
-        l.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 30 : 18)
-        l.textColor = UIColor.blueLabel
+        l.font = UIFont.gilroy(.medium, size: isiPad ? 30 : 18)
+        l.textColor = UIColor.customDarkBlue
         l.textAlignment = .center
         l.text = "Suspicious devices found: 0"
         return l
@@ -60,10 +60,9 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     
     private lazy var wifiIPAddress: UILabel = {
         let l = UILabel()
-        l.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
-        l.textColor = UIColor.blueLabel
+        l.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
+        l.textColor = UIColor.customDarkBlue
         l.textAlignment = .center
-//        l.text = "Wi-Fi IP: \(HSCFDeviceInfo.shared.getWiFiAddress() ?? .na)"
         l.text = "Wi-Fi IP: \(HSCFDeviceInfo.shared.wifiRouterAddress() ?? .na)"
         return l
     }()
@@ -72,13 +71,6 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         let v = UIView()
         v.backgroundColor = .clear
         return v
-    }()
-    
-    private lazy var radarImageView: UIImageView = UIImageView(image: UIImage(named: "scanning-loader"))
-    private lazy var radarProgressImageView: UIImageView = {
-        let img = UIImageView(image: UIImage(named: "scanning-loader-in-progress"))
-        img.layer.opacity = 0.0
-        return img
     }()
     
     // MARK: - Properties
@@ -105,6 +97,11 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         prepareUI_S32HP()
         locationManager = HSCFLocation_HS_Mnrg()
         locationManager?.askForAccess()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        showRadar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,39 +151,36 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         if isiPad {
             radarView.topToBottom(of: stackViewSecond, offset: 40)
             radarView.centerXToSuperview()
-            radarView.width(560)
+            radarView.width(660)
             radarView.aspectRatio(1)
         } else {
-            radarView.topToBottom(of: stackViewSecond, offset: 24)
-            radarView.leftToSuperview(offset: 20, usingSafeArea: true)
-            radarView.rightToSuperview(offset: -20, usingSafeArea: true)
+            radarView.topToBottom(of: stackViewSecond, offset: -16)
+            radarView.leftToSuperview(offset: -40)
+            radarView.rightToSuperview(offset: 40)
             radarView.aspectRatio(1)
         }
-        
-        radarView.addSubview(radarImageView)
-        radarImageView.edgesToSuperview()
-        
-        radarView.addSubview(radarProgressImageView)
-        radarProgressImageView.edgesToSuperview()
+    }
+    
+    private func showRadar() {
+        if animationView == nil {
+            self.animationView?.removeFromSuperview()
+            self.animationView = .init(name: "radar-animation")
+            self.animationView.frame = self.radarView.bounds
+            self.animationView.contentMode = .scaleAspectFill
+            self.animationView.loopMode = .loop
+            self.animationView.animationSpeed = 0.6
+            self.radarView.addSubview(self.animationView)
+            self.animationView.currentProgress = 0.13
+        }
     }
     
     private func animateRadar() {
-//        if animationView != nil {
-//            self.animationView.play()
-//        } else {
-//            self.animationView?.removeFromSuperview()
-//            self.animationView = .init(name: "Radar")
-//            self.animationView.frame = self.radarView.bounds
-//            self.animationView.contentMode = .scaleAspectFill
-//            self.animationView.loopMode = .loop
-//            self.animationView.animationSpeed = 0.5
-//            self.animationView.layer.cornerRadius = self.radarView.frame.height / 2
-//            self.radarView.addSubview(self.animationView)
-//            self.animationView.play()
-//        }
-        
-        self.radarImageView.layer.opacity = 0.0
-        self.radarProgressImageView.layer.opacity = 1.0
+        if animationView != nil {
+            self.animationView.play()
+        } else {
+            showRadar()
+            self.animationView.play()
+        }
     }
     
     private func stopAnimateRadar() {
@@ -195,9 +189,9 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     }
     
     private func showAlertWith_HSCF(state: CBManagerState) {
-        self.showAlert(title: state.alertTitle, message: state.alertSubtitle, style: .alert, okButtonTitle: state.alertActionTitle, cancelButtonTitle: "Cancel", okHandler: { _ in
-            state.action()
-        }, cancelHandler: { _ in })
+        self.presentAlert(title: state.alertContent.title, message: state.alertContent.subtitle, preferredStyle: .alert, positiveTitle: state.alertContent.actionTitle, negativeTitle: "Cancel") { _ in
+            state.performActionIfNeeded()
+        }
     }
     
     private func startScan() {
@@ -224,18 +218,12 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     }
     
     private func stopScan() {
-        self.radarImageView.layer.opacity = 1.0
-        self.radarProgressImageView.layer.opacity = 0.0
-        
         self.animationView?.pause()
         scanner.stop()
         scanningState = .startDetection
     }
     
     private func results() {
-        self.radarImageView.layer.opacity = 1.0
-        self.radarProgressImageView.layer.opacity = 0.0
-        
         self.animationView?.pause()
         scanner.stop()
         scanningState = .results
@@ -254,8 +242,8 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
     }
     
     private func isDisableReviewButton(_ isDisable: Bool) {
-        reviewButton.layer.borderColor = isDisable ? UIColor.buttonGreyBorder.cgColor : UIColor.buttonBlueBorder.cgColor
-        reviewButton.setTitleColor(isDisable ? UIColor.buttonGreyText : UIColor.buttonBlueText, for: .normal)
+        reviewButton.layer.borderColor = isDisable ? UIColor.customGray.cgColor : UIColor.customDarkBlue.cgColor
+        reviewButton.setTitleColor(isDisable ? UIColor.customGray : UIColor.customDarkBlue, for: .normal)
     }
     
     // MARK: - Actions
@@ -265,12 +253,12 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         switch scanningState {
         case .startDetection:
             startScan()
-            detectionButton.bounce(level: .low)
+            detectionButton.applyBounce(intensity: .gentle)
         case .checking:
             break
         case .results:
-            detectionButton.bounce(level: .low)
-            guard let vc = Controller_HSCF.scanDetails.controller as? ScanDetailsViewController else { return }
+            detectionButton.applyBounce(intensity: .gentle)
+            guard let vc = WrappedController.scanDetails.viewController as? ScanDetailsViewController else { return }
             let devices = getDevcies()
             vc.peripheralItems = devices
             navigationController?.pushViewController(vc, animated: true)
@@ -282,7 +270,7 @@ class HSCFScanViewController: HSCFBaseViewController, LanScannerDelegate2 {
         if scanningState == .results {
             scanningState = .startDetection
             startScan()
-            reviewButton.bounce(level: .low)
+            reviewButton.applyBounce(intensity: .gentle)
         }
     }
     

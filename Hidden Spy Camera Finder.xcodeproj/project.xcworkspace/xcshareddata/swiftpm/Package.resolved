@@ -1,5 +1,5 @@
 {
-  "originHash" : "ad1678d1324e1fd7b47bd0ed537ff9ebc62fb257ff060e951f05a60ad2ffce60",
+  "originHash" : "b394260a3c13c51bfed4b5fd0420a4ef7f28e3bf8552611baf5c0a4a1e6233f3",
   "pins" : [
     {
       "identity" : "ios_sdk",
@@ -7,16 +7,16 @@
       "location" : "https://github.com/adjust/ios_sdk",
       "state" : {
         "branch" : "master",
-        "revision" : "54096650288c5c4411a24c5594e28f033a77aff7"
+        "revision" : "3ebb6fe16fa67d5307bdafc93005d006bfa5fb74"
       }
     },
     {
-      "identity" : "lottie-spm",
+      "identity" : "lottie-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/airbnb/lottie-spm.git",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
       "state" : {
-        "revision" : "3e7eb8281ff9ac67e64a3a58a80c0aa9fa388b04",
-        "version" : "4.3.3"
+        "revision" : "7fe8b6f697ae7db4bf0df270119592cb5d502848",
+        "version" : "4.4.1"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Pushwoosh/Pushwoosh-XCFramework",
       "state" : {
-        "revision" : "a90a8693f5301c611dc37b92742b2c6e22c1d5fb",
-        "version" : "6.5.4"
+        "revision" : "210221cfded8756a83a6bd2814661d390fab2473",
+        "version" : "6.5.9"
       }
     },
     {
@@ -34,7 +34,7 @@
       "location" : "https://github.com/tonymillion/Reachability",
       "state" : {
         "branch" : "master",
-        "revision" : "8d7cc7be2f6ad0e1d4eee94653388d1fa6d453fc"
+        "revision" : "fe29a52e304dbefcb31a0753fa80eb1de8d4522f"
       }
     },
     {

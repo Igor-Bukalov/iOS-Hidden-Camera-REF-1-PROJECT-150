@@ -10,44 +10,29 @@ import TinyConstraints
 import Lottie
 import SwiftUI
 
-class DeviceDetailDistanceViewController: HSCFBaseViewController {
+class DeviceDistanceViewController: HSCFBaseViewController {
     // MARK: - UIProperties
     private lazy var radarView: UIView = {
         let v = UIView()
+        v.aspectRatio(1)
         v.backgroundColor = .clear
-        return v
-    }()
-    
-    private lazy var distanceView: UIView = {
-        let v = UIView()
-        v.backgroundColor = .clear
-        v.layer.cornerRadius = 12
-        v.layer.borderWidth = 1
-        v.layer.borderColor = UIColor.hex("333333").cgColor
         return v
     }()
     
     private lazy var distanceLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: 16)
-        lbl.textColor = UIColor.blueLabel
-        lbl.text = "Loading..."
+        lbl.font = UIFont.gilroy(.medium, size: isiPad ? 30 : 18)
+        lbl.textAlignment = .center
+        lbl.textColor = UIColor.customLightBlue
+        lbl.text = "Distance: 10 m"
         return lbl
-    }()
-    
-    private lazy var alertView: UIView = {
-        let v = UIView()
-        v.backgroundColor = UIColor.cellBackground
-        v.layer.cornerRadius = 12
-        return v
     }()
     
     private lazy var alertLabel: UIView = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroySemibold, size: 16)
+        lbl.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
         lbl.textAlignment = .center
-        lbl.layer.cornerRadius = 12
-        lbl.textColor = UIColor.hex("898787")
+        lbl.textColor = UIColor.customDarkBlue
         lbl.text = "Move to strengthen the signal"
         return lbl
     }()
@@ -65,6 +50,7 @@ class DeviceDetailDistanceViewController: HSCFBaseViewController {
     lazy var bluService = BLUService()
     private var animationView: LottieAnimationView!
     
+    private let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -82,31 +68,37 @@ class DeviceDetailDistanceViewController: HSCFBaseViewController {
     
     private func prepareSubviews() {
         view.addSubview(radarView)
-        radarView.topToSuperview(offset: 40, usingSafeArea: true)
-        radarView.leftToSuperview(offset: 33, usingSafeArea: true)
-        radarView.rightToSuperview(offset: -33, usingSafeArea: true)
-        radarView.aspectRatio(1)
-        
-        view.addSubview(distanceView)
-        distanceView.topToBottom(of: radarView, offset: 16)
-        distanceView.leftToSuperview(offset: 20)
-        
-        distanceView.addSubview(distanceLabel)
-        distanceLabel.topToSuperview(offset: 10)
-        distanceLabel.leadingToSuperview(offset: 20)
-        distanceLabel.trailingToSuperview(offset: 20)
-        distanceLabel.bottomToSuperview(offset: -10)
-        
-        view.addSubview(alertView)
-        alertView.topToBottom(of: distanceView, offset: 16)
-        alertView.leadingToSuperview(offset: 20)
-        alertView.trailingToSuperview(offset: 20)
-        
-        alertView.addSubview(alertLabel)
-        alertLabel.topToSuperview(offset: 10)
-        alertLabel.leadingToSuperview(offset: 20)
-        alertLabel.trailingToSuperview(offset: 20)
-        alertLabel.bottomToSuperview(offset: -10)
+        if isiPad {
+            radarView.topToSuperview(offset: 26, usingSafeArea: true)
+            radarView.centerXToSuperview()
+            radarView.width(660)
+        } else {
+            radarView.topToSuperview(usingSafeArea: true)
+            radarView.leftToSuperview(offset: -40)
+            radarView.rightToSuperview(offset: 40)
+        }
+
+        view.addSubview(distanceLabel)
+        if isiPad {
+            distanceLabel.topToBottom(of: radarView)
+            distanceLabel.centerXToSuperview()
+            distanceLabel.width(560)
+        } else {
+            distanceLabel.topToBottom(of: radarView, offset: -16)
+            distanceLabel.leadingToSuperview(offset: 20)
+            distanceLabel.trailingToSuperview(offset: 20)
+        }
+
+        view.addSubview(alertLabel)
+        if isiPad {
+            alertLabel.topToBottom(of: distanceLabel, offset: 13)
+            alertLabel.centerXToSuperview()
+            alertLabel.width(560)
+        } else {
+            alertLabel.topToBottom(of: distanceLabel, offset: 8)
+            alertLabel.leadingToSuperview(offset: 20)
+            alertLabel.trailingToSuperview(offset: 20)
+        }
     }
     
     private func animateRadar() {
@@ -114,22 +106,21 @@ class DeviceDetailDistanceViewController: HSCFBaseViewController {
             self.animationView.play()
         } else {
             self.animationView?.removeFromSuperview()
-            self.animationView = .init(name: "Radar")
+            self.animationView = .init(name: "radar-animation")
             self.animationView.frame = self.radarView.bounds
             self.animationView.contentMode = .scaleAspectFill
             self.animationView.loopMode = .loop
-            self.animationView.animationSpeed = 0.5
-            self.animationView.layer.cornerRadius = self.radarView.frame.height / 2
+            self.animationView.animationSpeed = 0.6
             self.radarView.addSubview(self.animationView)
             self.animationView.play()
         }
     }
 }
 
-struct DeviceDetailDistanceViewController_Previews: PreviewProvider {
+struct DeviceDistanceViewController_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            DeviceDetailDistanceViewController()
+            DeviceDistanceViewController()
         }
     }
 }

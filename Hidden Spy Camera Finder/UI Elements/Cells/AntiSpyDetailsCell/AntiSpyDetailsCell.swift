@@ -16,8 +16,8 @@ class AntiSpyDetailsCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
-        label.textColor = UIColor.blueLabel
+        label.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
+        label.textColor = UIColor.customDarkBlue
         label.numberOfLines = 0
         label.textAlignment = .left
         label.text = "Test"
@@ -26,8 +26,8 @@ class AntiSpyDetailsCell: UITableViewCell {
     
     lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14)
-        label.textColor = UIColor.hex("8C939F")
+        label.font = UIFont.gilroy(.medium, size: isiPad ? 23 : 14)
+        label.textColor = UIColor.customGray
         label.textAlignment = .left
         label.numberOfLines = 0
         label.text = "Test"
@@ -40,7 +40,7 @@ class AntiSpyDetailsCell: UITableViewCell {
         setupSubviews_HSCF()
         selectionStyle = .none
         
-        backgroundColor = .cellBackground
+        backgroundColor = UIColor.customCellBackground
     }
     
     required init?(coder: NSCoder) {
@@ -59,7 +59,7 @@ class AntiSpyDetailsCell: UITableViewCell {
         
         // Separator
         let separatorView = UIView()
-        separatorView.backgroundColor = .hex("294167")
+        separatorView.backgroundColor = UIColor(hex: "294167")
         separatorView.layer.opacity = 0.05
         separatorView.height(1)
         

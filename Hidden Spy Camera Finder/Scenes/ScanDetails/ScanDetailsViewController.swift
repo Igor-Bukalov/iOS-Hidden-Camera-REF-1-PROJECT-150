@@ -66,7 +66,7 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
         
         layer.path = pathRef
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.blueLabel.cgColor
+        layer.strokeColor = UIColor.customDarkBlue.cgColor
         
         let testView = UIView(frame: bounds)
         testView.layer.insertSublayer(layer, at: 0)
@@ -86,9 +86,9 @@ class ScanDetailsViewController: HSCFBaseViewController, CLLocationManagerDelega
             scanCell.subtitleTextLabel.text = item.subTitle
             scanCell.subtitleValueLabel.text = item.title
             
-            scanCell.titleValueButton.setTitleColor(item.title.isEmpty ? UIColor.hex("4680E4").withAlphaComponent(0.3) : UIColor.hex("4680E4"), for: .normal)
+            scanCell.titleValueButton.setTitleColor(item.title.isEmpty ? UIColor.customLightBlue.withAlphaComponent(0.3) : UIColor.customLightBlue, for: .normal)
             scanCell.titleValueButton.isEnabled = item.title.isEmpty ? false : true
-            if item.titleValue != "Copy MAC" { scanCell.titleValueButton.setTitleColor(UIColor.blueLabel, for: .normal) }
+            if item.titleValue != "Copy MAC" { scanCell.titleValueButton.setTitleColor(UIColor.customDarkBlue, for: .normal) }
             
             if item.title == .unknown {
                 scanCell.titleValueButton.isEnabled = false

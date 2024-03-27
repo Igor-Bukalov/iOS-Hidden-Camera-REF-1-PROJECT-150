@@ -28,8 +28,8 @@ struct TutorialModel: Hashable {
         
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,
-            .font: UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14),
-            .foregroundColor: UIColor.hex("8C939F")
+            .font: UIFont.gilroy(.medium, size: isiPad ? 23 : 14),
+            .foregroundColor: UIColor.customGray
         ]
         
         let attributedString = NSAttributedString(

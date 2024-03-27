@@ -54,11 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func prepareAppearence() {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.backgroundColor = UIColor.navigationBackground
-        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.blueLabel, .font: UIFont.gilroy(.GilroySemibold, size: isiPad ? 33 : 20)]
-        navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.blueLabel]
+        navigationBarAppearance.backgroundColor = UIColor.customBackground
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.customDarkBlue, .font: UIFont.gilroy(.semibold, size: isiPad ? 33 : 20)]
+        navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.customDarkBlue]
         
-        UINavigationBar.appearance().tintColor = .blueLabel
+        UINavigationBar.appearance().tintColor = .customDarkBlue
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance

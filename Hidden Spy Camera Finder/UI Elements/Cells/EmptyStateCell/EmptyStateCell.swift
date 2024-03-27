@@ -16,8 +16,8 @@ class EmptyStateCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
-        label.textColor = UIColor.blueLabel
+        label.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
+        label.textColor = UIColor.customDarkBlue
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = "Empty"

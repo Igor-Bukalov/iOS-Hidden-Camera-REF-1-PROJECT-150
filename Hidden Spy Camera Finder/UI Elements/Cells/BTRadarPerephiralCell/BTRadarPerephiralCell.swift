@@ -13,24 +13,24 @@ class BTRadarPerephiralCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
-        label.textColor = UIColor.blueLabel
+        label.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
+        label.textColor = UIColor.customDarkBlue
         label.text = "Test"
         return label
     }()
     
     lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 20 : 12)
-        label.textColor = UIColor.blueLabel
+        label.font = UIFont.gilroy(.semibold, size: isiPad ? 20 : 12)
+        label.textColor = UIColor.customDarkBlue
         label.text = "Test"
         return label
     }()
     
     lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 23 : 14)
-        label.textColor = UIColor.hex("4680E4")
+        label.font = UIFont.gilroy(.semibold, size: isiPad ? 23 : 14)
+        label.textColor = UIColor.customLightBlue
         label.textAlignment = .right
         label.text = "Test"
         return label
@@ -41,7 +41,7 @@ class BTRadarPerephiralCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews_HSCF()
         selectionStyle = .none
-        backgroundColor = .cellBackground
+        backgroundColor = UIColor.customCellBackground
     }
     
     required init?(coder: NSCoder) {

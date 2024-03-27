@@ -39,7 +39,7 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
         label.centerXToSuperview()
         label.bottomToSuperview(offset: isiPad ? -26 : -16)
         
-        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14)
+        label.font = UIFont.gilroy(.medium, size: isiPad ? 23 : 14)
         label.textAlignment = .center
     }
     

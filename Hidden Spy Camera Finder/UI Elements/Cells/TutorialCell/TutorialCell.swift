@@ -16,8 +16,8 @@ class TutorialCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
-        lbl.textColor = UIColor.blueLabel
+        lbl.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
+        lbl.textColor = UIColor.customDarkBlue
         lbl.numberOfLines = 0
         lbl.textAlignment = .left
         lbl.text = "Test"
@@ -33,10 +33,10 @@ class TutorialCell: UITableViewCell {
     
     lazy var containerView: UIView = {
         let v = UIView()
-        v.backgroundColor = .cellBackground
+        v.backgroundColor = UIColor.customCellBackground
         v.layer.cornerRadius = isiPad ? 40 : 24
         v.layer.borderWidth = isiPad ? 1.0 : 0.6
-        v.layer.borderColor = UIColor.blueLabel.cgColor
+        v.layer.borderColor = UIColor.customDarkBlue.cgColor
         return v
     }()
     
@@ -67,7 +67,7 @@ class TutorialCell: UITableViewCell {
         headerStackView.spacing = isiPad ? 16 : 10
         
         let separatorView = UIView()
-        separatorView.backgroundColor = .hex("294167")
+        separatorView.backgroundColor = UIColor(hex: "294167")
         separatorView.layer.opacity = 0.05
         separatorView.height(1)
         

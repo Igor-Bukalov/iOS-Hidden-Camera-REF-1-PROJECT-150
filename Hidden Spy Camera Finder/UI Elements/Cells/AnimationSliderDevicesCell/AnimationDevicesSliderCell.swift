@@ -56,15 +56,15 @@ struct AnimationDevicesSlider: View {
                 Image(uiImage: UIImage(named: icon.image) ?? UIImage())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(icon.isActive ? Color.white : Color(uiColor: UIColor.blueLabel))
+                    .foregroundStyle(icon.isActive ? Color.white : Color(uiColor: UIColor.customDarkBlue))
                     .padding(isiPad ? 13 : 8)
                     .background {
                         RoundedRectangle(cornerRadius: isiPad ? 13 : 8, style: .continuous)
-                            .fill(icon.isActive ? Color(uiColor: UIColor.blueLabel) : Color(uiColor: UIColor.cellBackground))
+                            .fill(icon.isActive ? Color(uiColor: UIColor.customDarkBlue) : Color(uiColor: UIColor.customCellBackground))
                     }
                     .overlay {
                         RoundedRectangle(cornerRadius: isiPad ? 13 : 8, style: .continuous)
-                            .strokeBorder(Color(uiColor: UIColor.blueLabel), lineWidth: isiPad ? 1.0 : 0.6)
+                            .strokeBorder(Color(uiColor: UIColor.customDarkBlue), lineWidth: isiPad ? 1.0 : 0.6)
                     }
             }
         }

@@ -29,7 +29,7 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.background
+        view.backgroundColor = UIColor.customBackground
         setupStatusLabel()
         setupProgressLayer()
         startLoading()
@@ -50,14 +50,14 @@ class LoadingViewController: UIViewController {
         
         let trackLayer = CAShapeLayer()
         trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.hex("EBF3FF").cgColor
+        trackLayer.strokeColor = UIColor.customCellBackground.cgColor
         trackLayer.lineWidth = isiPad ? 30 : 16
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = .round
         view.layer.addSublayer(trackLayer)
         
         progressLayer.path = circularPath.cgPath
-        progressLayer.strokeColor = UIColor.buttonBlueBackground.cgColor
+        progressLayer.strokeColor = UIColor.customLightBlue.cgColor
         progressLayer.lineWidth = isiPad ? 30 : 16
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
@@ -70,7 +70,7 @@ class LoadingViewController: UIViewController {
         statusLabel.centerInSuperview()
         
         statusLabel.text = "0%"
-        statusLabel.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 42 : 28)
+        statusLabel.font = UIFont.gilroy(.medium, size: isiPad ? 44 : 28)
         statusLabel.textAlignment = .center
     }
     

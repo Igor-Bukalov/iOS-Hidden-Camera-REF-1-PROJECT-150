@@ -57,7 +57,7 @@ class BTRadarViewController: HSCFBaseViewController, UITableViewDelegate {
     private var bluState: CBManagerState = .unknown
     
     private var shippedItem: BluModel?
-    private var deviceDetailVC: DeviceDetailDistanceViewController?
+    private var deviceDetailVC: DeviceDistanceViewController?
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -96,9 +96,9 @@ class BTRadarViewController: HSCFBaseViewController, UITableViewDelegate {
     }
     
     private func showAlertWith_HSCF(state: CBManagerState) {
-        self.showAlert(title: state.alertTitle, message: state.alertSubtitle, style: .alert, okButtonTitle: state.alertActionTitle, cancelButtonTitle: "Cancel", okHandler: { _ in
-            state.action()
-        }, cancelHandler: { _ in })
+        self.presentAlert(title: state.alertContent.title, message: state.alertContent.subtitle, preferredStyle: .alert, positiveTitle: state.alertContent.actionTitle, negativeTitle: "Cancel") { _ in
+            state.performActionIfNeeded()
+        }
     }
     
     private func startScan() {
@@ -174,7 +174,7 @@ class BTRadarViewController: HSCFBaseViewController, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = dataSource.itemIdentifier(for: indexPath) as? BluModel {
-            let vc = Controller_HSCF.deviceDetailDistance.controller as! DeviceDetailDistanceViewController
+            let vc = WrappedController.deviceDistance.viewController as! DeviceDistanceViewController
             self.deviceDetailVC = vc
             self.shippedItem = item
             vc.rssi = item.rssi

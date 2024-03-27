@@ -14,7 +14,7 @@ class HSCFBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.background
+        view.backgroundColor = UIColor.customBackground
         
         if navigationController?.viewControllers.count ?? 0 > 1 {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back-button")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonPressed))
@@ -27,7 +27,6 @@ class HSCFBaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        menuView?.isHidden = true
         setNeedsStatusBarAppearanceUpdate()
     }
     

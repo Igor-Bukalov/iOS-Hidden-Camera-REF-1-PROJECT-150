@@ -167,7 +167,7 @@ class AntiSpyViewController: HSCFBaseViewController, UITableViewDelegate {
         if let item = dataSource.itemIdentifier(for: indexPath) as? ItemValue {
             switch item {
             case .history(let history):
-                guard let vc = Controller_HSCF.scanDetails.controller as? ScanDetailsViewController, let objects = history.devices?.allObjects as? [FoundLanDevice] else { return }
+                guard let vc = WrappedController.scanDetails.viewController as? ScanDetailsViewController, let objects = history.devices?.allObjects as? [FoundLanDevice] else { return }
                 vc.peripheralItems = objects.map { LanModel(name: $0.name ?? .na, ipAddress: $0.ipAddress ?? .na, mac: $0.macAddress, brand: $0.brand) }
                 vc.routerInfo = (history.wifiName ?? .na, history.wifiIP ?? .na, history.wifiInterface)
                 navigationController?.pushViewController(vc, animated: true)
@@ -229,8 +229,8 @@ extension AntiSpyViewController: UICollectionViewDataSource, UICollectionViewDel
         cell.configure(with: menuItem?.displayName ?? "", image: UIImage(named: menuItem?.displayImage ?? ""))
         cell.layer.cornerRadius = isiPad ? 40 : 24
         cell.layer.borderWidth = isiPad ? 1.0 : 0.6
-        cell.layer.borderColor = UIColor.blueLabel.cgColor
-        cell.backgroundColor = UIColor.cellBackground
+        cell.layer.borderColor = UIColor.customDarkBlue.cgColor
+        cell.backgroundColor = UIColor.customCellBackground
         
         return cell
     }
@@ -238,7 +238,7 @@ extension AntiSpyViewController: UICollectionViewDataSource, UICollectionViewDel
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let action = Action_anti_spy.allCases[indexPath.row]
-        let detailViewController = Controller_HSCF.antiSpyDetail.controller as! AntiSpyDetailsViewController
+        let detailViewController = WrappedController.antiSpy.viewController as! AntiSpyDetailsViewController
         
         switch action {
         case .cameraObscura:

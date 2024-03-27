@@ -84,11 +84,11 @@ class HSCFAlertView: UIView {
         parentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        titleLbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 18)
-        messageLbl.font = UIFont.gilroy(.GilroySemibold, size: isiPad ? 20 : 14)
+        titleLbl.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 18)
+        messageLbl.font = UIFont.gilroy(.semibold, size: isiPad ? 20 : 14)
         
-        rightActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
-        leftActionButton.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
+        rightActionButton.titleLabel?.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
+        leftActionButton.titleLabel?.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
         
         leftActionButton.layer.borderColor = UIColor.white.cgColor
         leftActionButton.layer.borderWidth = 1

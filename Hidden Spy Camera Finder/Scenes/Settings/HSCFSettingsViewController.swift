@@ -105,14 +105,14 @@ class HSCFSettingsViewController: HSCFBaseViewController {
         
         layer.path = pathRef
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.blueLabel.cgColor
+        layer.strokeColor = UIColor.customDarkBlue.cgColor
         
         if (addLine == true) {
             let lineLayer = CALayer()
             let lineHeight = 1 / UIScreen.main.scale
             lineLayer.frame = CGRect(x: bounds.minX + 15, y: bounds.size.height - lineHeight, width: bounds.size.width - 30, height: lineHeight)
             lineLayer.backgroundColor = UIColor.clear.cgColor
-            lineLayer.borderColor = UIColor.hex("4680E4").cgColor
+            lineLayer.borderColor = UIColor.customLightBlue.cgColor
             lineLayer.opacity = 0.7
             lineLayer.borderWidth = 0.6
             layer.addSublayer(lineLayer)
@@ -129,18 +129,18 @@ class HSCFSettingsViewController: HSCFBaseViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: HSCFSettingsViewController.cellIdentifier, for: indexPath)
         var content = cell.defaultContentConfiguration()
         if let item = item as? HSCFSettingsViewController.Section_settings.AntiPhotographyTechnology {
-            content.textProperties.color = .blueLabel
+            content.textProperties.color = UIColor.customDarkBlue
             content.text = item.rawValue
             let imgView = UIImageView(image: UIImage(systemName: "chevron.right"))
-            imgView.tintColor = .blueLabel
+            imgView.tintColor = UIColor.customDarkBlue
             cell.accessoryView = imgView
         } else if let item = item as? HSCFSettingsViewController.Section_settings.WifiInfo {
-            content.textProperties.color = UIColor.blueLabel
+            content.textProperties.color = UIColor.customDarkBlue
             content.text = item.rawValue
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: self?.isiPad ?? false ? 150 : 100, height: 20))
-            label.font = UIFont.gilroy(.GilroyMedium, size: self?.isiPad ?? false ? 23 : 14)
+            label.font = UIFont.gilroy(.medium, size: self?.isiPad ?? false ? 23 : 14)
             label.textAlignment = .right
-            label.textColor = UIColor.hex("4680E4")
+            label.textColor = UIColor.customLightBlue
             label.text = item.rightText
             cell.accessoryView = label
             if item == .wirelessLocalNetwork {
@@ -152,15 +152,15 @@ class HSCFSettingsViewController: HSCFBaseViewController {
                 label.text = self?.operatorName
             }
         } else if let item = item as? HSCFSettingsViewController.Section_settings.UserAgreements {
-            content.textProperties.color = .blueLabel
+            content.textProperties.color = UIColor.customDarkBlue
             content.text = item.rawValue
             let imgView = UIImageView(image: UIImage(systemName: "chevron.right"))
-            imgView.tintColor = .blueLabel
+            imgView.tintColor = UIColor.customDarkBlue
             cell.accessoryView = imgView
         }
-        content.textProperties.font = UIFont.gilroy(.GilroyMedium, size: self?.isiPad ?? false ? 26 : 16)
+        content.textProperties.font = UIFont.gilroy(.medium, size: self?.isiPad ?? false ? 26 : 16)
         cell.contentConfiguration = content
-        cell.backgroundColor = UIColor.cellBackground
+        cell.backgroundColor = UIColor.customCellBackground
         cell.layer.masksToBounds = true
         cell.selectionStyle = .none
         return cell
@@ -254,7 +254,7 @@ class HSCFSettingsViewController: HSCFBaseViewController {
 extension HSCFSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if ((dataSource.itemIdentifier(for: indexPath) as? HSCFSettingsViewController.Section_settings.AntiPhotographyTechnology) != nil) {
-            pushViewControllerHSCF(Controller_HSCF.tutorial, animated: true)
+            push(WrappedController.tutorial, animated: true)
         } else if let item = dataSource.itemIdentifier(for: indexPath) as? HSCFSettingsViewController.Section_settings.UserAgreements {
             switch item {
             case .privacyPolicy:

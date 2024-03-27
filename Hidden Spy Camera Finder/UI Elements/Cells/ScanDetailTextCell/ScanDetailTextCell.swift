@@ -13,8 +13,8 @@ class ScanDetailTextCell: UITableViewCell {
     
     lazy var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14)
-        label.textColor = UIColor.blueLabel
+        label.font = UIFont.gilroy(.medium, size: isiPad ? 23 : 14)
+        label.textColor = UIColor.customDarkBlue
         label.textAlignment = .center
         label.numberOfLines = 0
         label.text = "Copy the MAC address as you can\nget detailed information about the device"
@@ -25,7 +25,7 @@ class ScanDetailTextCell: UITableViewCell {
         let v = UIView()
         v.backgroundColor = UIColor.clear
         v.layer.borderWidth = isiPad ? 1.5 : 1
-        v.layer.borderColor = UIColor.blueLabel.cgColor
+        v.layer.borderColor = UIColor.customDarkBlue.cgColor
         v.layer.cornerRadius = isiPad ? 33 : 20
         return v
     }()

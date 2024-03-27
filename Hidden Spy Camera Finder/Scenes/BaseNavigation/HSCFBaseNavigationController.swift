@@ -11,8 +11,6 @@ import SwiftUI
 class HSCFBaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationBar.backgroundColor = UIColor.navigationBackground
-//        navigationBar.barTintColor = UIColor.navigationBackground
         navigationItem.backButtonDisplayMode = .minimal
     }
     

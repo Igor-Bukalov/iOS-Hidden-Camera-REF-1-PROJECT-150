@@ -13,8 +13,8 @@ class ScanDetailCell: UITableViewCell {
     // MARK: - UIProperties
     lazy var titleTextLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 26 : 16)
-        lbl.textColor = UIColor.blueLabel
+        lbl.font = UIFont.gilroy(.medium, size: isiPad ? 26 : 16)
+        lbl.textColor = UIColor.customDarkBlue
         lbl.numberOfLines = 1
         lbl.text = "Test"
         return lbl
@@ -22,17 +22,17 @@ class ScanDetailCell: UITableViewCell {
     
     lazy var titleValueButton: UIButton = {
         let b = UIButton(type: .system)
-        b.titleLabel?.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 23 : 14)
+        b.titleLabel?.font = UIFont.gilroy(.medium, size: isiPad ? 23 : 14)
         b.setTitle("Copy MAC", for: .normal)
-        b.setTitleColor(UIColor.hex("4680E4"), for: .normal)
+        b.setTitleColor(UIColor.customLightBlue, for: .normal)
         b.addTarget(self, action: #selector(copyMAC), for: .touchUpInside)
         return b
     }()
     
     lazy var subtitleTextLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 20 : 12)
-        lbl.textColor = UIColor.blueLabel
+        lbl.font = UIFont.gilroy(.medium, size: isiPad ? 20 : 12)
+        lbl.textColor = UIColor.customDarkBlue
         lbl.numberOfLines = 1
         lbl.text = "Test"
         return lbl
@@ -40,8 +40,8 @@ class ScanDetailCell: UITableViewCell {
     
     lazy var subtitleValueLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.gilroy(.GilroyMedium, size: isiPad ? 20 : 12)
-        lbl.textColor = UIColor.blueLabel
+        lbl.font = UIFont.gilroy(.medium, size: isiPad ? 20 : 12)
+        lbl.textColor = UIColor.customDarkBlue
         lbl.numberOfLines = 1
         lbl.text = "Test"
         return lbl
@@ -58,7 +58,7 @@ class ScanDetailCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
         selectionStyle = .none
-        backgroundColor = .cellBackground
+        backgroundColor = UIColor.customCellBackground
     }
     
     required init?(coder: NSCoder) {

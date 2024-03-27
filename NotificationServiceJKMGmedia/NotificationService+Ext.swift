@@ -1,8 +1,8 @@
 //
 //  NotificationService.swift
-//  NotificationServiceJKMGmedia
+//  Hidden Spy Camera Finder
 //
-//  Created by Evgeniy Bruchkovskiy on 22.11.2023.
+//  Created by Igor Bowtie on 26.03.2024.
 //
 
 import UserNotifications

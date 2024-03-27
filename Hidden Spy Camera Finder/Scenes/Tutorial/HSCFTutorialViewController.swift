@@ -9,7 +9,7 @@ import UIKit
 import TinyConstraints
 import SwiftUI
 
-class HSCFTutorialViewController: HSCFBaseViewController {
+class TutorialViewController: HSCFBaseViewController {
     typealias DataSource = UITableViewDiffableDataSource<AnyHashable, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<AnyHashable, AnyHashable>
     
@@ -61,10 +61,10 @@ class HSCFTutorialViewController: HSCFBaseViewController {
     }
 }
 
-struct HSCFTutorialViewController_Previews: PreviewProvider {
+struct TutorialViewController_Previews: PreviewProvider {
     static var previews: some View {
         ViewControllerPreview {
-            HSCFTutorialViewController()
+            TutorialViewController()
         }
     }
 }
